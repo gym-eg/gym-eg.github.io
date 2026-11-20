@@ -1719,6 +1719,13 @@
     }
   };
 
+  /* Clean legacy cached storage keys automatically */
+  try {
+    ['gym_pro_state_v1', 'gym_pro_state_v2', 'gym_pro_state_v3'].forEach(oldKey => {
+      window.localStorage.removeItem(oldKey);
+    });
+  } catch (e) {}
+
   const $id = id => document.getElementById(id);
   const setHTML = (id, html) => { const el = $id(id); if (el) el.innerHTML = html; };
 
@@ -1964,7 +1971,7 @@
     { name: 'علبة تونة مصفاة + مكرونة (200g) + ملعقة زيت زيتون', kcal: 530, p: 49, c: 53, f: 13 }
   ];
 
-  /* ================= APPLICATION STATE (ZEROED BY DEFAULT FOR NEW VISITORS) ================= */
+  /* ================= APPLICATION STATE (ZEROED BY DEFAULT FOR ALL VISITORS) ================= */
   const DEFAULT_STATE = {
     activeTab: 'dashboard',
     caloriesConsumed: 0,
@@ -2008,19 +2015,23 @@
     aiMessages: []
   };
 
-  let STATE = Object.assign({}, DEFAULT_STATE, safeStorage.get('gym_pro_state_v3', {}));
+  let STATE = Object.assign({}, DEFAULT_STATE, safeStorage.get('gym_pro_state_v4', {}));
   if (!Array.isArray(STATE.weightLogs)) STATE.weightLogs = [];
   if (!Array.isArray(STATE.supplements)) STATE.supplements = DEFAULT_STATE.supplements;
   if (!STATE.wizard) STATE.wizard = DEFAULT_STATE.wizard;
   if (typeof STATE.autoRestOnLog !== 'boolean') STATE.autoRestOnLog = true;
 
   function saveState() {
-    safeStorage.set('gym_pro_state_v3', STATE);
+    safeStorage.set('gym_pro_state_v4', STATE);
   }
 
   function resetAllSiteData() {
     if (!confirm('هل تريد تصفير جميع السعرات والوزن والتمارين المحفوظة على هذا الجهاز؟')) return;
-    try { window.localStorage.removeItem('gym_pro_state_v3'); } catch (e) {}
+    try {
+      ['gym_pro_state_v1', 'gym_pro_state_v2', 'gym_pro_state_v3', 'gym_pro_state_v4'].forEach(k => {
+        window.localStorage.removeItem(k);
+      });
+    } catch (e) {}
     STATE = JSON.parse(JSON.stringify(DEFAULT_STATE));
     saveState();
     toggleSidebar(false);
