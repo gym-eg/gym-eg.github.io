@@ -1,0 +1,3378 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#07080b" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="GYM PRO" />
+  <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22GYM%20%7C%20%D9%85%D9%86%D8%B5%D8%A9%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%D9%8A%D9%86%22%2C%22short_name%22%3A%22GYM%20PRO%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%2307080b%22%2C%22theme_color%22%3A%22%23ff5a1f%22%7D" />
+  <title>GYM | منصة الرياضيين</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ================= 2026 OBSIDIAN & GLASSMORPHIC DESIGN TOKENS ================= */
+    :root {
+      --bg-obsidian: #07080b;
+      --bg-surface: #0d1017;
+      --surface-card: rgba(15, 18, 26, 0.86);
+      --surface-elevated: rgba(23, 27, 38, 0.94);
+      --surface-recessed: rgba(9, 11, 16, 0.92);
+      --hairline: rgba(255, 255, 255, 0.08);
+      --hairline-strong: rgba(255, 255, 255, 0.16);
+      --rim-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.09);
+      --text-primary: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --copper: #ff5a1f;
+      --copper-light: #ff824d;
+      --copper-glow: rgba(255, 90, 31, 0.34);
+      --copper-grad: linear-gradient(135deg, #ff5a1f 0%, #ff8243 100%);
+      --emerald: #10b981;
+      --emerald-light: #34d399;
+      --emerald-glow: rgba(16, 185, 129, 0.3);
+      --emerald-grad: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      --sapphire: #3b82f6;
+      --sapphire-light: #60a5fa;
+      --sapphire-glow: rgba(59, 130, 246, 0.3);
+      --sapphire-grad: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+      --gold: #f59e0b;
+      --crimson: #f43f5e;
+      --radius-2xl: 22px;
+      --radius-xl: 18px;
+      --radius-lg: 14px;
+      --radius-md: 11px;
+      --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-obsidian);
+      background-image:
+        radial-gradient(ellipse 75% 40% at 50% -8%, rgba(255, 90, 31, 0.085), transparent),
+        radial-gradient(ellipse 55% 38% at 10% 95%, rgba(59, 130, 246, 0.055), transparent),
+        radial-gradient(ellipse 50% 35% at 92% 72%, rgba(16, 185, 129, 0.045), transparent);
+      background-attachment: fixed;
+      color: var(--text-primary);
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      min-height: 100dvh;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .num, .en {
+      font-family: 'Outfit', 'Cairo', sans-serif;
+      font-variant-numeric: tabular-nums;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      color: inherit;
+      outline: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      touch-action: manipulation;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    /* ================= LAYOUT SHELL & SIDEBAR ================= */
+    .app-shell {
+      display: flex;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      min-height: 100dvh;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 260px;
+      z-index: 60;
+      background: rgba(10, 12, 18, 0.96);
+      backdrop-filter: blur(26px) saturate(150%);
+      -webkit-backdrop-filter: blur(26px) saturate(150%);
+      border-left: 1px solid var(--hairline);
+      padding: calc(18px + var(--safe-top)) 14px calc(18px + var(--safe-bottom));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.32s var(--ease-luxury);
+    }
+
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.68);
+      backdrop-filter: blur(4px);
+      z-index: 55;
+    }
+    .sidebar-backdrop.show { display: block; }
+
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 8px 10px 16px;
+      border-bottom: 1px solid var(--hairline);
+      margin-bottom: 14px;
+    }
+
+    .brand-emblem {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      background: var(--copper-grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 8px 20px var(--copper-glow), inset 0 1px 0 rgba(255,255,255,0.3);
+      flex-shrink: 0;
+    }
+
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 13px;
+      border-radius: 13px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      transition: all 0.2s var(--ease-luxury);
+      text-align: right;
+    }
+    .nav-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+    }
+    .nav-item.active {
+      background: linear-gradient(135deg, rgba(255, 90, 31, 0.2), rgba(255, 130, 67, 0.08));
+      color: #ffffff;
+      border: 1px solid rgba(255, 90, 31, 0.38);
+      box-shadow: 0 6px 18px rgba(255, 90, 31, 0.14);
+    }
+
+    .workspace {
+      flex: 1;
+      margin-right: 260px;
+      width: calc(100% - 260px);
+      max-width: 100%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: calc(32px + var(--safe-bottom));
+    }
+
+    @media (max-width: 1024px) {
+      .sidebar {
+        transform: translateX(105%);
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .workspace {
+        margin-right: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .workspace {
+        padding-bottom: calc(88px + var(--safe-bottom));
+      }
+    }
+
+    /* ================= CLEAN TOP HEADER BAR (MENU + TITLE ONLY) ================= */
+    header.topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      background: rgba(7, 8, 11, 0.88);
+      backdrop-filter: blur(22px) saturate(150%);
+      -webkit-backdrop-filter: blur(22px) saturate(150%);
+      border-bottom: 1px solid var(--hairline);
+      padding: calc(10px + var(--safe-top)) max(16px, var(--safe-right)) 10px max(16px, var(--safe-left));
+    }
+
+    .topbar-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .menu-toggle-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      min-height: 44px;
+      border-radius: 12px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--hairline-strong);
+      font-size: 19px;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .menu-toggle-btn { display: inline-flex; }
+    }
+
+    .page-heading {
+      margin: 0;
+      font-size: clamp(15.5px, 4vw, 19px);
+      font-weight: 900;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+
+    /* Mobile Bottom Tab Bar */
+    .mobile-bottom-nav {
+      display: none;
+    }
+    @media (max-width: 640px) {
+      .mobile-bottom-nav {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(11, 13, 20, 0.96);
+        backdrop-filter: blur(24px) saturate(160%);
+        -webkit-backdrop-filter: blur(24px) saturate(160%);
+        border-top: 1px solid var(--hairline-strong);
+        padding: 6px 4px calc(6px + var(--safe-bottom));
+        width: 100%;
+        max-width: 100vw;
+      }
+      .mob-tab {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        min-height: 46px;
+        min-width: 0;
+        border-radius: 11px;
+        font-size: 10px;
+        font-weight: 800;
+        color: var(--text-muted);
+        padding: 3px 2px;
+        transition: 0.2s;
+      }
+      .mob-tab span:first-child { font-size: 16px; line-height: 1.1; }
+      .mob-tab.active {
+        color: #ffffff;
+        background: rgba(255, 90, 31, 0.16);
+        border: 1px solid rgba(255, 90, 31, 0.34);
+      }
+    }
+
+    /* ================= MAIN CONTAINER & GLASS CARDS ================= */
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      min-width: 0;
+      margin: 0 auto;
+      padding: 18px max(18px, var(--safe-right)) 18px max(18px, var(--safe-left));
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 12px max(12px, var(--safe-right)) 12px max(12px, var(--safe-left));
+      }
+    }
+
+    .tab-section {
+      display: none;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      animation: panelFade 0.28s var(--ease-luxury);
+    }
+    .tab-section.active { display: block; }
+
+    @keyframes panelFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .lux-card {
+      background: var(--surface-card);
+      backdrop-filter: blur(22px) saturate(145%);
+      -webkit-backdrop-filter: blur(22px) saturate(145%);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-2xl);
+      padding: clamp(14px, 2.2vw, 20px);
+      box-shadow: var(--rim-highlight), 0 18px 40px rgba(0, 0, 0, 0.44);
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .lux-sub {
+      background: var(--surface-recessed);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-lg);
+      padding: 12px 14px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    /* Buttons, Badges & Inputs */
+    .btn-copper {
+      background: var(--copper-grad);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 13px;
+      min-height: 44px;
+      padding: 9px 16px;
+      border-radius: 13px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 8px 20px var(--copper-glow);
+      transition: transform 0.16s, box-shadow 0.2s;
+    }
+    .btn-copper:active { transform: scale(0.97); }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid var(--hairline-strong);
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: 12.5px;
+      min-height: 44px;
+      padding: 8px 13px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: 0.18s;
+    }
+    .btn-glass:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255,255,255,0.24); }
+    .btn-glass:active { transform: scale(0.97); }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--hairline);
+      color: var(--text-muted);
+      max-width: 100%;
+    }
+    .badge-copper { background: rgba(255, 90, 31, 0.15); border-color: rgba(255, 90, 31, 0.35); color: #ff9c73; }
+    .badge-emerald { background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.35); color: #6ee7b7; }
+    .badge-sapphire { background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.35); color: #93c5fd; }
+    .badge-gold { background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.35); color: #fcd34d; }
+    .badge-crimson { background: rgba(244, 63, 94, 0.15); border-color: rgba(244, 63, 94, 0.35); color: #fda4af; }
+
+    .lux-input {
+      background: var(--surface-recessed);
+      border: 1px solid var(--hairline-strong);
+      border-radius: 12px;
+      min-height: 44px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      color: #ffffff;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      transition: border-color 0.2s;
+    }
+    .lux-input:focus { border-color: var(--copper); }
+
+    /* ================= SECTION 1: DASHBOARD (3 MACRO RINGS + BENTO) ================= */
+    .dash-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 18px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    @media (max-width: 768px) {
+      .dash-kpi-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+      }
+    }
+
+    .kpi-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .kpi-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .kpi-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .kpi-ring-box {
+      position: relative;
+      width: 78px;
+      height: 78px;
+      min-width: 78px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .kpi-ring-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .kpi-actions-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .kpi-actions-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .kpi-quick-btn {
+      min-height: 44px;
+      padding: 6px 6px;
+      border-radius: 11px;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid var(--hairline);
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-width: 0;
+      transition: 0.18s;
+    }
+    .kpi-quick-btn:hover {
+      background: rgba(255, 90, 31, 0.16);
+      border-color: rgba(255, 90, 31, 0.42);
+    }
+
+    /* Two-column Bento below KPIs */
+    .bento-columns {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .bento-columns {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+    }
+
+    .bento-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    /* Muscle Recovery Strip */
+    .muscle-strip-shell {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .muscle-strip {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
+      padding: 4px 2px 8px;
+      scrollbar-width: thin;
+      scroll-behavior: smooth;
+    }
+    .muscle-strip::-webkit-scrollbar { height: 4px; }
+    .muscle-strip::-webkit-scrollbar-thumb {
+      background: rgba(255, 90, 31, 0.42);
+      border-radius: 999px;
+    }
+
+    .muscle-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 44px;
+      padding: 8px 13px;
+      border-radius: 13px;
+      background: rgba(20, 24, 34, 0.92);
+      border: 1px solid var(--hairline);
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex: 0 0 auto;
+      transition: all 0.2s;
+    }
+    .muscle-pill:hover { color: #ffffff; border-color: var(--hairline-strong); }
+    .muscle-pill.active {
+      background: var(--copper-grad);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 6px 16px var(--copper-glow);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .strip-arrow-btn {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      min-height: 40px;
+      border-radius: 10px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--hairline-strong);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.18s;
+    }
+    .strip-arrow-btn:hover { background: var(--copper); border-color: transparent; }
+
+    .rec-bar-track {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      margin: 10px 0;
+    }
+    .rec-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.45s var(--ease-luxury);
+    }
+
+    /* Weight Chart Section */
+    .weight-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .w-metric-box {
+      background: var(--surface-recessed);
+      border: 1px solid var(--hairline);
+      border-radius: 13px;
+      padding: 8px 6px;
+      text-align: center;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .w-metric-box span {
+      display: block;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .w-metric-box strong {
+      display: block;
+      font-size: clamp(13px, 3.6vw, 15.5px);
+      font-weight: 900;
+      margin-top: 2px;
+    }
+
+    .weight-chart-wrap {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow: hidden;
+      background: var(--surface-recessed);
+      border: 1px solid var(--hairline);
+      border-radius: 16px;
+      padding: 8px 4px 4px;
+    }
+
+    .weight-entry-dock {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr) 48px auto;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      width: 100%;
+      min-width: 0;
+      background: var(--surface-recessed);
+      border: 1px solid var(--hairline);
+      border-radius: 14px;
+      padding: 6px;
+    }
+
+    .w-nudge-btn {
+      width: 48px;
+      min-width: 44px;
+      min-height: 44px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--hairline);
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .w-nudge-btn:hover { background: var(--copper); border-color: transparent; }
+
+    /* Supplements List */
+    .supp-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      min-height: 46px;
+      padding: 9px 12px;
+      border-radius: 13px;
+      background: var(--surface-recessed);
+      border: 1px solid var(--hairline);
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .supp-item.checked {
+      border-color: rgba(16, 185, 129, 0.38);
+      background: rgba(16, 185, 129, 0.09);
+    }
+
+    /* ================= SECTION 2: 64 EXERCISES LIBRARY ================= */
+    .ex-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      width: 100%;
+      min-width: 0;
+    }
+    @media (max-width: 1100px) {
+      .ex-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .ex-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .ex-media-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border-radius: 15px;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 40%, #192030 0%, #0b0e14 100%);
+      border: 1px solid var(--hairline);
+      margin-bottom: 12px;
+    }
+    .ex-media-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ================= SECTION 3: 10 TRAINING PROGRAMS & EXCLUSIVE WORKOUT REST TIMER ================= */
+    .prog-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+      width: 100%;
+      min-width: 0;
+    }
+    @media (max-width: 1100px) {
+      .prog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .prog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    .prog-card-btn {
+      padding: 12px 10px;
+      border-radius: 15px;
+      background: var(--surface-card);
+      border: 1px solid var(--hairline);
+      text-align: right;
+      min-height: 76px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 4px;
+      min-width: 0;
+      transition: 0.2s;
+    }
+    .prog-card-btn.active {
+      background: linear-gradient(145deg, rgba(255, 90, 31, 0.22), rgba(15, 18, 26, 0.95));
+      border-color: var(--copper);
+      box-shadow: 0 8px 22px rgba(255, 90, 31, 0.18);
+    }
+
+    /* Workout Rest Timer Bar (Exclusively inside #sec-programs active workout day) */
+    .workout-rest-card {
+      background: linear-gradient(135deg, rgba(255, 90, 31, 0.14) 0%, rgba(14, 17, 26, 0.96) 65%);
+      border: 1px solid rgba(255, 90, 31, 0.36);
+      border-radius: 18px;
+      padding: 13px 14px;
+      margin-bottom: 14px;
+      width: 100%;
+      min-width: 0;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 10px 26px rgba(0, 0, 0, 0.36);
+    }
+
+    .workout-rest-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .workout-rest-controls {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .rest-time-readout {
+      font-size: clamp(20px, 5vw, 25px);
+      font-weight: 900;
+      color: var(--copper-light);
+      min-width: 68px;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    .rest-ctrl-btn {
+      min-width: 40px;
+      min-height: 40px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.065);
+      border: 1px solid var(--hairline-strong);
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: 0.18s;
+    }
+    .rest-ctrl-btn:hover, .rest-ctrl-btn.active-preset {
+      background: rgba(255, 90, 31, 0.25);
+      border-color: var(--copper);
+      color: #ffffff;
+    }
+    .rest-ctrl-btn.primary {
+      background: var(--copper-grad);
+      border-color: transparent;
+      min-width: 44px;
+      box-shadow: 0 4px 12px var(--copper-glow);
+    }
+
+    .rest-sec-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--surface-recessed);
+      border: 1px solid var(--hairline-strong);
+      border-radius: 10px;
+      padding: 0 8px;
+      height: 40px;
+      flex-shrink: 0;
+    }
+    .rest-sec-box:focus-within {
+      border-color: var(--copper);
+    }
+    .rest-sec-input {
+      width: 44px;
+      background: transparent;
+      border: none;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 900;
+      color: #ffffff;
+      padding: 0;
+    }
+
+    .rest-progress-track {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .rest-progress-fill {
+      height: 100%;
+      width: 100%;
+      border-radius: 999px;
+      background: var(--copper-grad);
+      transition: width 0.35s linear;
+    }
+
+    .prog-ex-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      width: 100%;
+      min-width: 0;
+    }
+    @media (max-width: 768px) {
+      .prog-ex-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .prog-log-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 7px;
+      align-items: end;
+      margin-top: 10px;
+      width: 100%;
+      min-width: 0;
+    }
+    .prog-inp-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+    .prog-inp-wrap label {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ================= SECTION 4: 5-STEP CALORIE WIZARD (TYPED NUMERIC INPUTS) ================= */
+    .wiz-steps-bar {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 6px;
+      margin-bottom: 18px;
+      width: 100%;
+      min-width: 0;
+    }
+    .wiz-step-pill {
+      min-height: 44px;
+      padding: 6px 4px;
+      border-radius: 12px;
+      background: var(--surface-recessed);
+      border: 1px solid var(--hairline);
+      font-size: clamp(10.5px, 2.7vw, 12.5px);
+      font-weight: 800;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-width: 0;
+    }
+    .wiz-step-pill.active {
+      background: var(--copper-grad);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 6px 16px var(--copper-glow);
+    }
+    .wiz-step-pill.done {
+      border-color: rgba(16, 185, 129, 0.45);
+      color: var(--emerald-light);
+    }
+
+    .wiz-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      width: 100%;
+      min-width: 0;
+    }
+    @media (max-width: 768px) {
+      .wiz-grid-3 { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .num-stepper-box {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) auto 44px;
+      align-items: center;
+      gap: 6px;
+      background: rgba(7, 9, 14, 0.92);
+      border: 1px solid var(--hairline-strong);
+      border-radius: 13px;
+      padding: 4px;
+      width: 100%;
+      min-width: 0;
+    }
+    .num-stepper-box:focus-within {
+      border-color: var(--copper);
+      box-shadow: 0 0 0 2px rgba(255, 90, 31, 0.16);
+    }
+    .stepper-btn {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      min-height: 44px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--hairline);
+      font-size: 18px;
+      font-weight: 900;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.16s;
+    }
+    .stepper-btn:hover {
+      background: var(--copper);
+      border-color: transparent;
+    }
+    .stepper-typed-input {
+      width: 100%;
+      min-width: 0;
+      background: transparent;
+      border: none;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 900;
+      color: #ffffff;
+      min-height: 44px;
+      padding: 4px;
+    }
+    .stepper-unit-badge {
+      padding: 4px 8px;
+      border-radius: 8px;
+      background: rgba(255, 90, 31, 0.14);
+      border: 1px solid rgba(255, 90, 31, 0.3);
+      color: var(--copper-light);
+      font-size: 11px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .wiz-results-hero {
+      display: grid;
+      grid-template-columns: 185px minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+      padding: 16px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(255, 90, 31, 0.14) 0%, rgba(11, 13, 20, 0.96) 68%);
+      border: 1px solid rgba(255, 90, 31, 0.35);
+      margin-bottom: 14px;
+      width: 100%;
+      min-width: 0;
+    }
+    @media (max-width: 640px) {
+      .wiz-results-hero {
+        grid-template-columns: minmax(0, 1fr);
+        justify-items: center;
+        text-align: center;
+      }
+    }
+
+    /* ================= SECTION 5: AI CAMERA & FOOD SCALE ================= */
+    .cam-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: 18px;
+      width: 100%;
+      min-width: 0;
+    }
+    @media (max-width: 900px) {
+      .cam-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    /* ================= SECTION 6: SMART COACH STUDIO ================= */
+    .ai-studio {
+      display: grid;
+      grid-template-columns: 330px minmax(0, 1fr);
+      gap: 16px;
+      align-items: stretch;
+      width: 100%;
+      min-width: 0;
+    }
+    @media (max-width: 1024px) {
+      .ai-studio { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .ai-chat-box {
+      display: flex;
+      flex-direction: column;
+      height: 540px;
+      max-height: 70dvh;
+      min-width: 0;
+      width: 100%;
+    }
+
+    .ai-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .msg-bubble {
+      max-width: 90%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 13.5px;
+      line-height: 1.65;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .msg-user {
+      align-self: flex-start;
+      background: var(--copper-grad);
+      color: #ffffff;
+      border-bottom-right-radius: 4px;
+    }
+    .msg-ai {
+      align-self: flex-end;
+      background: var(--surface-elevated);
+      border: 1px solid var(--hairline-strong);
+      color: var(--text-primary);
+      border-bottom-left-radius: 4px;
+    }
+
+    /* ================= MODAL & TOAST ================= */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      width: 100%;
+      max-width: 560px;
+      max-height: 88dvh;
+      overflow-y: auto;
+      background: #0f131d;
+      border: 1px solid var(--hairline-strong);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.7);
+    }
+
+    .toast-banner {
+      position: fixed;
+      top: calc(70px + var(--safe-top));
+      left: 50%;
+      transform: translateX(-50%) translateY(-16px);
+      z-index: 120;
+      background: rgba(16, 20, 30, 0.96);
+      border: 1px solid rgba(255, 90, 31, 0.52);
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.55);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s var(--ease-luxury);
+      max-width: calc(100vw - 24px);
+      text-align: center;
+    }
+    .toast-banner.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<div id="toast-banner" class="toast-banner" role="status" aria-live="polite"></div>
+<div id="sidebar-backdrop" class="sidebar-backdrop" onclick="toggleSidebar(false)"></div>
+
+<div class="app-shell">
+  <!-- ================= RIGHT SIDEBAR ================= -->
+  <aside id="app-sidebar" class="sidebar" aria-label="القائمة الرئيسية">
+    <div>
+      <div class="brand-box">
+        <div class="brand-emblem">⚡</div>
+        <div style="min-width:0;">
+          <div class="en" style="font-size:18px;font-weight:900;letter-spacing:0.6px;color:#fff;">GYM PRO</div>
+          <div style="font-size:11.5px;color:var(--text-muted);font-weight:700;">منصة الرياضيين الذكية</div>
+        </div>
+      </div>
+
+      <nav class="nav-list">
+        <button type="button" class="nav-item active" data-tab="dashboard" onclick="switchTab('dashboard')">
+          <span>📊</span><span>الصفحة الرئيسية</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="exercises" onclick="switchTab('exercises')">
+          <span>🏋️</span><span>مكتبة التمارين (64)</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="programs" onclick="switchTab('programs')">
+          <span>📋</span><span>الأنظمة التدريبية (10)</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="calories" onclick="switchTab('calories')">
+          <span>🔥</span><span>حاسبة السعرات والماكروز</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="camera" onclick="switchTab('camera')">
+          <span>📸</span><span>الكاميرا الذكية وميزان الطعام</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="coach" onclick="switchTab('coach')">
+          <span>🤖</span><span>المدرب الذكي AI & الشيف</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="lux-sub" style="padding:11px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+        <span style="font-size:11px;color:var(--text-muted);font-weight:700;">النظام النشط</span>
+        <span class="badge-pill badge-copper" style="font-size:10px;padding:2px 8px;" id="side-prog-badge">PPL 6D</span>
+      </div>
+      <div style="font-size:12px;font-weight:800;color:#fff;" id="side-athlete-summary">78.0 kg • تضخيم عضلي نظيف</div>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN WORKSPACE ================= -->
+  <div class="workspace">
+    <!-- CLEAN TOP HEADER BAR (ONLY MENU TOGGLE + CURRENT SECTION TITLE) -->
+    <header class="topbar">
+      <div class="topbar-inner">
+        <button type="button" class="menu-toggle-btn" onclick="toggleSidebar(true)" aria-label="فتح القائمة">☰</button>
+        <h1 class="page-heading" id="header-page-title">الصفحة الرئيسية</h1>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- ==================== 1. DASHBOARD (#sec-dashboard) ==================== -->
+      <section id="sec-dashboard" class="tab-section active">
+        <!-- Top 3 Circular SVG Progress Ring Cards: Calories, Protein, Carbs -->
+        <div class="dash-kpi-row">
+          <!-- Card 1: Daily Calories -->
+          <div class="lux-card kpi-card">
+            <div class="kpi-header">
+              <div class="kpi-info">
+                <div style="font-size:12.5px;font-weight:800;color:var(--text-muted);">🔥 السعرات اليومية</div>
+                <div class="num" style="font-size:20px;font-weight:900;color:#fff;margin:2px 0;" id="kpi-cal-val">1650 / 2450 kcal</div>
+                <div style="font-size:11.5px;color:var(--text-muted);" id="kpi-cal-rem">متبقي 800 kcal للهدف</div>
+                <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;">
+                  <span class="badge-pill badge-emerald num" style="font-size:10.5px;padding:2px 7px;" id="kpi-macro-p">P: 180g</span>
+                  <span class="badge-pill badge-sapphire num" style="font-size:10.5px;padding:2px 7px;" id="kpi-macro-c">C: 265g</span>
+                  <span class="badge-pill badge-gold num" style="font-size:10.5px;padding:2px 7px;" id="kpi-macro-f">F: 72g</span>
+                </div>
+              </div>
+              <div class="kpi-ring-box">
+                <svg width="78" height="78" viewBox="0 0 78 78">
+                  <defs>
+                    <linearGradient id="gradCal" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#ff5a1f" />
+                      <stop offset="100%" stop-color="#ff9966" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="39" cy="39" r="32" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="7" />
+                  <circle id="ring-cal" cx="39" cy="39" r="32" fill="none" stroke="url(#gradCal)" stroke-width="7" stroke-linecap="round"
+                    stroke-dasharray="201.06" stroke-dashoffset="65" transform="rotate(-90 39 39)" style="transition:stroke-dashoffset 0.45s ease;" />
+                </svg>
+                <div class="kpi-ring-center num" id="ring-cal-pct">67%</div>
+              </div>
+            </div>
+            <div class="kpi-actions-grid-2">
+              <button type="button" class="kpi-quick-btn num" onclick="adjustCalories(250)">+250 kcal</button>
+              <button type="button" class="kpi-quick-btn num" onclick="adjustCalories(-250)">-250 kcal</button>
+            </div>
+          </div>
+
+          <!-- Card 2: Daily Protein -->
+          <div class="lux-card kpi-card">
+            <div class="kpi-header">
+              <div class="kpi-info">
+                <div style="font-size:12.5px;font-weight:800;color:var(--text-muted);">🥩 البروتين اليومي</div>
+                <div class="num" style="font-size:20px;font-weight:900;color:var(--emerald-light);margin:2px 0;" id="kpi-pro-val">112 / 180 g</div>
+                <div style="font-size:11.5px;color:var(--text-muted);" id="kpi-pro-rem">متبقي 68g لتحقيق الهدف</div>
+                <div style="margin-top:6px;">
+                  <span class="badge-pill badge-emerald" style="font-size:10.5px;padding:2px 8px;">بناء واستشفاء عضلي</span>
+                </div>
+              </div>
+              <div class="kpi-ring-box">
+                <svg width="78" height="78" viewBox="0 0 78 78">
+                  <defs>
+                    <linearGradient id="gradPro" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#059669" />
+                      <stop offset="100%" stop-color="#34d399" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="39" cy="39" r="32" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="7" />
+                  <circle id="ring-pro" cx="39" cy="39" r="32" fill="none" stroke="url(#gradPro)" stroke-width="7" stroke-linecap="round"
+                    stroke-dasharray="201.06" stroke-dashoffset="76" transform="rotate(-90 39 39)" style="transition:stroke-dashoffset 0.45s ease;" />
+                </svg>
+                <div class="kpi-ring-center num" id="ring-pro-pct">62%</div>
+              </div>
+            </div>
+            <div class="kpi-actions-grid-3">
+              <button type="button" class="kpi-quick-btn" onclick="adjustProtein(25)">+25g سكوب</button>
+              <button type="button" class="kpi-quick-btn num" onclick="adjustProtein(10)">+10g</button>
+              <button type="button" class="kpi-quick-btn num" onclick="adjustProtein(-10)">-10g</button>
+            </div>
+          </div>
+
+          <!-- Card 3: Daily Carbs -->
+          <div class="lux-card kpi-card">
+            <div class="kpi-header">
+              <div class="kpi-info">
+                <div style="font-size:12.5px;font-weight:800;color:var(--text-muted);">🍚 الكارب اليومي</div>
+                <div class="num" style="font-size:20px;font-weight:900;color:var(--sapphire-light);margin:2px 0;" id="kpi-carb-val">165 / 265 g</div>
+                <div style="font-size:11.5px;color:var(--text-muted);" id="kpi-carb-rem">متبقي 100g لتحقيق الهدف</div>
+                <div style="margin-top:6px;">
+                  <span class="badge-pill badge-sapphire" style="font-size:10.5px;padding:2px 8px;">طاقة وجليكوجين التمرين</span>
+                </div>
+              </div>
+              <div class="kpi-ring-box">
+                <svg width="78" height="78" viewBox="0 0 78 78">
+                  <defs>
+                    <linearGradient id="gradCarb" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#2563eb" />
+                      <stop offset="100%" stop-color="#60a5fa" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="39" cy="39" r="32" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="7" />
+                  <circle id="ring-carb" cx="39" cy="39" r="32" fill="none" stroke="url(#gradCarb)" stroke-width="7" stroke-linecap="round"
+                    stroke-dasharray="201.06" stroke-dashoffset="76" transform="rotate(-90 39 39)" style="transition:stroke-dashoffset 0.45s ease;" />
+                </svg>
+                <div class="kpi-ring-center num" id="ring-carb-pct">62%</div>
+              </div>
+            </div>
+            <div class="kpi-actions-grid-3">
+              <button type="button" class="kpi-quick-btn" onclick="adjustCarbs(40)">+40g أرز/شوفان</button>
+              <button type="button" class="kpi-quick-btn num" onclick="adjustCarbs(15)">+15g</button>
+              <button type="button" class="kpi-quick-btn num" onclick="adjustCarbs(-15)">-15g</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento 2-Column Layout -->
+        <div class="bento-columns">
+          <!-- Column 1: Muscle Recovery Guide (9 Groups) + Daily Supplements -->
+          <div class="bento-col">
+            <div class="lux-card">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;width:100%;min-width:0;">
+                <strong style="font-size:clamp(14px,3.8vw,15.5px);font-weight:900;">💪 دليل العضلات والاستشفاء التلقائي (9 مجموعات)</strong>
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <span class="badge-pill" style="font-size:11px;">⏱️ تلقائي</span>
+                  <button type="button" class="strip-arrow-btn" onclick="scrollMuscleStrip(1)" aria-label="تمرير لليمين">›</button>
+                  <button type="button" class="strip-arrow-btn" onclick="scrollMuscleStrip(-1)" aria-label="تمرير لليسار">‹</button>
+                </div>
+              </div>
+
+              <div class="muscle-strip-shell">
+                <div class="muscle-strip" id="dash-muscle-pills"></div>
+              </div>
+
+              <div class="lux-sub" id="dash-muscle-detail" style="margin-top:8px;"></div>
+            </div>
+
+            <!-- Daily Supplements Tracker -->
+            <div class="lux-card">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;">
+                <strong style="font-size:15px;font-weight:900;">💊 متتبع المكملات اليومية</strong>
+                <span class="badge-pill badge-emerald num" id="supp-progress-pill">0 / 5</span>
+              </div>
+              <div id="supp-list" style="display:flex;flex-direction:column;gap:8px;"></div>
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:10px;">
+                <input type="text" id="new-supp-input" class="lux-input" placeholder="أضف مكمل مخصص (مثل: سيترولين 6g)..." onkeydown="if(event.key==='Enter') addCustomSupplement()" />
+                <button type="button" class="btn-copper" onclick="addCustomSupplement()">+ إضافة</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Body Weight Progress Chart -->
+          <div class="bento-col">
+            <div class="lux-card">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+                <div style="min-width:0;">
+                  <strong style="font-size:15px;font-weight:900;">📈 مخطط متابعة الوزن وتطور الجسم</strong>
+                  <div style="font-size:11.5px;color:var(--text-muted);">انقر على أي نقطة لعرض قراءة الوزن والتاريخ</div>
+                </div>
+                <span id="weight-selected-tooltip" class="badge-pill badge-copper num">آخر قياس: 78.0 kg</span>
+              </div>
+
+              <div class="weight-kpi-grid" id="weight-stats-strip"></div>
+
+              <div id="weight-chart-container" class="weight-chart-wrap"></div>
+
+              <div class="weight-entry-dock">
+                <button type="button" class="w-nudge-btn num" onclick="nudgeWeightInput(-0.1)">-0.1</button>
+                <input type="number" id="weight-entry-input" step="0.1" min="30" max="250" inputmode="decimal" value="78.0" class="lux-input num" style="text-align:center;font-weight:900;font-size:14px;padding:6px 4px;" aria-label="الوزن بالكيلوجرام" />
+                <button type="button" class="w-nudge-btn num" onclick="nudgeWeightInput(0.1)">+0.1</button>
+                <button type="button" class="btn-copper" style="padding:8px 14px;white-space:nowrap;" onclick="logTodayWeight()">تسجيل ✓</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 2. EXERCISES LIBRARY (#sec-exercises - 64) ==================== -->
+      <section id="sec-exercises" class="tab-section">
+        <div class="lux-card" style="margin-bottom:16px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+            <h2 style="margin:0;font-size:clamp(16px,4.2vw,20px);font-weight:900;">🏋️ مكتبة التمارين الشاملة (<span class="num" id="ex-total-count">64</span> تمريناً)</h2>
+            <button type="button" class="btn-copper" onclick="openCustomExerciseModal()">+ تمرين مخصص</button>
+          </div>
+
+          <div style="margin-bottom:10px;">
+            <input type="search" id="ex-search-input" class="lux-input" placeholder="ابحث باسم التمرين أو الجزء المستهدف (مثال: علوي، جانبي، مجنص، ساعد، بنش)..." oninput="renderExercisesGrid()" />
+          </div>
+
+          <div class="muscle-strip-shell">
+            <div class="muscle-strip" id="ex-muscle-filters"></div>
+          </div>
+        </div>
+
+        <div class="ex-grid" id="exercises-grid"></div>
+      </section>
+
+      <!-- ==================== 3. TRAINING PROGRAMS (#sec-programs - 10) ==================== -->
+      <section id="sec-programs" class="tab-section">
+        <div class="lux-card" style="margin-bottom:16px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+            <h2 style="margin:0;font-size:clamp(16px,4.2vw,20px);font-weight:900;">📋 الأنظمة التدريبية المتكاملة (10 أنظمة)</h2>
+            <span class="badge-pill badge-copper" id="active-prog-label">النظام المختار: PPL 6D</span>
+          </div>
+
+          <div class="prog-grid" id="programs-selector-grid"></div>
+
+          <div class="muscle-strip-shell" style="margin-top:8px;">
+            <div class="muscle-strip" id="program-days-strip"></div>
+          </div>
+        </div>
+
+        <!-- Active Workout Day Container (Contains Exclusive Workout Rest Timer + Day Controls + Exercises) -->
+        <div class="lux-card" id="workout-day-container" style="margin-bottom:16px;">
+          <!-- EXCLUSIVE WORKOUT REST TIMER (ONLY VISIBLE IN TRAINING PROGRAMS DURING WORKOUT) -->
+          <div class="workout-rest-card" aria-label="عداد ثواني الراحة أثناء التمرين">
+            <div class="workout-rest-top">
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <strong style="font-size:14px;font-weight:900;color:#ffffff;">⏱️ عداد ثواني الراحة أثناء التمرين</strong>
+                <button type="button" id="workout-auto-rest-btn" class="badge-pill badge-emerald" style="cursor:pointer;" onclick="toggleWorkoutAutoRest()">⚡ تلقائي عند التسجيل: مفعّل</button>
+              </div>
+
+              <div class="workout-rest-controls">
+                <span class="rest-time-readout num" id="workout-rest-display">01:30</span>
+                <button type="button" class="rest-ctrl-btn primary" id="workout-rest-toggle-btn" onclick="toggleWorkoutRestTimer()" aria-label="تشغيل أو إيقاف عداد الراحة">▶</button>
+                <button type="button" class="rest-ctrl-btn" onclick="resetWorkoutRestTimer()" aria-label="إعادة ضبط عداد الراحة">↺</button>
+                <button type="button" class="rest-ctrl-btn num" id="w-preset-60" onclick="setWorkoutRestPreset(60)">60s</button>
+                <button type="button" class="rest-ctrl-btn num active-preset" id="w-preset-90" onclick="setWorkoutRestPreset(90)">90s</button>
+                <button type="button" class="rest-ctrl-btn num" id="w-preset-120" onclick="setWorkoutRestPreset(120)">120s</button>
+                <div class="rest-sec-box" title="اكتب عدد ثواني الراحة المطلوبة">
+                  <input type="number" id="workout-rest-sec-input" class="rest-sec-input num" value="90" min="5" max="600" inputmode="numeric" aria-label="ثواني الراحة"
+                    oninput="previewWorkoutRestSeconds(this.value)" onchange="applyWorkoutRestSeconds(this.value)" />
+                  <span style="font-size:11px;font-weight:800;color:var(--text-muted);">ث</span>
+                </div>
+              </div>
+            </div>
+            <div class="rest-progress-track">
+              <div class="rest-progress-fill" id="workout-rest-progress-fill"></div>
+            </div>
+          </div>
+
+          <!-- Workout Day Header & Complete Day Button -->
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:4px;">
+            <div>
+              <strong style="font-size:16px;font-weight:900;" id="prog-day-title">اليوم 1: دفع (Push A)</strong>
+              <div style="font-size:12px;color:var(--text-muted);" id="prog-day-desc">سجّل الوزن والعدات لكل تمرين لتحديث الاستشفاء العضلي وبدء عداد الراحة تلقائياً</div>
+            </div>
+            <button type="button" class="btn-copper" onclick="completeProgramDay()">✓ إتمام اليوم وتحديث الاستشفاء</button>
+          </div>
+        </div>
+
+        <!-- 1RM & Working Sets Inline Calculator -->
+        <div class="lux-card" style="margin-bottom:16px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+            <strong style="font-size:14.5px;font-weight:900;">🧮 حاسبة الأوزان والعدات (1RM & Working Sets)</strong>
+            <span class="badge-pill badge-sapphire num" id="prog-1rm-badge">1RM التقديري: 100 kg</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));gap:10px;align-items:end;">
+            <div>
+              <label style="display:block;font-size:11.5px;color:var(--text-muted);margin-bottom:4px;">الوزن المرفوع (kg)</label>
+              <input type="number" id="calc-1rm-w" class="lux-input num" inputmode="decimal" value="80" min="5" max="400" oninput="update1RMCalc()" />
+            </div>
+            <div>
+              <label style="display:block;font-size:11.5px;color:var(--text-muted);margin-bottom:4px;">العدات المنجزة</label>
+              <input type="number" id="calc-1rm-r" class="lux-input num" inputmode="numeric" value="8" min="1" max="30" oninput="update1RMCalc()" />
+            </div>
+            <div class="lux-sub" style="padding:8px 10px;text-align:center;">
+              <div style="font-size:11px;color:var(--text-muted);">تضخيم (8-12 عدة)</div>
+              <strong class="num" style="color:var(--emerald-light);font-size:14px;" id="calc-1rm-hyp">72 - 78 kg</strong>
+            </div>
+            <div class="lux-sub" style="padding:8px 10px;text-align:center;">
+              <div style="font-size:11px;color:var(--text-muted);">قوة (4-6 عدات)</div>
+              <strong class="num" style="color:var(--copper-light);font-size:14px;" id="calc-1rm-str">85 - 90 kg</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="prog-ex-grid" id="program-day-exercises"></div>
+      </section>
+
+      <!-- ==================== 4. 5-STEP CALORIE & MACRO WIZARD (#sec-calories) ==================== -->
+      <section id="sec-calories" class="tab-section">
+        <div class="lux-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
+            <h2 style="margin:0;font-size:clamp(16px,4.2vw,20px);font-weight:900;">🔥 حاسبة السعرات والماكروز الذكية</h2>
+            <span class="badge-pill badge-copper num" id="wiz-live-telemetry">BMR: 1785 • BMI: 24.6</span>
+          </div>
+
+          <div class="wiz-steps-bar" id="wiz-steps-bar"></div>
+          <div id="wiz-step-content"></div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid var(--hairline);">
+            <button type="button" class="btn-glass" id="wiz-prev-btn" onclick="changeWizardStep(-1)">→ السابق</button>
+            <button type="button" class="btn-copper" id="wiz-next-btn" onclick="changeWizardStep(1)">التالي ←</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 5. SMART CAMERA & FOOD SCALE (#sec-camera) ==================== -->
+      <section id="sec-camera" class="tab-section">
+        <div class="cam-grid">
+          <!-- Meal Photo Scanner -->
+          <div class="lux-card">
+            <h2 style="margin:0 0 12px;font-size:17px;font-weight:900;">📸 ماسح الوجبات بالكاميرا الذكية AI</h2>
+
+            <label class="lux-sub" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:190px;cursor:pointer;border:1.5px dashed rgba(255,90,31,0.45);text-align:center;gap:8px;margin-bottom:12px;">
+              <input type="file" id="meal-photo-input" accept="image/*" capture="environment" style="display:none;" onchange="handleMealPhotoUpload(event)" />
+              <img id="meal-photo-preview" alt="صورة الوجبة" style="display:none;max-height:180px;width:auto;max-width:100%;border-radius:12px;object-fit:cover;" />
+              <div id="meal-photo-placeholder">
+                <div style="font-size:34px;">📷</div>
+                <div style="font-weight:800;font-size:14px;color:#fff;">التقط صورة وجبتك أو اختر من الاستوديو</div>
+                <div style="font-size:11.5px;color:var(--text-muted);">تحليل فوري للسعرات والبروتين والكارب والدهون</div>
+              </div>
+            </label>
+
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-bottom:12px;">
+              <select id="meal-preset-scan" class="lux-input">
+                <option value="0">صدور دجاج مشوية + أرز بسمتي + سلطة</option>
+                <option value="1">شوفان بالحليب + سكوب واي بروتين + موز</option>
+                <option value="2">بيض مسلوق (4 بيضات) + خبز أسمر + أفوكادو</option>
+                <option value="3">ستيك لحم مشوي + بطاطا مشوية + خضار</option>
+                <option value="4">علبة تونة + مكرونة مسلوقة + زيت زيتون</option>
+              </select>
+              <button type="button" class="btn-copper" onclick="analyzeScannedMeal()">تحليل AI ✨</button>
+            </div>
+
+            <div id="meal-scan-result" class="lux-sub"></div>
+          </div>
+
+          <!-- Digital Gram Food Scale (24 Common Foods) -->
+          <div class="lux-card">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+              <h2 style="margin:0;font-size:17px;font-weight:900;">⚖️ ميزان الطعام الرقمي بالجرام (24 صنفاً)</h2>
+              <span class="badge-pill badge-emerald">دقة 1 جرام</span>
+            </div>
+
+            <div style="margin-bottom:12px;">
+              <label style="display:block;font-size:12px;color:var(--text-muted);margin-bottom:5px;">اختر الصنف الغذائي:</label>
+              <select id="scale-food-select" class="lux-input" onchange="updateFoodScale()"></select>
+            </div>
+
+            <div style="margin-bottom:12px;">
+              <label style="display:block;font-size:12px;color:var(--text-muted);margin-bottom:6px;">أدخل الوزن بالجرام أو اختر من الأوزان السريعة:</label>
+              <div class="num-stepper-box" style="margin-bottom:8px;">
+                <button type="button" class="stepper-btn" onclick="stepScaleGrams(-10)">−</button>
+                <input type="number" id="scale-grams-input" class="stepper-typed-input num" inputmode="numeric" value="150" min="50" max="1000" oninput="syncScaleGrams(this.value)" />
+                <span class="stepper-unit-badge">جرام (g)</span>
+                <button type="button" class="stepper-btn" onclick="stepScaleGrams(10)">+</button>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;">
+                <button type="button" class="btn-glass num" style="min-height:40px;padding:4px 8px;font-size:12px;" onclick="syncScaleGrams(100)">100g</button>
+                <button type="button" class="btn-glass num" style="min-height:40px;padding:4px 8px;font-size:12px;" onclick="syncScaleGrams(150)">150g</button>
+                <button type="button" class="btn-glass num" style="min-height:40px;padding:4px 8px;font-size:12px;" onclick="syncScaleGrams(200)">200g</button>
+                <button type="button" class="btn-glass num" style="min-height:40px;padding:4px 8px;font-size:12px;" onclick="syncScaleGrams(250)">250g</button>
+              </div>
+            </div>
+
+            <div id="scale-macros-box" class="lux-sub" style="margin-bottom:12px;"></div>
+
+            <button type="button" class="btn-copper" style="width:100%;" onclick="logFoodScaleMeal()">➕ إضافة إلى السعرات والبروتين والكارب</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 6. SMART COACH & ATHLETE CHEF (#sec-coach) ==================== -->
+      <section id="sec-coach" class="tab-section">
+        <div class="ai-studio">
+          <!-- Context-Aware Telemetry & Prompt Sidebar -->
+          <div class="lux-card" style="display:flex;flex-direction:column;justify-content:space-between;gap:12px;">
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;">
+                <strong style="font-size:15.5px;font-weight:900;">🤖 المدرب الذكي AI & الشيف</strong>
+                <span class="badge-pill badge-emerald" style="font-size:10.5px;">● متصل</span>
+              </div>
+
+              <!-- Live Athlete Profile Grid -->
+              <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:12px;" id="ai-athlete-grid"></div>
+
+              <!-- Topic Filters -->
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;" id="ai-cat-filters"></div>
+
+              <!-- Interactive Prompt Chips -->
+              <div style="display:flex;flex-direction:column;gap:6px;" id="ai-prompts-list"></div>
+            </div>
+
+            <div style="padding-top:10px;border-top:1px solid var(--hairline);">
+              <button type="button" class="btn-glass" style="width:100%;font-size:12px;" onclick="resetAIChat()">🔄 بدء محادثة جديدة</button>
+            </div>
+          </div>
+
+          <!-- Chat Workspace -->
+          <div class="lux-card ai-chat-box">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--hairline);margin-bottom:8px;">
+              <div style="display:flex;align-items:center;gap:9px;">
+                <div style="width:36px;height:36px;border-radius:11px;background:var(--copper-grad);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🧠</div>
+                <div>
+                  <strong style="font-size:14px;display:block;">استوديو الاستشارات التدريبية والغذائية</strong>
+                  <span style="font-size:11px;color:var(--text-muted);" id="ai-mode-label">المدرب الذكي AI نشط ومرتبط بملفك الرياضي</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ai-messages" id="ai-messages-list"></div>
+
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding-top:10px;border-top:1px solid var(--hairline);">
+              <input type="text" id="ai-chat-input" class="lux-input" placeholder="اسأل عن تمرين، كسر ثبات الأوزان، مكملات، أو اطلب وصفة وجبة..." onkeydown="if(event.key==='Enter') sendAIMessage()" />
+              <button type="button" class="btn-copper" onclick="sendAIMessage()">إرسال ➤</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- Mobile Bottom Fixed Navigation (6 Tabs) -->
+<nav class="mobile-bottom-nav" aria-label="التنقل السريع">
+  <button type="button" class="mob-tab active" data-tab="dashboard" onclick="switchTab('dashboard')"><span>📊</span><span>الرئيسية</span></button>
+  <button type="button" class="mob-tab" data-tab="exercises" onclick="switchTab('exercises')"><span>🏋️</span><span>التمارين</span></button>
+  <button type="button" class="mob-tab" data-tab="programs" onclick="switchTab('programs')"><span>📋</span><span>الأنظمة</span></button>
+  <button type="button" class="mob-tab" data-tab="calories" onclick="switchTab('calories')"><span>🔥</span><span>السعرات</span></button>
+  <button type="button" class="mob-tab" data-tab="camera" onclick="switchTab('camera')"><span>📸</span><span>الكاميرا</span></button>
+  <button type="button" class="mob-tab" data-tab="coach" onclick="switchTab('coach')"><span>🤖</span><span>المدرب AI</span></button>
+</nav>
+
+<!-- Generic Modal -->
+<div id="app-modal" class="modal-overlay" onclick="if(event.target===this) closeModal()">
+  <div class="modal-box" id="app-modal-body"></div>
+</div>
+
+<script>
+  /* ================= SAFE STORAGE & DOM HELPERS ================= */
+  const RAM_STORE = {};
+  const safeStorage = {
+    get(key, fallback) {
+      try {
+        const raw = window.localStorage.getItem(key);
+        return raw !== null ? JSON.parse(raw) : (key in RAM_STORE ? RAM_STORE[key] : fallback);
+      } catch (e) {
+        return key in RAM_STORE ? RAM_STORE[key] : fallback;
+      }
+    },
+    set(key, val) {
+      RAM_STORE[key] = val;
+      try {
+        window.localStorage.setItem(key, JSON.stringify(val));
+      } catch (e) {}
+    }
+  };
+
+  const $id = id => document.getElementById(id);
+  const setHTML = (id, html) => { const el = $id(id); if (el) el.innerHTML = html; };
+
+  function showToast(msg) {
+    const t = $id('toast-banner');
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window.__toastTimer);
+    window.__toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+  }
+
+  /* ================= 9 MUSCLE GROUPS & PHYSIOLOGICAL RECOVERY ================= */
+  const MUSCLE_GROUPS = [
+    { id: 'chest', name: 'الصدر', en: 'Chest', hours: 48, tip: 'انزل بالوزن بتحكم لمدة ثانيتين مع فرد الصدر وتجنب فتح المرفقين بزاوية 90 درجة.' },
+    { id: 'back', name: 'الظهر', en: 'Back', hours: 48, tip: 'ابدأ السحب بلوحي الكتف وليس بالذراعين، وحافظ على استقامة أسفل الظهر.' },
+    { id: 'shoulders', name: 'الأكتاف', en: 'Shoulders', hours: 36, tip: 'في الرفرفة الجانبية ارفع بمستوى لوح الكتف وتجنب أرجحة الجذع.' },
+    { id: 'biceps', name: 'البايسبس', en: 'Biceps', hours: 36, tip: 'ثبّت مرفقيك بجانب جسمك تماماً وركز على الانقباض في أعلى الحركة.' },
+    { id: 'triceps', name: 'الترايسبس', en: 'Triceps', hours: 36, tip: 'أغلق المرفق بالكامل في نهاية العدة مع إبقاء العضد ثابتاً.' },
+    { id: 'legs', name: 'الأرجل', en: 'Legs', hours: 72, tip: 'ادفع بكامل باطن القدم وحافظ على ثبات الركبة مع اتجاه أصابع القدم.' },
+    { id: 'abs', name: 'البطن', en: 'Abs', hours: 24, tip: 'أخرج الزفير بقوة عند أعلى نقطة انقباض لتحفيز الألياف العميقة.' },
+    { id: 'forearms', name: 'السواعد', en: 'Forearms', hours: 24, tip: 'نفّذ ثني وفرد المعصم بمدى حركي كامل وتحكم بطيء في النزول.' },
+    { id: 'calves', name: 'السمانة', en: 'Calves', hours: 24, tip: 'توقف ثانية كاملة في الأسفل لإلغاء ارتداد وتر أخيل.' }
+  ];
+
+  /* ================= 64 REAL EXERCISES ACROSS ALL 9 MUSCLE GROUPS ================= */
+  const INITIAL_EXERCISES = [
+    // 1. CHEST (8: ex1 - ex8)
+    { id: 'ex1', name: 'بنش برس مستوي بالبار', en: 'Barbell Bench Press', muscle: 'chest', primary: 'الصدر الأوسط بالكامل', secondary: 'الأكتاف الأمامية، الترايسبس', slug: 'Barbell_Bench_Press_-_Medium_Grip', steps: ['استلقِ على البنش مع تثبيت القدمين على الأرض وتقويس خفيف بأسفل الظهر.', 'امسك البار أعرض قليلاً من عرض الكتفين وانزل به لمنتصف الصدر.', 'ادفع البار لأعلى بقوة مع الزفير دون قفل المرفق بعنف.'], mistakes: ['رفع الأرداف عن المقعد', 'فتح المرفقين بزاوية 90 درجة'] },
+    { id: 'ex2', name: 'بنش برس علوي بالدمبل', en: 'Incline Dumbbell Press', muscle: 'chest', primary: 'الصدر العلوي (Clavicular)', secondary: 'الكتف الأمامي، الترايسبس', slug: 'Incline_Dumbbell_Press', steps: ['اضبط زاوية المقعد على 30-45 درجة.', 'ارفع الدمبلين فوق الصدر العلوي وانزل ببطء حتى مستوى الصدر.', 'ادفع الدمبلين لأعلى مع تقريب خفيف في القمة.'], mistakes: ['رفع زاوية المقعد أكثر من 45 درجة', 'تصادم الدمبلين بقوة في الأعلى'] },
+    { id: 'ex3', name: 'تفتيح صدر بالكيبل كروس أوفر', en: 'Cable Crossover Fly', muscle: 'chest', primary: 'الصدر الداخلي والسفلي', secondary: 'الكتف الأمامي', slug: 'Cable_Crossover', steps: ['قف في منتصف جهاز الكيبل مع تقديم قدم واحدة للثبات.', 'اسحب المقبضين للأمام والأسفل بانحناءة خفيفة في المرفق.', 'عد ببطء للشعور بإطالة ألياف الصدر.'], mistakes: ['ثني المرفق وتحويل التمرين لدفع', 'الميل المفرط للأمام'] },
+    { id: 'ex4', name: 'تفتيح صدر مستوي بالدمبل', en: 'Flat Dumbbell Flyes', muscle: 'chest', primary: 'ألياف الصدر الخارجية والوسطى', secondary: 'الكتف الأمامي', slug: 'Dumbbell_Flyes', steps: ['استلقِ على مقعد مستوٍ وارفع الدمبلين فوق صدرك.', 'افتح ذراعيك على شكل قوس واسع مع ثني طفيف بالمرفق.', 'ضم الدمبلين مجدداً بعصر عضلة الصدر.'], mistakes: ['النزول بالدمبل أسفل مستوى الكتف بشكل مؤلم'] },
+    { id: 'ex5', name: 'متوازي للصدر السفلي', en: 'Chest Dips', muscle: 'chest', primary: 'الصدر السفلي والخارجي', secondary: 'الترايسبس، الكتف الأمامي', slug: 'Dips_-_Chest_Version', steps: ['امسك قضبان المتوازي وامل بجذعك للأمام 30 درجة.', 'انزل حتى تصبح الذراع موازية للأرض.', 'ادفع جسمك للأعلى مع عصر الصدر.'], mistakes: ['الاستقامة العمودية الكاملة التي تنقل الحمل للترايسبس'] },
+    { id: 'ex6', name: 'بنش برس سفلي بالبار', en: 'Decline Barbell Bench Press', muscle: 'chest', primary: 'الصدر السفلي (Sternal)', secondary: 'الترايسبس', slug: 'Decline_Barbell_Bench_Press', steps: ['ثبّت قدميك في مسند المقعد المائل للأسفل.', 'أنزل البار لأسفل عظمة الصدر بتحكم.', 'ادفع البار لأعلى باستقامة.'], mistakes: ['إنزال البار باتجاه الرقبة'] },
+    { id: 'ex7', name: 'تجميع صدر على جهاز الفراشة', en: 'Butterfly Pec Deck', muscle: 'chest', primary: 'الصدر الداخلي', secondary: 'الكتف الأمامي', slug: 'Butterfly', steps: ['اضبط ارتفاع المقعد ليكون المقبضان بمستوى منتصف الصدر.', 'ضم الذراعين للأمام مع تثبيت الظهر على المسند.', 'ارجع ببطء حتى قبل تلامس الأوزان.'], mistakes: ['تقديم الكتفين للأمام وفقدان العزل'] },
+    { id: 'ex8', name: 'تمرين الضغط الكلاسيكي', en: 'Push-Ups', muscle: 'chest', primary: 'الصدر العام', secondary: 'الترايسبس، البطن', slug: 'Pushups', steps: ['ضع يديك أعرض من الكتفين وجسمك في خط مستقيم.', 'انزل بصدرك حتى يقترب من الأرض.', 'ادفع الأرض بقوة للعودة لوضع البداية.'], mistakes: ['هبوط الحوض أو رفعه لأعلى'] },
+
+    // 2. BACK (8: ex9 - ex16)
+    { id: 'ex9', name: 'سحب عالي أمامي واسع', en: 'Wide-Grip Lat Pulldown', muscle: 'back', primary: 'المجنص الخارجي (Lats)', secondary: 'البايسبس، المعينات', slug: 'Wide-Grip_Lat_Pulldown', steps: ['امسك البار بقبضة واسعة واجلس بثبات.', 'اسحب البار إلى أعلى الصدر مع سحب المرفقين للأسفل.', 'أعد البار للأعلى بتحكم كامل.'], mistakes: ['سحب البار خلف الرقبة', 'الرجوع المبالغ فيه بالظهر للخلف'] },
+    { id: 'ex10', name: 'تجديف بالبار منحني', en: 'Bent Over Barbell Row', muscle: 'back', primary: 'سمك منتصف الظهر والمجنص', secondary: 'البايسبس، أسفل الظهر', slug: 'Bent_Over_Barbell_Row', steps: ['اثنِ ركبتيك قليلاً وامل بجذعك 45 درجة بظهر مستقيم.', 'اسحب البار نحو أسفل البطن.', 'أنزل البار ببطء مع الحفاظ على ثبات الجذع.'], mistakes: ['تقويس أسفل الظهر', 'استخدام الزخم لرفع الوزن'] },
+    { id: 'ex11', name: 'سحب أرضي جالس بالكيبل', en: 'Seated Cable Rows', muscle: 'back', primary: 'منتصف الظهر والمعينات', secondary: 'المجنص، البايسبس', slug: 'Seated_Cable_Rows', steps: ['اجلس على الجهاز مع ثني طفيف بالركبتين واستقامة الظهر.', 'اسحب المقبض نحو البطن مع ضم لوحي الكتف.', 'مد ذراعيك للأمام بتحكم.'], mistakes: ['انحناء الظهر للأمام مع الوزن'] },
+    { id: 'ex12', name: 'تجديف بالدمبل يد واحدة', en: 'One-Arm Dumbbell Row', muscle: 'back', primary: 'المجنص السفلي والوسطى', secondary: 'البايسبس، الكتف الخلفي', slug: 'One-Arm_Dumbbell_Row', steps: ['ضع ركبة ويد على البنش وحافظ على استواء الظهر.', 'اسحب الدمبل نحو الورك وليس الصدر.', 'أنزل الدمبل بالكامل لإطالة المجنص.'], mistakes: ['تدوير الجذع مع السحب'] },
+    { id: 'ex13', name: 'الرفعة الميتة الكلاسيكية', en: 'Barbell Deadlift', muscle: 'back', primary: 'سلسلة الظهر الكاملة والقطنية', secondary: 'الأرجل، الترابيس، السواعد', slug: 'Barbell_Deadlift', steps: ['قف والبار فوق منتصف القدم.', 'امسك البار وافرد صدرك وشد البطن.', 'ادفع الأرض بقدميك وارفع البار ملاصقاً للساقين.'], mistakes: ['تقويس الظهر أثناء الرفع', 'إبعاد البار عن الجسم'] },
+    { id: 'ex14', name: 'سحب مستقيم الذراعين بالكيبل', en: 'Straight-Arm Pulldown', muscle: 'back', primary: 'عزل عضلة المجنص (Lats)', secondary: 'الترايسبس الطويل، البطن', slug: 'Straight-Arm_Pulldown', steps: ['قف أمام الكيبل العالي وامسك البار بذراعين شبه مستقيمتين.', 'اسحب البار في قوس لأسفل حتى الفخذين.', 'ارجع للأعلى بتحكم للشعور بالإطالة.'], mistakes: ['ثني المرفقين وتحويله لترايسبس'] },
+    { id: 'ex15', name: 'عقلة بقبضة علوية', en: 'Pullups', muscle: 'back', primary: 'عرض الظهر العلوي والمجنص', secondary: 'البايسبس، السواعد', slug: 'Pullups', steps: ['تعلق بالبار بقبضة أعرض من الكتفين.', 'اسحب صدرك نحو البار.', 'انزل ببطء حتى استقامة الذراعين.'], mistakes: ['أرجحة الساقين'] },
+    { id: 'ex16', name: 'تجديف على جهاز T-Bar', en: 'T-Bar Row', muscle: 'back', primary: 'كثافة منتصف الظهر', secondary: 'المجنص، البايسبس', slug: 'Lying_T-Bar_Row', steps: ['ثبّت صدرك على المسند وامسك المقبضين.', 'اسحب الوزن للأعلى مع عصر لوحي الكتف.', 'أنزل الوزن بتحكم.'], mistakes: ['رفع الصدر عن المسند'] },
+
+    // 3. SHOULDERS (8: ex17 - ex24)
+    { id: 'ex17', name: 'ضغط أكتاف بالبار واقفاً', en: 'Standing Military Press', muscle: 'shoulders', primary: 'الكتف الأمامي والجانبي', secondary: 'الترايسبس، البطن', slug: 'Standing_Military_Press', steps: ['ارفع البار من مستوى أعلى الصدر.', 'ادفع البار عمودياً فوق الرأس.', 'أنزل البار بتحكم لنقطة البداية.'], mistakes: ['تقويس أسفل الظهر للخلف'] },
+    { id: 'ex18', name: 'ضغط أكتاف جالس بالدمبل', en: 'Seated Dumbbell Press', muscle: 'shoulders', primary: 'الكتف الأمامي', secondary: 'الكتف الجانبي، الترايسبس', slug: 'Dumbbell_Shoulder_Press', steps: ['اجلس بظهر مستند وارفع الدمبلين بمستوى الأذنين.', 'ادفع الدمبلين لأعلى حتى يقتربا فوق الرأس.', 'انزل ببطء لمستوى الذقن.'], mistakes: ['إنزال الدمبل أكثر من اللازم'] },
+    { id: 'ex19', name: 'رفرفة جانبي بالدمبل', en: 'Side Lateral Raise', muscle: 'shoulders', primary: 'الكتف الجانبي (Lateral Delt)', secondary: 'الترابيس العلوي', slug: 'Side_Lateral_Raise', steps: ['قف مع انحناء طفيف للأمام ومرفق مثني قليلاً.', 'ارفع الدمبلين للجانبين حتى مستوى الكتف.', 'انزل ببطء على مدار ثانيتين.'], mistakes: ['رفع اليدين أعلى من المرفقين'] },
+    { id: 'ex20', name: 'رفرفة جانبي بالكيبل', en: 'Cable Lateral Raise', muscle: 'shoulders', primary: 'الكتف الجانبي بتوتر مستمر', secondary: 'فوق الشوكة', slug: 'Cable_Seated_Lateral_Raise', steps: ['قف بجانب البكرة السفلية وامسك المقبض.', 'ارفع ذراعك للجانب حتى مستوى الكتف.', 'قاوم الوزن أثناء النزول.'], mistakes: ['سحب الكيبل بحركة مفاجئة'] },
+    { id: 'ex21', name: 'رفرفة خلفي على جهاز الفراشة', en: 'Reverse Machine Flyes', muscle: 'shoulders', primary: 'الكتف الخلفي (Rear Delt)', secondary: 'المعينات، الترابيس الأوسط', slug: 'Reverse_Machine_Flyes', steps: ['اجلس مواجهاً لمسند الجهاز وامسك المقبضين.', 'افتح ذراعيك للخلف بقوس واسع.', 'ارجع للأمام ببطء.'], mistakes: ['ضم لوحي الكتف بقوة زائدة'] },
+    { id: 'ex22', name: 'سحب للوجه بالحبل (Face Pull)', en: 'Face Pull', muscle: 'shoulders', primary: 'الكتف الخلفي والكفة المدورة', secondary: 'الترابيس الأوسط', slug: 'Face_Pull', steps: ['اضبط البكرة بمستوى الوجه وامسك الحبل.', 'اسحب الحبل نحو الجبهة مع تدوير اليدين للخارج.', 'عد للأمام بتحكم.'], mistakes: ['السحب باتجاه الصدر بدلاً من الوجه'] },
+    { id: 'ex23', name: 'رفرفة أمامي بالدمبل', en: 'Front Dumbbell Raise', muscle: 'shoulders', primary: 'الكتف الأمامي', secondary: 'الصدر العلوي', slug: 'Front_Dumbbell_Raise', steps: ['قف بثبات وارفع دمبل واحد أو الاثنين للأمام حتى مستوى العين.', 'انزل بتحكم دون أرجحة.'], mistakes: ['ميل الظهر للخلف'] },
+    { id: 'ex24', name: 'ترابيس بالدمبل (Shrugs)', en: 'Dumbbell Shrug', muscle: 'shoulders', primary: 'الترابيس العلوي (Upper Traps)', secondary: 'السواعد', slug: 'Dumbbell_Shrug', steps: ['امسك دمبلين ثقيلين بجانب جسمك.', 'ارفع كتفيك عمودياً نحو الأذنين وتوقف ثانية.', 'أنزل الكتفين بالكامل.'], mistakes: ['تدوير الكتفين بشكل دائري'] },
+
+    // 4. BICEPS (6: ex25 - ex30)
+    { id: 'ex25', name: 'مرجحة بايسبس بالبار المستقيم', en: 'Barbell Curl', muscle: 'biceps', primary: 'الرأس القصير والطويل للبايسبس', secondary: 'العضدية، السواعد', slug: 'Barbell_Curl', steps: ['امسك البار بعرض الكتفين وثبّت مرفقيك.', 'ارفع البار نحو الكتفين بعصر البايسبس.', 'انزل ببطء حتى استقامة شبه كاملة.'], mistakes: ['تحريك المرفقين للأمام أو أرجحة الظهر'] },
+    { id: 'ex26', name: 'بايسبس تبادل بالدمبل', en: 'Dumbbell Alternate Bicep Curl', muscle: 'biceps', primary: 'البايسبس ولف الساعد (Supination)', secondary: 'العضدية', slug: 'Dumbbell_Alternate_Bicep_Curl', steps: ['ابدأ براحة اليد للداخل ولفها للأعلى أثناء الرفع.', 'اعصر العضلة في القمة.', 'انزل بتحكم وبدّل الذراع.'], mistakes: ['الاستعجال في النزول'] },
+    { id: 'ex27', name: 'بايسبس هامر (مطرقة) بالدمبل', en: 'Hammer Curls', muscle: 'biceps', primary: 'العضدية (Brachialis) والرأس الطويل', secondary: 'السواعد (Brachioradialis)', slug: 'Hammer_Curls', steps: ['امسك الدمبلين بقبضة محايدة (الإبهام للأعلى).', 'ارفع الدمبل نحو الكتف مع ثبات المرفق.', 'انزل ببطء.'], mistakes: ['لف المعصم للداخل'] },
+    { id: 'ex28', name: 'بايسبس ارتكاز على بنش لاري', en: 'Preacher Curl', muscle: 'biceps', primary: 'الرأس القصير للبايسبس', secondary: 'العضدية', slug: 'Preacher_Curl', steps: ['ثبّت ذراعيك على وسادة الارتكاز.', 'ارفع البار المتعرج للأعلى دون رفع المرفقين.', 'انزل بتحكم كامل.'], mistakes: ['قفل المرفق بعنف في الأسفل'] },
+    { id: 'ex29', name: 'بايسبس مائل على بنش (Incline)', en: 'Incline Dumbbell Curl', muscle: 'biceps', primary: 'الرأس الطويل للبايسبس في وضع الإطالة', secondary: 'السواعد', slug: 'Incline_Dumbbell_Curl', steps: ['اجلس على بنش بزاوية 45-60 درجة واترك ذراعيك تتدليان خلف الجذع.', 'ارفع الدمبلين مع بقاء المرفقين خلف الجسم.', 'انزل ببطء.'], mistakes: ['تقديم المرفقين للأمام أثناء الرفع'] },
+    { id: 'ex30', name: 'بايسبس بالكيبل السفلي', en: 'Cable Hammer Curls - Rope', muscle: 'biceps', primary: 'البايسبس والعضدية بتوتر ثابت', secondary: 'السواعد', slug: 'Cable_Hammer_Curls_-_Rope_Attachment', steps: ['امسك الحبل المتصل بالبكرة السفلية.', 'اسحب الحبل للأعلى مع تبعيد الطرفين قليلاً في القمة.', 'انزل بتحكم.'], mistakes: ['الانحناء للأمام'] },
+
+    // 5. TRICEPS (6: ex31 - ex36)
+    { id: 'ex31', name: 'دفع ترايسبس بالكيبل بالحبل', en: 'Triceps Pushdown - Rope', muscle: 'triceps', primary: 'الرأس الجانبي والوسطى للترايسبس', secondary: 'الكتف الأمامي', slug: 'Triceps_Pushdown_-_Rope_Attachment', steps: ['ثبّت مرفقيك بجانب خصرك.', 'ادفع الحبل للأسفل وافتح طرفيه للخارج في النهاية.', 'اصعد باليدين لمستوى الصدر فقط.'], mistakes: ['تباعد المرفقين للخارج'] },
+    { id: 'ex32', name: 'ترايسبس نائم بالبار المتعرج (Skullcrusher)', en: 'Lying Triceps Press', muscle: 'triceps', primary: 'الرأس الطويل للترايسبس', secondary: 'السواعد', slug: 'Lying_Triceps_Press', steps: ['استلقِ وارفع البار المتعرج فوق الكتفين.', 'اثنِ المرفقين لإنزال البار خلف الجبهة قليلاً.', 'مد ذراعيك للأعلى بقوة.'], mistakes: ['فتح المرفقين للخارج أثناء النزول'] },
+    { id: 'ex33', name: 'مد ترايسبس فوق الرأس بالدمبل', en: 'Standing Dumbbell Triceps Extension', muscle: 'triceps', primary: 'الرأس الطويل للترايسبس في وضع الإطالة', secondary: 'البطن', slug: 'Standing_Dumbbell_Triceps_Extension', steps: ['امسك دمبلاً بكلتا يديك فوق رأسك.', 'أنزل الدمبل خلف الرأس بثبات العضد.', 'ادفع الدمبل للأعلى.'], mistakes: ['تقويس أسفل الظهر'] },
+    { id: 'ex34', name: 'بنش برس بقبضة ضيقة', en: 'Close-Grip Barbell Bench Press', muscle: 'triceps', primary: 'رؤوس الترايسبس الثلاثة', secondary: 'الصدر الداخلي، الكتف الأمامي', slug: 'Close-Grip_Barbell_Bench_Press', steps: ['امسك البار بعرض الكتفين تماماً.', 'انزل بالبار لأسفل الصدر مع إبقاء المرفقين قريبين من الجسم.', 'ادفع لأعلى بقوة.'], mistakes: ['تقريب اليدين أكثر من اللازم مما يضغط على المعصم'] },
+    { id: 'ex35', name: 'دفع ترايسبس بالمسطرة المستقيمة', en: 'Triceps Pushdown', muscle: 'triceps', primary: 'الرأس الجانبي للترايسبس', secondary: 'السواعد', slug: 'Triceps_Pushdown', steps: ['قف باستقامة خفيفة للأمام وامسك المسطرة.', 'ادفع المسطرة للأسفل حتى استقامة الذراعين.', 'ارجع للأعلى بتحكم.'], mistakes: ['استخدام وزن الجسم للضغط'] },
+    { id: 'ex36', name: 'غطس ترايسبس على البنش', en: 'Bench Dips', muscle: 'triceps', primary: 'الترايسبس العام', secondary: 'الصدر السفلي، الكتف الأمامي', slug: 'Bench_Dips', steps: ['ضع يديك على حافة البنش خلفك.', 'انزل بجسمك عمودياً بمحاذاة البنش.', 'ادفع للأعلى حتى استقامة الذراعين.'], mistakes: ['الابتعاد بالظهر عن البنش'] },
+
+    // 6. LEGS (12: ex37 - ex48)
+    { id: 'ex37', name: 'سكوات خلفي بالبار', en: 'Barbell Full Squat', muscle: 'legs', primary: 'العضلة الرباعية الأمامية والألوية', secondary: 'الأرجل الخلفية، أسفل الظهر', slug: 'Barbell_Full_Squat', steps: ['ضع البار على الترابيس وافتح قدميك بعرض الكتفين.', 'انزل بالورك للخلف والأسفل حتى يوازي الفخذ الأرض.', 'ادفع الأرض بقوة للوقوف.'], mistakes: ['دخول الركبتين للداخل', 'رفع الكعبين عن الأرض'] },
+    { id: 'ex38', name: 'دفع الأرجل على الجهاز (Leg Press)', en: 'Leg Press', muscle: 'legs', primary: 'العضلة الرباعية الأمامية', secondary: 'الألوية، الخلفية', slug: 'Leg_Press', steps: ['ضع قدميك في منتصف المنصة بعرض الكتفين.', 'أنزل المنصة بتحكم حتى زاوية 90 درجة.', 'ادفع دون قفل الركبتين بالكامل.'], mistakes: ['رفع أسفل الظهر عن المسند في الأسفل'] },
+    { id: 'ex39', name: 'رفرفة أرجل أمامي على الجهاز', en: 'Leg Extensions', muscle: 'legs', primary: 'عزل العضلة الرباعية الأمامية', secondary: 'عضلات الورك المثنية', slug: 'Leg_Extensions', steps: ['اضبط الوسادة فوق الكاحل مباشرة.', 'ارفع الساقين حتى الاستقامة وتوقف ثانية.', 'انزل ببطء.'], mistakes: ['قذف الوزن بالزخم'] },
+    { id: 'ex40', name: 'طعن مشي بالدمبل (Lunges)', en: 'Dumbbell Lunges', muscle: 'legs', primary: 'الرباعية الأمامية والألوية', secondary: 'الخلفية، السمانة', slug: 'Dumbbell_Lunges', steps: ['اخطُ خطوة واسعة للأمام بجذع مستقيم.', 'انزل حتى تقترب الركبة الخلفية من الأرض.', 'ادفع بالقدم الأمامية للمتابعة.'], mistakes: ['تجاوز الركبة الأمامية لأصابع القدم بشكل مفرط'] },
+    { id: 'ex41', name: 'هاك سكوات على الجهاز', en: 'Hack Squat', muscle: 'legs', primary: 'الرأس الخارجي والأمامي للرباعية', secondary: 'الألوية', slug: 'Hack_Squat', steps: ['ثبّت ظهرك وكتفيك على وسائد الجهاز.', 'انزل بعمق وتحكم.', 'ادفع للأعلى بكامل القدم.'], mistakes: ['رفع الكعبين عن المنصة'] },
+    { id: 'ex42', name: 'سكوات بلغاري بالدمبل', en: 'Split Squats', muscle: 'legs', primary: 'الرباعية والألوية لقدم واحدة', secondary: 'العضلات المثبتة للحوض', slug: 'Split_Squats', steps: ['ضع مشط قدمك الخلفية على بنش خلفك.', 'انزل عمودياً بالورك للأسفل.', 'ادفع بكعب القدم الأمامية للصعود.'], mistakes: ['فقدان التوازن بسبب ضيق المسافة العرضية'] },
+    { id: 'ex43', name: 'فرونت سكوات بالبار', en: 'Front Barbell Squat', muscle: 'legs', primary: 'الرباعية الأمامية وعضلات البطن', secondary: 'أعلى الظهر', slug: 'Front_Barbell_Squat', steps: ['ضع البار على الكتفين الأماميين مع رفع المرفقين.', 'انزل بظهر شبه عمودي.', 'اصعد بقوة.'], mistakes: ['هبوط المرفقين للأمام'] },
+    { id: 'ex44', name: 'جوبلت سكوات بالدمبل', en: 'Goblet Squat', muscle: 'legs', primary: 'الرباعية الأمامية والداخلية', secondary: 'الألوية، البطن', slug: 'Goblet_Squat', steps: ['امسك دمبلاً أمام صدرك بكلتا يديك.', 'انزل بين ركبتيك بظهر مستقيم.', 'ادفع للوقوف.'], mistakes: ['تقويس الظهر في الأسفل'] },
+    { id: 'ex45', name: 'رفعة ميتة رومانية بالبار (RDL)', en: 'Romanian Deadlift', muscle: 'legs', primary: 'الأرجل الخلفية والألوية', secondary: 'أسفل الظهر، السواعد', slug: 'Romanian_Deadlift', steps: ['قف بالبار مع ثني بسيط وثابت في الركبتين.', 'ادفع الورك للخلف وأنزل البار بمحاذاة الساقين حتى أسفل الركبة.', 'عد للوقوف بعصر الألوية.'], mistakes: ['ثني الركبتين وتحويله لسكوات', 'تقويس الظهر'] },
+    { id: 'ex46', name: 'مرجحة أرجل خلفي نائم', en: 'Lying Leg Curls', muscle: 'legs', primary: 'عزل العضلة الخلفية للفخذ', secondary: 'السمانة', slug: 'Lying_Leg_Curls', steps: ['استلقِ وثبّت الوسادة خلف الكاحلين.', 'اسحب الكعبين نحو الأرداف مع إبقاء الحوض ملتصقاً بالمقعد.', 'انزل ببطء.'], mistakes: ['رفع الورك عن المقعد أثناء السحب'] },
+    { id: 'ex47', name: 'مرجحة أرجل خلفي جالس', en: 'Seated Leg Curl', muscle: 'legs', primary: 'الأرجل الخلفية في وضع الإطالة', secondary: 'السمانة', slug: 'Seated_Leg_Curl', steps: ['اضبط المسند العلوي فوق الفخذ بإحكام.', 'اثنِ ركبتيك للأسفل والخلف بتحكم.', 'عد للأعلى ببطء.'], mistakes: ['السماح للوزن بالارتداد السريع'] },
+    { id: 'ex48', name: 'دفع الورك بالبار (Hip Thrust)', en: 'Barbell Hip Thrust', muscle: 'legs', primary: 'العضلة الألوية الكبرى (Glutes)', secondary: 'الأرجل الخلفية', slug: 'Barbell_Hip_Thrust', steps: ['أسند أعلى ظهرك على البنش وضع البار المبطن على الورك.', 'ادفع الورك للأعلى حتى يصبح الجذع موازياً للأرض.', 'توقف ثانية في القمة ثم انزل.'], mistakes: ['تقويس أسفل الظهر بدلاً من تدوير الحوض'] },
+
+    // 7. ABS (6: ex49 - ex54)
+    { id: 'ex49', name: 'طحن بطن بالكيبل العلوي', en: 'Cable Crunch', muscle: 'abs', primary: 'عضلات البطن المستقيمة (Six-Pack)', secondary: 'المائلة', slug: 'Cable_Crunch', steps: ['اركع أمام البكرة العلوية وامسك الحبل بجانب الرأس.', 'اثنِ عمودك الفقري للأسفل مع إخراج الزفير وثبات الورك.', 'اصعد بتحكم.'], mistakes: ['الجلوس بالورك للخلف بدلاً من ثني البطن'] },
+    { id: 'ex50', name: 'رفع الأرجل معلقاً على العقلة', en: 'Hanging Leg Raise', muscle: 'abs', primary: 'البطن السفلي وعضلات الحوض', secondary: 'السواعد', slug: 'Hanging_Leg_Raise', steps: ['تعلق بالعقلة بثبات.', 'ارفع ساقيك للأمام والأعلى مع تدوير الحوض للأعلى.', 'انزل ببطء لمنع الأرجحة.'], mistakes: ['أرجحة الجسم'] },
+    { id: 'ex51', name: 'تمرين البلانك الثابت', en: 'Plank', muscle: 'abs', primary: 'عضلات البطن العميقة (Core)', secondary: 'الأكتاف، الألوية', slug: 'Plank', steps: ['ارتكز على الساعدين وأصابع القدمين.', 'شد البطن والألوية وحافظ على خط مستقيم للرأس والظهر.', 'تنفس بانتظام.'], mistakes: ['هبوط أسفل الظهر'] },
+    { id: 'ex52', name: 'تمرين الدراجة للبطن المائلة', en: 'Air Bike', muscle: 'abs', primary: 'عضلات البطن المائلة (Obliques)', secondary: 'البطن المستقيمة', slug: 'Air_Bike', steps: ['استلقِ وقرّب المرفق الأيمن من الركبة اليسرى بالتبادل.', 'نفّذ الحركة ببطء وتحكم.'], mistakes: ['شد الرقبة باليدين'] },
+    { id: 'ex53', name: 'عجلة البطن (Ab Roller)', en: 'Ab Roller', muscle: 'abs', primary: 'جدار البطن الكامل المضاد للتمدد', secondary: 'المجنص، الكتف', slug: 'Ab_Roller', steps: ['اركع وامسك العجلة.', 'تدحرج للأمام مع شد البطن وتدوير الحوض للداخل.', 'اسحب نفسك للخلف بالبطن.'], mistakes: ['تقويس أسفل الظهر'] },
+    { id: 'ex54', name: 'تدوير روسي للخواصر', en: 'Russian Twist', muscle: 'abs', primary: 'العضلات المائلة والخواصر', secondary: 'البطن المستقيمة', slug: 'Russian_Twist', steps: ['اجلس بزاوية 45 درجة مع ثبات القدمين أو رفعهما.', 'أدر جذعك يميناً ويساراً بتحكم.'], mistakes: ['تحريك الذراعين فقط دون تدوير الجذع'] },
+
+    // 8. FOREARMS (6: ex55 - ex60)
+    { id: 'ex55', name: 'ثني المعصم بالبار للأعلى (Wrist Curl)', en: 'Palms-Up Barbell Wrist Curl', muscle: 'forearms', primary: 'عضلات الساعد الداخلية القابضة (Flexors)', secondary: 'قوة قبضة اليد', slug: 'Palms-Up_Barbell_Wrist_Curl_Over_A_Bench', steps: ['اجلس وأسند ساعديك على البنش مع توجيه راحتي اليد للأعلى.', 'أنزل البار نحو أطراف الأصابع ثم اثنِ معصميك للأعلى بعصر الساعد.', 'توقف ثانية في القمة وانزل ببطء.'], mistakes: ['رفع الساعدين عن البنش'] },
+    { id: 'ex56', name: 'فرد المعصم بالبار للخلف (Reverse Wrist Curl)', en: 'Palms-Down Wrist Curl', muscle: 'forearms', primary: 'عضلات الساعد الخارجية الباسطة (Extensors)', secondary: 'معصم اليد', slug: 'Palms-Down_Wrist_Curl_Over_A_Bench', steps: ['أسند ساعديك على البنش مع توجيه ظهر اليد للأعلى.', 'ارفع ظهر اليدين للأعلى بمدى حركي كامل.', 'انزل بتحكم بطيء.'], mistakes: ['استخدام أوزان ثقيلة تفقد المدى الحركي'] },
+    { id: 'ex57', name: 'مرجحة عكسية بالبار (Reverse Curl)', en: 'Reverse Barbell Curl', muscle: 'forearms', primary: 'العضلة العضدية الكعبرية (Brachioradialis)', secondary: 'البايسبس، باسطات الساعد', slug: 'Reverse_Barbell_Curl', steps: ['امسك البار بقبضة علوية (ظهر اليد للأمام) بعرض الكتفين.', 'ارفع البار نحو الكتفين مع ثبات المرفقين بجانب الجسم.', 'انزل ببطء على مدار ثانيتين.'], mistakes: ['فتح المرفقين للخارج'] },
+    { id: 'ex58', name: 'مشية المزارع بالدمبل (Farmers Walk)', en: 'Farmers Walk', muscle: 'forearms', primary: 'قوة القبضة القصوى والسواعد الكاملة', secondary: 'الترابيس، البطن', slug: 'Farmers_Walk', steps: ['امسك دمبلين ثقيلين بجانب جسمك بظهر مستقيم وصدر مرفوع.', 'امشِ بخطوات ثابتة ومتزنة لمسافة 30-40 متراً.', 'حافظ على شد القبضة والكتفين للخلف.'], mistakes: ['انحناء الكتفين للأمام'] },
+    { id: 'ex59', name: 'ثني المعصم بالدمبل جالساً', en: 'Seated Dumbbell Wrist Curl', muscle: 'forearms', primary: 'عزل الساعد الداخلي لكل ذراع', secondary: 'أوتار القبضة', slug: 'Seated_Dumbbell_Palms-Up_Wrist_Curl', steps: ['أسند ساعدك على فخذك مع تدلي المعصم أمام الركبة.', 'اثنِ معصمك للأعلى واعصر الساعد ثم انزل بمدى كامل.'], mistakes: ['السرعة الزائدة دون تحكم'] },
+    { id: 'ex60', name: 'بكرة لف السواعد (Wrist Roller)', en: 'Wrist Roller', muscle: 'forearms', primary: 'التحمل العضلي وضخ الدم للسواعد', secondary: 'الأكتاف الأمامية', slug: 'Wrist_Roller', steps: ['امسك العصا بذراعين ممدودتين للأمام بمستوى الكتف.', 'لف العصا بالتبادل لرفع الوزن المعلق حتى القمة ثم أنزله بتحكم.'], mistakes: ['إسقاط الوزن بسرعة عند النزول'] },
+
+    // 9. CALVES (4: ex61 - ex64)
+    { id: 'ex61', name: 'سمانة واقف على الجهاز', en: 'Standing Calf Raises', muscle: 'calves', primary: 'عضلة السمانة الكبرى (Gastrocnemius)', secondary: 'النعلية', slug: 'Standing_Calf_Raises', steps: ['ضع مقدمة القدم على الحافة وانزل بالكعب لأقصى إطالة.', 'ارفع كعبيك لأعلى نقطة وتوقف ثانية.', 'انزل ببطء.'], mistakes: ['الارتداد السريع في الأسفل'] },
+    { id: 'ex62', name: 'سمانة جالس على الجهاز', en: 'Seated Calf Raise', muscle: 'calves', primary: 'العضلة النعلية العميقة (Soleus)', secondary: 'السمانة الكبرى', slug: 'Seated_Calf_Raise', steps: ['اجلس بثني الركبة 90 درجة وضع الوسادة على الفخذ.', 'ارفع الكعبين لأعلى وانزل لإطالة كاملة.'], mistakes: ['نصف مدى حركي'] },
+    { id: 'ex63', name: 'سمانة على جهاز دفع الأرجل', en: 'Calf Press On Leg Press', muscle: 'calves', primary: 'السمانة الكبرى (Gastrocnemius)', secondary: 'عضلات القدم', slug: 'Calf_Press_On_The_Leg_Press_Machine', steps: ['ضع مقدمة قدميك على أسفل منصة الدفع.', 'ادفع بأمشاط القدمين للأمام ثم عد لإطالة الكاحل.'], mistakes: ['ثني الركبتين أثناء الدفع'] },
+    { id: 'ex64', name: 'سمانة بقدم واحدة بالدمبل', en: 'One-Leg Calf Raise', muscle: 'calves', primary: 'عزل السمانة لكل ساق', secondary: 'عضلات الكاحل المثبتة', slug: 'Dumbbell_Seated_One-Leg_Calf_Raise', steps: ['ضع دمبلاً على فخذ واحد ومقدمة القدم على درجة.', 'ارفع وانزل بمدى حركي كامل.'], mistakes: ['السرعة الزائدة'] }
+  ];
+
+  /* ================= 10 COMPLETE TRAINING PROGRAMS ================= */
+  const TRAINING_PROGRAMS = [
+    {
+      id: 'ppl6', name: 'PPL 6D', badge: '6 أيام • تضخيم',
+      days: [
+        { title: 'اليوم 1: دفع (Push A)', setsReps: '3×8-12', exIds: ['ex1', 'ex2', 'ex3', 'ex18', 'ex19', 'ex31', 'ex33'] },
+        { title: 'اليوم 2: سحب (Pull A)', setsReps: '3×8-12', exIds: ['ex9', 'ex10', 'ex11', 'ex14', 'ex22', 'ex25', 'ex57'] },
+        { title: 'اليوم 3: أرجل (Legs A)', setsReps: '4×8-12', exIds: ['ex37', 'ex38', 'ex39', 'ex45', 'ex46', 'ex61', 'ex49'] },
+        { title: 'اليوم 4: دفع علوي (Push B)', setsReps: '3×10-12', exIds: ['ex2', 'ex5', 'ex7', 'ex17', 'ex20', 'ex32', 'ex34'] },
+        { title: 'اليوم 5: سحب كثافة (Pull B)', setsReps: '3×10-12', exIds: ['ex15', 'ex12', 'ex16', 'ex21', 'ex24', 'ex28', 'ex55'] },
+        { title: 'اليوم 6: أرجل وبطن (Legs B)', setsReps: '3×10-15', exIds: ['ex43', 'ex42', 'ex48', 'ex47', 'ex62', 'ex50', 'ex51'] }
+      ]
+    },
+    {
+      id: 'ul4', name: 'Upper/Lower 4D', badge: '4 أيام • متوازن',
+      days: [
+        { title: 'اليوم 1: علوي قوة (Upper A)', setsReps: '4×6-8', exIds: ['ex1', 'ex10', 'ex17', 'ex9', 'ex25', 'ex31'] },
+        { title: 'اليوم 2: سفلي قوة (Lower A)', setsReps: '4×6-8', exIds: ['ex37', 'ex45', 'ex38', 'ex46', 'ex61', 'ex49'] },
+        { title: 'اليوم 3: علوي تضخيم (Upper B)', setsReps: '3×10-12', exIds: ['ex2', 'ex11', 'ex19', 'ex22', 'ex27', 'ex33'] },
+        { title: 'اليوم 4: سفلي تضخيم (Lower B)', setsReps: '3×10-15', exIds: ['ex41', 'ex48', 'ex39', 'ex47', 'ex62', 'ex50'] }
+      ]
+    },
+    {
+      id: 'arnold6', name: 'Arnold Split 6D', badge: '6 أيام • كلاسيكي',
+      days: [
+        { title: 'اليوم 1: صدر وظهر (A)', setsReps: '4×8-12', exIds: ['ex1', 'ex9', 'ex2', 'ex10', 'ex3', 'ex11'] },
+        { title: 'اليوم 2: أكتاف وذراعين (A)', setsReps: '4×10-12', exIds: ['ex18', 'ex19', 'ex22', 'ex25', 'ex32', 'ex27', 'ex55'] },
+        { title: 'اليوم 3: أرجل وبطن (A)', setsReps: '4×10-15', exIds: ['ex37', 'ex38', 'ex45', 'ex46', 'ex61', 'ex49'] },
+        { title: 'اليوم 4: صدر وظهر (B)', setsReps: '3×10-12', exIds: ['ex2', 'ex15', 'ex5', 'ex12', 'ex7', 'ex14'] },
+        { title: 'اليوم 5: أكتاف وذراعين (B)', setsReps: '3×10-12', exIds: ['ex17', 'ex20', 'ex21', 'ex28', 'ex33', 'ex30', 'ex56'] },
+        { title: 'اليوم 6: أرجل وبطن (B)', setsReps: '3×10-15', exIds: ['ex43', 'ex42', 'ex48', 'ex47', 'ex62', 'ex50'] }
+      ]
+    },
+    {
+      id: 'bro5', name: 'Bro Split 5D', badge: '5 أيام • عزل عضلي',
+      days: [
+        { title: 'اليوم 1: صدر كامل', setsReps: '4×8-12', exIds: ['ex1', 'ex2', 'ex5', 'ex3', 'ex7'] },
+        { title: 'اليوم 2: ظهر كامل', setsReps: '4×8-12', exIds: ['ex13', 'ex9', 'ex10', 'ex11', 'ex14'] },
+        { title: 'اليوم 3: أكتاف وترابيس', setsReps: '4×10-15', exIds: ['ex18', 'ex19', 'ex20', 'ex21', 'ex22', 'ex24'] },
+        { title: 'اليوم 4: أرجل وسمانة', setsReps: '4×10-12', exIds: ['ex37', 'ex38', 'ex39', 'ex45', 'ex46', 'ex61'] },
+        { title: 'اليوم 5: ذراعين وسواعد وبطن', setsReps: '3×10-15', exIds: ['ex25', 'ex32', 'ex27', 'ex31', 'ex57', 'ex49'] }
+      ]
+    },
+    {
+      id: 'fb3', name: 'Full Body 3D', badge: '3 أيام • شامل',
+      days: [
+        { title: 'اليوم 1: شامل (A)', setsReps: '3×8-10', exIds: ['ex37', 'ex1', 'ex10', 'ex19', 'ex25', 'ex51'] },
+        { title: 'اليوم 2: شامل (B)', setsReps: '3×8-12', exIds: ['ex45', 'ex2', 'ex9', 'ex18', 'ex31', 'ex49'] },
+        { title: 'اليوم 3: شامل (C)', setsReps: '3×10-12', exIds: ['ex38', 'ex5', 'ex11', 'ex22', 'ex27', 'ex61'] }
+      ]
+    },
+    {
+      id: 'phul4', name: 'PHUL 4D', badge: '4 أيام • قوة وتضخيم',
+      days: [
+        { title: 'اليوم 1: علوي قوة (Upper Power)', setsReps: '4×4-6', exIds: ['ex1', 'ex10', 'ex17', 'ex15', 'ex25', 'ex34'] },
+        { title: 'اليوم 2: سفلي قوة (Lower Power)', setsReps: '4×4-6', exIds: ['ex37', 'ex13', 'ex38', 'ex46', 'ex61'] },
+        { title: 'اليوم 3: علوي تضخيم (Upper Hypertrophy)', setsReps: '3×10-12', exIds: ['ex2', 'ex3', 'ex11', 'ex19', 'ex28', 'ex31'] },
+        { title: 'اليوم 4: سفلي تضخيم (Lower Hypertrophy)', setsReps: '3×10-15', exIds: ['ex43', 'ex40', 'ex39', 'ex47', 'ex62', 'ex49'] }
+      ]
+    },
+    {
+      id: 'phat5', name: 'PHAT 5D', badge: '5 أيام • لاين نورتون',
+      days: [
+        { title: 'اليوم 1: علوي قوة', setsReps: '4×5', exIds: ['ex10', 'ex1', 'ex17', 'ex25', 'ex32'] },
+        { title: 'اليوم 2: سفلي قوة', setsReps: '4×5', exIds: ['ex37', 'ex41', 'ex45', 'ex61', 'ex50'] },
+        { title: 'اليوم 3: ظهر وأكتاف تضخيم', setsReps: '3×10-15', exIds: ['ex9', 'ex11', 'ex12', 'ex18', 'ex19', 'ex22'] },
+        { title: 'اليوم 4: سفلي تضخيم', setsReps: '3×12-15', exIds: ['ex38', 'ex39', 'ex46', 'ex47', 'ex48', 'ex62'] },
+        { title: 'اليوم 5: صدر وذراعين تضخيم', setsReps: '3×10-15', exIds: ['ex2', 'ex7', 'ex28', 'ex30', 'ex31', 'ex33', 'ex55'] }
+      ]
+    },
+    {
+      id: 'pp4', name: 'Push/Pull 4D', badge: '4 أيام • دفع وسحب',
+      days: [
+        { title: 'اليوم 1: دفع + رباعية (Push A)', setsReps: '4×8-10', exIds: ['ex1', 'ex37', 'ex18', 'ex19', 'ex31', 'ex61'] },
+        { title: 'اليوم 2: سحب + خلفية (Pull A)', setsReps: '4×8-10', exIds: ['ex13', 'ex9', 'ex11', 'ex22', 'ex25', 'ex49'] },
+        { title: 'اليوم 3: دفع + رباعية (Push B)', setsReps: '3×10-12', exIds: ['ex2', 'ex38', 'ex5', 'ex20', 'ex33', 'ex62'] },
+        { title: 'اليوم 4: سحب + خلفية (Pull B)', setsReps: '3×10-12', exIds: ['ex15', 'ex12', 'ex46', 'ex21', 'ex27', 'ex58'] }
+      ]
+    },
+    {
+      id: 'gvt4', name: 'GVT 10x10', badge: '4 أيام • الحجم الألماني',
+      days: [
+        { title: 'اليوم 1: صدر وظهر (10×10)', setsReps: '10×10', exIds: ['ex1', 'ex9', 'ex4', 'ex11'] },
+        { title: 'اليوم 2: أرجل وبطن (10×10)', setsReps: '10×10', exIds: ['ex37', 'ex46', 'ex61', 'ex49'] },
+        { title: 'اليوم 3: أكتاف وذراعين (10×10)', setsReps: '10×10', exIds: ['ex18', 'ex25', 'ex32', 'ex19', 'ex55'] },
+        { title: 'اليوم 4: استشفاء وكور (4×12)', setsReps: '4×12', exIds: ['ex44', 'ex14', 'ex22', 'ex51', 'ex53'] }
+      ]
+    },
+    {
+      id: 'hybrid4', name: 'Athletic Hybrid 4D', badge: '4 أيام • قوة ولياقة',
+      days: [
+        { title: 'اليوم 1: قوة سفلية وانفجار', setsReps: '4×6-8', exIds: ['ex37', 'ex45', 'ex40', 'ex63', 'ex50'] },
+        { title: 'اليوم 2: دفع علوي وثبات', setsReps: '4×8-10', exIds: ['ex1', 'ex17', 'ex5', 'ex20', 'ex35', 'ex51'] },
+        { title: 'اليوم 3: سحب وقوة قبضة', setsReps: '4×8-10', exIds: ['ex13', 'ex15', 'ex12', 'ex22', 'ex27', 'ex58'] },
+        { title: 'اليوم 4: تحمل شامل وكور', setsReps: '3×12-15', exIds: ['ex44', 'ex8', 'ex11', 'ex60', 'ex52', 'ex54'] }
+      ]
+    }
+  ];
+
+  /* ================= 24 COMMON EGYPTIAN & ARABIC ATHLETIC FOODS (PER 100g) ================= */
+  const FOOD_DATABASE = [
+    { name: 'صدور دجاج مشوية (بدون جلد)', kcal: 165, p: 31, c: 0, f: 3.6 },
+    { name: 'أرز بسمتي أبيض مطبوخ', kcal: 130, p: 2.7, c: 28, f: 0.3 },
+    { name: 'بيض كامل مسلوق (100g ≈ بيضتان)', kcal: 155, p: 13, c: 1.1, f: 11 },
+    { name: 'بياض بيض مطبوخ', kcal: 52, p: 11, c: 0.7, f: 0.2 },
+    { name: 'شوفان حبوب كاملة جاف', kcal: 389, p: 16.9, c: 66.3, f: 6.9 },
+    { name: 'لحم بقري ستيك قليل الدهن', kcal: 217, p: 26.1, c: 0, f: 11.8 },
+    { name: 'تونة مصفاة بالماء', kcal: 116, p: 25.5, c: 0, f: 0.8 },
+    { name: 'سمك سلمون مشوي', kcal: 208, p: 20.4, c: 0, f: 13.4 },
+    { name: 'بطاطا حلوة مشوية', kcal: 90, p: 2, c: 20.7, f: 0.1 },
+    { name: 'بطاطس مسلوقة', kcal: 87, p: 1.9, c: 20.1, f: 0.1 },
+    { name: 'جبن قريش مصري قليل الدسم', kcal: 98, p: 11.1, c: 3.4, f: 4.3 },
+    { name: 'زبادي يوناني سادة', kcal: 59, p: 10.3, c: 3.6, f: 0.4 },
+    { name: 'واي بروتين (Whey Isolate)', kcal: 370, p: 82, c: 4, f: 2 },
+    { name: 'مكرونة قمح كامل مطبوخة', kcal: 124, p: 5.3, c: 26.5, f: 0.5 },
+    { name: 'عيش بلدي أسمر / توست أسمر', kcal: 247, p: 13, c: 41, f: 3.4 },
+    { name: 'موز طازج', kcal: 89, p: 1.1, c: 22.8, f: 0.3 },
+    { name: 'تمر مجدول / سكري', kcal: 277, p: 1.8, c: 75, f: 0.2 },
+    { name: 'زبدة فول سوداني طبيعية', kcal: 588, p: 25, c: 20, f: 50 },
+    { name: 'لوز نيء', kcal: 579, p: 21.2, c: 21.6, f: 49.9 },
+    { name: 'أفوكادو طازج', kcal: 160, p: 2, c: 8.5, f: 14.7 },
+    { name: 'زيت زيتون بكر ممتاز', kcal: 884, p: 0, c: 0, f: 100 },
+    { name: 'عدس بني/أصفر مطبوخ', kcal: 116, p: 9, c: 20, f: 0.4 },
+    { name: 'فول مدمس سادة بدون زيت', kcal: 110, p: 7.6, c: 19.6, f: 0.4 },
+    { name: 'حليب قليل الدسم', kcal: 42, p: 3.4, c: 5, f: 1 }
+  ];
+
+  const SCANNED_MEAL_PRESETS = [
+    { name: 'صدور دجاج مشوية (200g) + أرز بسمتي (200g) + سلطة', kcal: 610, p: 67, c: 58, f: 9 },
+    { name: 'شوفان (80g) + سكوب واي بروتين + موزة', kcal: 515, p: 39, c: 76, f: 7 },
+    { name: '4 بيضات مسلوقة + توست أسمر + نصف أفوكادو', kcal: 540, p: 31, c: 34, f: 31 },
+    { name: 'ستيك لحم مشوي (200g) + بطاطا مشوية (250g)', kcal: 660, p: 57, c: 52, f: 24 },
+    { name: 'علبة تونة مصفاة + مكرونة (200g) + ملعقة زيت زيتون', kcal: 530, p: 49, c: 53, f: 13 }
+  ];
+
+  /* ================= APPLICATION STATE ================= */
+  const DEFAULT_STATE = {
+    activeTab: 'dashboard',
+    caloriesConsumed: 1650,
+    caloriesTarget: 2450,
+    proteinConsumed: 112,
+    proteinTarget: 180,
+    carbsConsumed: 165,
+    carbsTarget: 265,
+    fatsTarget: 72,
+    selectedDashMuscle: 'chest',
+    muscleFatigue: {},
+    weightLogs: [
+      { date: '11/01', w: 76.4 },
+      { date: '11/06', w: 76.9 },
+      { date: '11/11', w: 77.3 },
+      { date: '11/16', w: 77.7 },
+      { date: '11/20', w: 78.0 }
+    ],
+    selectedWeightIdx: 4,
+    supplements: [
+      { id: 's1', name: 'كرياتين مونوهيدرات 5g', done: false },
+      { id: 's2', name: 'واي بروتين سكوب 30g', done: false },
+      { id: 's3', name: 'أوميجا 3 (Omega-3)', done: false },
+      { id: 's4', name: 'فيتامين D3 5000 IU', done: false },
+      { id: 's5', name: 'مغنيسيوم جليسينات قبل النوم', done: false }
+    ],
+    customExercises: [],
+    selectedExFilter: 'all',
+    exerciseLogs: {},
+    selectedProgramId: 'ppl6',
+    selectedProgramDayIdx: 0,
+    autoRestOnLog: true,
+    wizard: {
+      step: 1,
+      gender: 'male',
+      age: 26,
+      height: 178,
+      weight: 78,
+      activity: 1.55,
+      goal: 'lean_bulk',
+      goalName: 'تضخيم عضلي نظيف',
+      useBf: false,
+      bf: 15,
+      trainDays: 5
+    },
+    aiCategory: 'all',
+    aiMessages: []
+  };
+
+  let STATE = Object.assign({}, DEFAULT_STATE, safeStorage.get('gym_pro_state_v3', {}));
+  if (!Array.isArray(STATE.weightLogs) || !STATE.weightLogs.length) STATE.weightLogs = DEFAULT_STATE.weightLogs;
+  if (!Array.isArray(STATE.supplements)) STATE.supplements = DEFAULT_STATE.supplements;
+  if (!STATE.wizard) STATE.wizard = DEFAULT_STATE.wizard;
+  if (typeof STATE.autoRestOnLog !== 'boolean') STATE.autoRestOnLog = true;
+
+  function saveState() {
+    safeStorage.set('gym_pro_state_v3', STATE);
+  }
+
+  function getAllExercises() {
+    return [...INITIAL_EXERCISES, ...(STATE.customExercises || [])];
+  }
+
+  /* ================= PHYSIOLOGICAL MUSCLE RECOVERY ENGINE ================= */
+  function calcMuscleRecovery(muscleId) {
+    const m = MUSCLE_GROUPS.find(g => g.id === muscleId) || MUSCLE_GROUPS[0];
+    const entry = (STATE.muscleFatigue || {})[muscleId];
+    if (!entry || !entry.level || !entry.ts) {
+      return { readiness: 100, remainingHours: 0 };
+    }
+    const elapsedHours = Math.max(0, (Date.now() - entry.ts) / 3600000);
+    const recoveredAmount = (elapsedHours / m.hours) * 100;
+    const currentFatigue = Math.max(0, entry.level - recoveredAmount);
+    const readiness = Math.min(100, Math.max(5, Math.round(100 - currentFatigue)));
+    const remainingHours = readiness >= 100 ? 0 : Math.max(1, Math.ceil((currentFatigue / 100) * m.hours));
+    return { readiness, remainingHours };
+  }
+
+  function applyMuscleFatigue(primaryMuscleId, primaryDrop = 16) {
+    if (!STATE.muscleFatigue) STATE.muscleFatigue = {};
+    const cur = calcMuscleRecovery(primaryMuscleId);
+    const currentFatigue = 100 - cur.readiness;
+    const nextFatigue = Math.min(92, currentFatigue + primaryDrop);
+    STATE.muscleFatigue[primaryMuscleId] = { level: nextFatigue, ts: Date.now() };
+
+    const synergyMap = {
+      chest: ['triceps', 'shoulders'],
+      back: ['biceps', 'forearms'],
+      shoulders: ['triceps'],
+      biceps: ['forearms'],
+      legs: ['calves']
+    };
+    (synergyMap[primaryMuscleId] || []).forEach(secId => {
+      const sCur = calcMuscleRecovery(secId);
+      const sNext = Math.min(85, (100 - sCur.readiness) + Math.round(primaryDrop * 0.35));
+      STATE.muscleFatigue[secId] = { level: sNext, ts: Date.now() };
+    });
+  }
+
+  /* ================= NAVIGATION & SIDEBAR ================= */
+  const TAB_TITLES = {
+    dashboard: 'الصفحة الرئيسية',
+    exercises: 'مكتبة التمارين الشاملة',
+    programs: 'الأنظمة التدريبية (10)',
+    calories: 'حاسبة السعرات والماكروز',
+    camera: 'الكاميرا الذكية AI وميزان الطعام',
+    coach: 'المدرب الذكي AI & شيف الرياضيين'
+  };
+
+  function toggleSidebar(open) {
+    const sb = $id('app-sidebar');
+    const bd = $id('sidebar-backdrop');
+    if (!sb || !bd) return;
+    sb.classList.toggle('open', open);
+    bd.classList.toggle('show', open);
+  }
+
+  function switchTab(tabId) {
+    STATE.activeTab = tabId;
+    saveState();
+    toggleSidebar(false);
+
+    document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+    const target = $id('sec-' + tabId);
+    if (target) target.classList.add('active');
+
+    document.querySelectorAll('.nav-item, .mob-tab').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.tab === tabId);
+    });
+
+    const titleEl = $id('header-page-title');
+    if (titleEl) titleEl.textContent = TAB_TITLES[tabId] || 'GYM PRO';
+
+    if (tabId === 'dashboard') renderDashboard();
+    if (tabId === 'exercises') renderExercisesSection();
+    if (tabId === 'programs') renderProgramsSection();
+    if (tabId === 'calories') renderCaloriesWizard();
+    if (tabId === 'camera') renderCameraSection();
+    if (tabId === 'coach') renderAICoachSection();
+  }
+
+  /* ================= WORKOUT REST TIMER (EXCLUSIVELY IN #sec-programs) ================= */
+  let WORKOUT_REST_TARGET = 90;
+  let WORKOUT_REST_SECONDS = 90;
+  let WORKOUT_REST_INTERVAL = null;
+
+  function formatMMSS(sec) {
+    const sTotal = Math.max(0, Math.floor(sec));
+    const m = Math.floor(sTotal / 60);
+    const s = sTotal % 60;
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  }
+
+  function playRestCompletionBeep() {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const notes = [880, 1174.66];
+      notes.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.18);
+        gain.gain.setValueAtTime(0.22, ctx.currentTime + idx * 0.18);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.18 + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + idx * 0.18);
+        osc.stop(ctx.currentTime + idx * 0.18 + 0.35);
+      });
+    } catch (e) {}
+  }
+
+  function updateWorkoutRestDisplay() {
+    const el = $id('workout-rest-display');
+    if (el) el.textContent = formatMMSS(WORKOUT_REST_SECONDS);
+    const btn = $id('workout-rest-toggle-btn');
+    if (btn) btn.textContent = WORKOUT_REST_INTERVAL ? '⏸' : '▶';
+
+    const fill = $id('workout-rest-progress-fill');
+    if (fill) {
+      const pct = WORKOUT_REST_TARGET > 0 ? Math.min(100, Math.max(0, (WORKOUT_REST_SECONDS / WORKOUT_REST_TARGET) * 100)) : 0;
+      fill.style.width = `${pct.toFixed(1)}%`;
+    }
+
+    [60, 90, 120].forEach(p => {
+      const pEl = $id('w-preset-' + p);
+      if (pEl) pEl.classList.toggle('active-preset', WORKOUT_REST_TARGET === p);
+    });
+
+    const autoBtn = $id('workout-auto-rest-btn');
+    if (autoBtn) {
+      autoBtn.className = `badge-pill ${STATE.autoRestOnLog ? 'badge-emerald' : ''}`;
+      autoBtn.textContent = STATE.autoRestOnLog ? '⚡ تلقائي عند التسجيل: مفعّل' : '⏸ تلقائي عند التسجيل: متوقف';
+    }
+  }
+
+  function toggleWorkoutAutoRest() {
+    STATE.autoRestOnLog = !STATE.autoRestOnLog;
+    saveState();
+    updateWorkoutRestDisplay();
+  }
+
+  function toggleWorkoutRestTimer() {
+    if (WORKOUT_REST_INTERVAL) {
+      clearInterval(WORKOUT_REST_INTERVAL);
+      WORKOUT_REST_INTERVAL = null;
+      updateWorkoutRestDisplay();
+      return;
+    }
+    if (WORKOUT_REST_SECONDS <= 0) {
+      WORKOUT_REST_SECONDS = WORKOUT_REST_TARGET || 90;
+    }
+    WORKOUT_REST_INTERVAL = setInterval(() => {
+      WORKOUT_REST_SECONDS--;
+      if (WORKOUT_REST_SECONDS <= 0) {
+        WORKOUT_REST_SECONDS = 0;
+        clearInterval(WORKOUT_REST_INTERVAL);
+        WORKOUT_REST_INTERVAL = null;
+        playRestCompletionBeep();
+        showToast('⏱️ انتهت فترة الراحة! استعد للمجموعة التالية 💪');
+      }
+      updateWorkoutRestDisplay();
+    }, 1000);
+    updateWorkoutRestDisplay();
+  }
+
+  function resetWorkoutRestTimer() {
+    clearInterval(WORKOUT_REST_INTERVAL);
+    WORKOUT_REST_INTERVAL = null;
+    WORKOUT_REST_SECONDS = WORKOUT_REST_TARGET || 90;
+    updateWorkoutRestDisplay();
+  }
+
+  function setWorkoutRestPreset(sec) {
+    clearInterval(WORKOUT_REST_INTERVAL);
+    WORKOUT_REST_INTERVAL = null;
+    WORKOUT_REST_TARGET = sec;
+    WORKOUT_REST_SECONDS = sec;
+    const inp = $id('workout-rest-sec-input');
+    if (inp) inp.value = sec;
+    updateWorkoutRestDisplay();
+    toggleWorkoutRestTimer();
+  }
+
+  function previewWorkoutRestSeconds(val) {
+    const num = parseInt(val, 10);
+    if (!isNaN(num) && num >= 5 && num <= 600) {
+      clearInterval(WORKOUT_REST_INTERVAL);
+      WORKOUT_REST_INTERVAL = null;
+      WORKOUT_REST_TARGET = num;
+      WORKOUT_REST_SECONDS = num;
+      updateWorkoutRestDisplay();
+    }
+  }
+
+  function applyWorkoutRestSeconds(val) {
+    let num = parseInt(val, 10);
+    if (isNaN(num) || num < 5) num = 30;
+    if (num > 600) num = 600;
+    const inp = $id('workout-rest-sec-input');
+    if (inp) inp.value = num;
+    setWorkoutRestPreset(num);
+  }
+
+  /* ================= DASHBOARD RENDERING (CALORIES, PROTEIN, CARBS RINGS) ================= */
+  function adjustCalories(delta) {
+    STATE.caloriesConsumed = Math.max(0, Math.round(STATE.caloriesConsumed + delta));
+    saveState();
+    renderDashboardKPIs();
+    showToast(delta > 0 ? `🔥 تمت إضافة ${delta} kcal` : `تم خصم ${Math.abs(delta)} kcal`);
+  }
+
+  function adjustProtein(delta) {
+    STATE.proteinConsumed = Math.max(0, Math.round(STATE.proteinConsumed + delta));
+    STATE.caloriesConsumed = Math.max(0, Math.round(STATE.caloriesConsumed + delta * 4));
+    saveState();
+    renderDashboardKPIs();
+    showToast(delta > 0 ? `🥩 تمت إضافة +${delta}g بروتين` : `تم خصم ${Math.abs(delta)}g بروتين`);
+  }
+
+  function adjustCarbs(delta) {
+    STATE.carbsConsumed = Math.max(0, Math.round(STATE.carbsConsumed + delta));
+    STATE.caloriesConsumed = Math.max(0, Math.round(STATE.caloriesConsumed + delta * 4));
+    saveState();
+    renderDashboardKPIs();
+    showToast(delta > 0 ? `🍚 تمت إضافة +${delta}g كارب` : `تم خصم ${Math.abs(delta)}g كارب`);
+  }
+
+  function renderDashboardKPIs() {
+    const CIRC = 201.06;
+
+    // 1. Daily Calories
+    const calPct = Math.min(100, Math.round((STATE.caloriesConsumed / Math.max(1, STATE.caloriesTarget)) * 100));
+    const calRem = Math.max(0, STATE.caloriesTarget - STATE.caloriesConsumed);
+    setHTML('kpi-cal-val', `${STATE.caloriesConsumed} / ${STATE.caloriesTarget} kcal`);
+    setHTML('kpi-cal-rem', calRem > 0 ? `متبقي ${calRem} kcal للهدف` : '🎉 حققت هدف السعرات اليومي!');
+    setHTML('kpi-macro-p', `P: ${STATE.proteinTarget}g`);
+    setHTML('kpi-macro-c', `C: ${STATE.carbsTarget}g`);
+    setHTML('kpi-macro-f', `F: ${STATE.fatsTarget}g`);
+    setHTML('ring-cal-pct', `${calPct}%`);
+    const ringCal = $id('ring-cal');
+    if (ringCal) ringCal.style.strokeDashoffset = (CIRC * (1 - calPct / 100)).toFixed(2);
+
+    // 2. Daily Protein
+    const proPct = Math.min(100, Math.round((STATE.proteinConsumed / Math.max(1, STATE.proteinTarget)) * 100));
+    const proRem = Math.max(0, STATE.proteinTarget - STATE.proteinConsumed);
+    setHTML('kpi-pro-val', `${STATE.proteinConsumed} / ${STATE.proteinTarget} g`);
+    setHTML('kpi-pro-rem', proRem > 0 ? `متبقي ${proRem}g لتحقيق الهدف` : '💪 وصلت لهدف البروتين اليومي!');
+    setHTML('ring-pro-pct', `${proPct}%`);
+    const ringPro = $id('ring-pro');
+    if (ringPro) ringPro.style.strokeDashoffset = (CIRC * (1 - proPct / 100)).toFixed(2);
+
+    // 3. Daily Carbs
+    const carbPct = Math.min(100, Math.round((STATE.carbsConsumed / Math.max(1, STATE.carbsTarget)) * 100));
+    const carbRem = Math.max(0, STATE.carbsTarget - STATE.carbsConsumed);
+    setHTML('kpi-carb-val', `${STATE.carbsConsumed} / ${STATE.carbsTarget} g`);
+    setHTML('kpi-carb-rem', carbRem > 0 ? `متبقي ${carbRem}g لتحقيق الهدف` : '⚡ وصلت لهدف الكارب اليومي!');
+    setHTML('ring-carb-pct', `${carbPct}%`);
+    const ringCarb = $id('ring-carb');
+    if (ringCarb) ringCarb.style.strokeDashoffset = (CIRC * (1 - carbPct / 100)).toFixed(2);
+
+    // Sidebar Summary
+    const prog = TRAINING_PROGRAMS.find(p => p.id === STATE.selectedProgramId) || TRAINING_PROGRAMS[0];
+    const lastW = STATE.weightLogs[STATE.weightLogs.length - 1]?.w || 78.0;
+    setHTML('side-prog-badge', prog.name);
+    setHTML('side-athlete-summary', `${lastW.toFixed(1)} kg • ${STATE.wizard.goalName}`);
+  }
+
+  function scrollMuscleStrip(dir) {
+    const strip = $id('dash-muscle-pills');
+    if (!strip) return;
+    strip.scrollBy({ left: dir * 180, behavior: 'smooth' });
+  }
+
+  function selectDashMuscle(id) {
+    STATE.selectedDashMuscle = id;
+    saveState();
+    renderDashMuscleGuide();
+  }
+
+  function jumpToMuscleExercises(muscleId) {
+    STATE.selectedExFilter = muscleId;
+    saveState();
+    switchTab('exercises');
+  }
+
+  function renderDashMuscleGuide() {
+    setHTML('dash-muscle-pills', MUSCLE_GROUPS.map(m => {
+      const st = calcMuscleRecovery(m.id);
+      const dotColor = st.readiness >= 85 ? 'var(--emerald)' : st.readiness >= 50 ? 'var(--gold)' : 'var(--crimson)';
+      return `
+        <button type="button" class="muscle-pill ${STATE.selectedDashMuscle === m.id ? 'active' : ''}" onclick="selectDashMuscle('${m.id}')">
+          <span class="status-dot" style="background:${dotColor};box-shadow:0 0 8px ${dotColor};"></span>
+          <span>${m.name}</span>
+          <span class="num" style="font-size:11px;">${st.readiness}%</span>
+        </button>
+      `;
+    }).join(''));
+
+    const m = MUSCLE_GROUPS.find(g => g.id === STATE.selectedDashMuscle) || MUSCLE_GROUPS[0];
+    const st = calcMuscleRecovery(m.id);
+    const badgeCls = st.readiness >= 85 ? 'badge-emerald' : st.readiness >= 50 ? 'badge-gold' : 'badge-crimson';
+    const barBg = st.readiness >= 85 ? 'var(--emerald-grad)' : st.readiness >= 50 ? 'linear-gradient(90deg,#f59e0b,#fbbf24)' : 'linear-gradient(90deg,#f43f5e,#fb7185)';
+    const timeLabel = st.readiness >= 100
+      ? `استشفاء كامل: <strong class="num">${m.hours}h</strong>`
+      : `متبقي <strong class="num">${st.remainingHours}h</strong> من <span class="num">${m.hours}h</span>`;
+
+    setHTML('dash-muscle-detail', `
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;width:100%;min-width:0;">
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0;">
+          <strong style="font-size:15px;font-weight:900;">${m.name} (<span class="en">${m.en}</span>)</strong>
+          <span class="badge-pill ${badgeCls}">الجاهزية: <strong class="num">${st.readiness}%</strong></span>
+          <span class="badge-pill">⏳ ${timeLabel}</span>
+        </div>
+        <button type="button" class="btn-copper" style="min-height:40px;padding:6px 13px;font-size:12px;" onclick="jumpToMuscleExercises('${m.id}')">التمارين ←</button>
+      </div>
+      <div class="rec-bar-track">
+        <div class="rec-bar-fill" style="width:${st.readiness}%;background:${barBg};"></div>
+      </div>
+      <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">💡 <strong>نصيحة علمية:</strong> ${m.tip}</div>
+    `);
+  }
+
+  /* ================= BODY WEIGHT CUBIC BEZIER SVG CHART ================= */
+  function buildSmoothCubicPath(pts) {
+    if (!pts.length) return '';
+    if (pts.length === 1) return `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
+    let d = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[i];
+      const p1 = pts[i + 1];
+      const cx = ((p0.x + p1.x) / 2).toFixed(1);
+      d += ` C ${cx} ${p0.y.toFixed(1)}, ${cx} ${p1.y.toFixed(1)}, ${p1.x.toFixed(1)} ${p1.y.toFixed(1)}`;
+    }
+    return d;
+  }
+
+  function selectWeightPoint(idx) {
+    STATE.selectedWeightIdx = idx;
+    renderWeightChart();
+  }
+
+  function nudgeWeightInput(delta) {
+    const inp = $id('weight-entry-input');
+    if (!inp) return;
+    const cur = parseFloat(inp.value) || 78.0;
+    inp.value = Math.min(250, Math.max(30, +(cur + delta).toFixed(1)));
+  }
+
+  function logTodayWeight() {
+    const inp = $id('weight-entry-input');
+    const val = parseFloat(inp?.value);
+    if (isNaN(val) || val < 30 || val > 250) {
+      showToast('⚠️ أدخل وزناً صحيحاً بين 30 و 250 kg');
+      return;
+    }
+    const now = new Date();
+    const dateStr = `${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')}`;
+    const logs = STATE.weightLogs;
+    if (logs.length && logs[logs.length - 1].date === dateStr) {
+      logs[logs.length - 1].w = +val.toFixed(1);
+    } else {
+      logs.push({ date: dateStr, w: +val.toFixed(1) });
+      if (logs.length > 8) logs.shift();
+    }
+    STATE.selectedWeightIdx = logs.length - 1;
+    STATE.wizard.weight = +val.toFixed(1);
+    saveState();
+    renderWeightChart();
+    renderDashboardKPIs();
+    showToast(`📈 تم تسجيل الوزن الجديد: ${val.toFixed(1)} kg`);
+  }
+
+  function renderWeightChart() {
+    const logs = STATE.weightLogs;
+    const first = logs[0].w;
+    const last = logs[logs.length - 1].w;
+    const diff = +(last - first).toFixed(1);
+    const hM = (STATE.wizard.height || 178) / 100;
+    const bmi = (last / (hM * hM)).toFixed(1);
+    const selIdx = Math.min(logs.length - 1, Math.max(0, STATE.selectedWeightIdx ?? logs.length - 1));
+    const selItem = logs[selIdx];
+
+    setHTML('weight-selected-tooltip', `${selItem.date}: ${selItem.w.toFixed(1)} kg`);
+    const wInput = $id('weight-entry-input');
+    if (wInput && document.activeElement !== wInput) wInput.value = last.toFixed(1);
+
+    setHTML('weight-stats-strip', `
+      <div class="w-metric-box">
+        <span>الوزن الحالي</span>
+        <strong class="num" style="color:#ffffff;">${last.toFixed(1)} kg</strong>
+      </div>
+      <div class="w-metric-box">
+        <span>مقدار التغير</span>
+        <strong class="num" style="color:${diff >= 0 ? 'var(--emerald-light)' : 'var(--sapphire-light)'};">${diff >= 0 ? '+' : ''}${diff.toFixed(1)} kg</strong>
+      </div>
+      <div class="w-metric-box">
+        <span>مؤشر BMI</span>
+        <strong class="num" style="color:var(--copper-light);">${bmi}</strong>
+      </div>
+    `);
+
+    const W = 600, H = 210, padX = 40, padY = 34;
+    const vals = logs.map(d => d.w);
+    const minW = Math.min(...vals) - 1;
+    const maxW = Math.max(...vals) + 1;
+    const span = Math.max(0.5, maxW - minW);
+
+    const pts = logs.map((d, i) => {
+      const x = logs.length === 1 ? W / 2 : padX + (i / (logs.length - 1)) * (W - padX * 2);
+      const y = H - padY - ((d.w - minW) / span) * (H - padY * 2);
+      return { x, y, w: d.w, date: d.date, idx: i };
+    });
+
+    const lineD = buildSmoothCubicPath(pts);
+    const areaD = `${lineD} L ${pts[pts.length - 1].x.toFixed(1)} ${H - 22} L ${pts[0].x.toFixed(1)} ${H - 22} Z`;
+    const gridLines = [0.25, 0.5, 0.75].map(f => {
+      const gy = (padY + f * (H - padY * 2)).toFixed(1);
+      return `<line x1="${padX}" y1="${gy}" x2="${W - padX}" y2="${gy}" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 4" />`;
+    }).join('');
+
+    setHTML('weight-chart-container', `
+      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;max-width:100%;height:auto;">
+        <defs>
+          <linearGradient id="wAreaGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ff5a1f" stop-opacity="0.38" />
+            <stop offset="100%" stop-color="#ff5a1f" stop-opacity="0.0" />
+          </linearGradient>
+          <linearGradient id="wLineGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#ff5a1f" />
+            <stop offset="100%" stop-color="#10b981" />
+          </linearGradient>
+        </defs>
+        ${gridLines}
+        <path d="${areaD}" fill="url(#wAreaGrad)" />
+        <path d="${lineD}" fill="none" stroke="url(#wLineGrad)" stroke-width="3.5" stroke-linecap="round" />
+        ${pts.map(p => {
+          const isSel = p.idx === selIdx;
+          return `
+            <g style="cursor:pointer;" onclick="selectWeightPoint(${p.idx})">
+              ${isSel ? `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="12" fill="rgba(255,90,31,0.25)" />` : ''}
+              <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${isSel ? '6.5' : '5'}" fill="${isSel ? '#10b981' : '#ff5a1f'}" stroke="#ffffff" stroke-width="2" />
+              <text x="${p.x.toFixed(1)}" y="${(p.y - 13).toFixed(1)}" fill="${isSel ? '#34d399' : '#f8fafc'}" font-size="${isSel ? '13.5' : '12'}" font-weight="800" text-anchor="middle">${p.w}</text>
+              <text x="${p.x.toFixed(1)}" y="${H - 5}" fill="${isSel ? '#ffffff' : '#94a3b8'}" font-size="11.5" font-weight="700" text-anchor="middle">${p.date}</text>
+            </g>
+          `;
+        }).join('')}
+      </svg>
+    `);
+  }
+
+  /* ================= SUPPLEMENTS TRACKER ================= */
+  function toggleSupplement(id) {
+    const s = STATE.supplements.find(item => item.id === id);
+    if (s) s.done = !s.done;
+    saveState();
+    renderSupplements();
+  }
+
+  function addCustomSupplement() {
+    const inp = $id('new-supp-input');
+    const txt = (inp?.value || '').trim();
+    if (!txt) return;
+    STATE.supplements.push({ id: 's_' + Date.now(), name: txt, done: false });
+    inp.value = '';
+    saveState();
+    renderSupplements();
+    showToast('💊 تمت إضافة المكمل للقائمة');
+  }
+
+  function renderSupplements() {
+    const doneCount = STATE.supplements.filter(s => s.done).length;
+    setHTML('supp-progress-pill', `${doneCount} / ${STATE.supplements.length}`);
+    setHTML('supp-list', STATE.supplements.map(s => `
+      <div class="supp-item ${s.done ? 'checked' : ''}" onclick="toggleSupplement('${s.id}')">
+        <span style="font-size:13px;font-weight:700;${s.done ? 'text-decoration:line-through;color:var(--text-muted);' : ''}">${s.name}</span>
+        <span style="width:24px;height:24px;border-radius:7px;border:1.5px solid ${s.done ? 'var(--emerald)' : 'var(--hairline-strong)'};background:${s.done ? 'var(--emerald)' : 'transparent'};display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900;flex-shrink:0;">
+          ${s.done ? '✓' : ''}
+        </span>
+      </div>
+    `).join(''));
+  }
+
+  function renderDashboard() {
+    renderDashboardKPIs();
+    renderDashMuscleGuide();
+    renderWeightChart();
+    renderSupplements();
+  }
+
+  /* ================= 2-FRAME MOTION PREVIEW & ANATOMICAL SVG FALLBACK ================= */
+  let EX_ANIM_PAUSED = {};
+  let EX_FRAME_TICK = 0;
+
+  setInterval(() => {
+    EX_FRAME_TICK = EX_FRAME_TICK === 0 ? 1 : 0;
+    document.querySelectorAll('img[data-ex-slug]').forEach(img => {
+      const id = img.dataset.exId;
+      if (EX_ANIM_PAUSED[id] || img.dataset.fallback === '1') return;
+      const slug = img.dataset.exSlug;
+      const mirror = img.dataset.mirror || '0';
+      const base = mirror === '1'
+        ? `https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/${slug}`
+        : `https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/${slug}`;
+      img.src = `${base}/${EX_FRAME_TICK}.jpg`;
+    });
+  }, 950);
+
+  function handleExImgError(img) {
+    if (img.dataset.mirror !== '1') {
+      img.dataset.mirror = '1';
+      img.src = `https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db/main/exercises/${img.dataset.exSlug}/0.jpg`;
+      return;
+    }
+    img.dataset.fallback = '1';
+    img.style.display = 'none';
+    const svgBox = img.parentElement?.querySelector('.ex-svg-fallback');
+    if (svgBox) svgBox.style.display = 'flex';
+  }
+
+  function toggleExAnim(event, exId) {
+    if (event) event.stopPropagation();
+    EX_ANIM_PAUSED[exId] = !EX_ANIM_PAUSED[exId];
+    const btn = $id('anim-btn-' + exId);
+    if (btn) btn.textContent = EX_ANIM_PAUSED[exId] ? '▶ تشغيل' : '⏸ إيقاف';
+  }
+
+  function buildExerciseMediaHTML(ex, uniqueKey, clickableForModal = false) {
+    const mObj = MUSCLE_GROUPS.find(m => m.id === ex.muscle) || MUSCLE_GROUPS[0];
+    const hasSlug = Boolean(ex.slug);
+    const initialSrc = hasSlug ? `https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/${ex.slug}/0.jpg` : '';
+    const clickAttr = clickableForModal ? `onclick="openExerciseDetailModal('${ex.id}')" style="cursor:pointer;" title="اضغط لعرض شرح التمرين"` : '';
+    return `
+      <div class="ex-media-box" ${clickAttr}>
+        ${hasSlug ? `
+          <img src="${initialSrc}" alt="${ex.name}" data-ex-id="${uniqueKey}" data-ex-slug="${ex.slug}" loading="lazy" onerror="handleExImgError(this)" />
+          <button type="button" id="anim-btn-${uniqueKey}" onclick="toggleExAnim(event, '${uniqueKey}')"
+            style="position:absolute;top:8px;left:8px;background:rgba(7,8,11,0.84);border:1px solid var(--hairline-strong);color:#fff;font-size:11px;font-weight:800;padding:4px 9px;border-radius:8px;min-height:30px;">
+            ⏸ إيقاف
+          </button>
+        ` : ''}
+        <div class="ex-svg-fallback" style="display:${hasSlug ? 'none' : 'flex'};width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px;text-align:center;">
+          <svg width="72" height="72" viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="18" r="7" stroke="#ff5a1f" stroke-width="3" />
+            <path d="M22 34 H58 M40 25 V50 M40 50 L28 68 M40 50 L52 68" stroke="#f8fafc" stroke-width="3.2" stroke-linecap="round" />
+            <rect x="10" y="29" width="7" height="10" rx="2" fill="#ff5a1f" />
+            <rect x="63" y="29" width="7" height="10" rx="2" fill="#ff5a1f" />
+          </svg>
+          <span style="font-size:11.5px;font-weight:800;color:var(--copper-light);">${mObj.name} • ${ex.en}</span>
+        </div>
+        <span class="badge-pill badge-copper" style="position:absolute;bottom:8px;right:8px;background:rgba(7,8,11,0.86);font-size:10.5px;">${mObj.name}</span>
+      </div>
+    `;
+  }
+
+  /* ================= 64 EXERCISES LIBRARY (CLEAN CARDS: NO WEIGHT/REPS/LOG INPUTS) ================= */
+  function renderExercisesSection() {
+    const allEx = getAllExercises();
+    setHTML('ex-total-count', allEx.length);
+
+    const filters = [{ id: 'all', name: 'الكل (' + allEx.length + ')' }, ...MUSCLE_GROUPS];
+    setHTML('ex-muscle-filters', filters.map(f => `
+      <button type="button" class="muscle-pill ${STATE.selectedExFilter === f.id ? 'active' : ''}" onclick="STATE.selectedExFilter='${f.id}';renderExercisesSection();">
+        ${f.name}
+      </button>
+    `).join(''));
+
+    renderExercisesGrid();
+  }
+
+  function renderExercisesGrid() {
+    const q = ($id('ex-search-input')?.value || '').trim().toLowerCase();
+    const filter = STATE.selectedExFilter || 'all';
+    const list = getAllExercises().filter(ex => {
+      if (filter !== 'all' && ex.muscle !== filter) return false;
+      if (!q) return true;
+      return ex.name.toLowerCase().includes(q)
+        || ex.en.toLowerCase().includes(q)
+        || ex.primary.toLowerCase().includes(q)
+        || ex.secondary.toLowerCase().includes(q);
+    });
+
+    if (!list.length) {
+      setHTML('exercises-grid', `<div class="lux-card" style="grid-column:1/-1;text-align:center;padding:28px;">لا توجد تمارين مطابقة لبحثك. جرّب كلمة أخرى مثل: <strong>علوي</strong> أو <strong>بنش</strong> أو <strong>مجنص</strong> أو <strong>ساعد</strong>.</div>`);
+      return;
+    }
+
+    setHTML('exercises-grid', list.map(ex => `
+      <article class="lux-card" style="display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          ${buildExerciseMediaHTML(ex, 'lib_' + ex.id, true)}
+          <h3 style="margin:0 0 2px;font-size:15px;font-weight:900;">${ex.name}</h3>
+          <div class="en" style="font-size:11.5px;color:var(--text-muted);margin-bottom:8px;">${ex.en}</div>
+
+          <div class="lux-sub" style="padding:9px 11px;font-size:12px;margin-bottom:10px;display:flex;flex-direction:column;gap:4px;">
+            <div><strong style="color:var(--copper-light);">🎯 تستهدف:</strong> ${ex.primary}</div>
+            <div><strong style="color:var(--sapphire-light);">🔗 مساعدة:</strong> ${ex.secondary}</div>
+          </div>
+        </div>
+
+        <button type="button" class="btn-glass" style="width:100%;font-size:12.5px;" onclick="openExerciseDetailModal('${ex.id}')">📖 تفاصيل وشرح التمرين والمدرب الصوتي</button>
+      </article>
+    `).join(''));
+  }
+
+  function speakExerciseArabic(exId) {
+    const ex = getAllExercises().find(e => e.id === exId);
+    if (!ex) return;
+    try {
+      window.speechSynthesis.cancel();
+      const text = `تمرين ${ex.name}. يستهدف ${ex.primary}. طريقة الأداء: ${ex.steps.join(' ')}`;
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'ar-SA';
+      utter.rate = 0.95;
+      window.speechSynthesis.speak(utter);
+      showToast('🔊 جاري تشغيل المدرب الصوتي العربي...');
+    } catch (e) {
+      showToast('⚠️ المتصفح لا يدعم النطق الصوتي في هذه النافذة');
+    }
+  }
+
+  function openExerciseDetailModal(exId) {
+    const ex = getAllExercises().find(e => e.id === exId);
+    if (!ex) return;
+
+    setHTML('app-modal-body', `
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;">
+        <h3 style="margin:0;font-size:17px;font-weight:900;">${ex.name}</h3>
+        <button type="button" class="btn-glass" style="min-height:36px;padding:4px 10px;" onclick="closeModal()">✕</button>
+      </div>
+      ${buildExerciseMediaHTML(ex, 'mod_' + ex.id, false)}
+      <div class="lux-sub" style="margin-bottom:12px;font-size:12.5px;">
+        <div style="margin-bottom:4px;"><strong style="color:var(--copper-light);">🎯 العضلة المستهدفة الأساسية:</strong> ${ex.primary}</div>
+        <div><strong style="color:var(--sapphire-light);">🔗 العضلات المساعدة:</strong> ${ex.secondary}</div>
+      </div>
+
+      <div style="margin-bottom:12px;">
+        <strong style="font-size:13.5px;display:block;margin-bottom:6px;">✅ خطوات الأداء الصحيح:</strong>
+        <ol style="margin:0;padding-right:18px;font-size:12.5px;color:var(--text-muted);line-height:1.7;">
+          ${ex.steps.map(s => `<li>${s}</li>`).join('')}
+        </ol>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <strong style="font-size:13.5px;display:block;margin-bottom:6px;color:#fda4af;">⚠️ أخطاء شائعة تجنبها:</strong>
+        <ul style="margin:0;padding-right:18px;font-size:12.5px;color:var(--text-muted);">
+          ${ex.mistakes.map(m => `<li>${m}</li>`).join('')}
+        </ul>
+      </div>
+
+      <button type="button" class="btn-copper" style="width:100%;" onclick="speakExerciseArabic('${ex.id}')">🔊 تشغيل المدرب الصوتي العربي</button>
+    `);
+    $id('app-modal').classList.add('open');
+  }
+
+  function openCustomExerciseModal() {
+    setHTML('app-modal-body', `
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+        <h3 style="margin:0;font-size:17px;font-weight:900;">➕ إضافة تمرين مخصص</h3>
+        <button type="button" class="btn-glass" style="min-height:36px;padding:4px 10px;" onclick="closeModal()">✕</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <input type="text" id="cust-ex-name" class="lux-input" placeholder="اسم التمرين بالعربية (مثال: دفع صدر جهاز هامر)" />
+        <input type="text" id="cust-ex-en" class="lux-input en" placeholder="English Name (e.g. Hammer Strength Press)" />
+        <select id="cust-ex-muscle" class="lux-input">
+          ${MUSCLE_GROUPS.map(m => `<option value="${m.id}">${m.name} (${m.en})</option>`).join('')}
+        </select>
+        <input type="text" id="cust-ex-primary" class="lux-input" placeholder="الجزء المستهدف (مثال: الصدر العلوي والداخلي)" />
+        <button type="button" class="btn-copper" onclick="saveCustomExercise()">حفظ التمرين في المكتبة ✓</button>
+      </div>
+    `);
+    $id('app-modal').classList.add('open');
+  }
+
+  function saveCustomExercise() {
+    const name = ($id('cust-ex-name')?.value || '').trim();
+    if (!name) { showToast('⚠️ اكتب اسم التمرين أولاً'); return; }
+    const en = ($id('cust-ex-en')?.value || 'Custom Exercise').trim();
+    const muscle = $id('cust-ex-muscle')?.value || 'chest';
+    const primary = ($id('cust-ex-primary')?.value || 'العضلة الأساسية المستهدفة').trim();
+
+    STATE.customExercises.push({
+      id: 'cust_' + Date.now(),
+      name, en, muscle, primary,
+      secondary: 'العضلات المثبتة والمساعدة',
+      slug: '',
+      steps: ['اضبط الوضعية وثبّت الجذع قبل البدء.', 'نفّذ الحركة بمدى كامل وتحكم في النزول.'],
+      mistakes: ['الاستعجال وفقدان التحكم بالوزن']
+    });
+    saveState();
+    closeModal();
+    renderExercisesSection();
+    showToast('✅ تمت إضافة التمرين المخصص بنجاح');
+  }
+
+  function closeModal() {
+    $id('app-modal')?.classList.remove('open');
+    try { window.speechSynthesis.cancel(); } catch (e) {}
+  }
+
+  /* ================= 10 TRAINING PROGRAMS (WITH EXCLUSIVE WORKOUT REST TIMER + INLINE LOG) ================= */
+  function update1RMCalc() {
+    const w = parseFloat($id('calc-1rm-w')?.value) || 80;
+    const r = parseInt($id('calc-1rm-r')?.value, 10) || 8;
+    const oneRM = Math.round(w * (1 + r / 30));
+    setHTML('prog-1rm-badge', `1RM التقديري: ${oneRM} kg`);
+    setHTML('calc-1rm-hyp', `${Math.round(oneRM * 0.7)} - ${Math.round(oneRM * 0.78)} kg`);
+    setHTML('calc-1rm-str', `${Math.round(oneRM * 0.85)} - ${Math.round(oneRM * 0.9)} kg`);
+  }
+
+  function selectProgram(progId) {
+    STATE.selectedProgramId = progId;
+    STATE.selectedProgramDayIdx = 0;
+    saveState();
+    renderProgramsSection();
+    renderDashboardKPIs();
+  }
+
+  function selectProgramDay(idx) {
+    STATE.selectedProgramDayIdx = idx;
+    saveState();
+    renderProgramsSection();
+  }
+
+  function logProgramExerciseSet(exId) {
+    const ex = getAllExercises().find(e => e.id === exId);
+    if (!ex) return;
+    const wEl = $id(`pw-${exId}`);
+    const rEl = $id(`pr-${exId}`);
+    const w = parseFloat(wEl?.value) || 40;
+    const r = parseInt(rEl?.value, 10) || 10;
+
+    const prev = STATE.exerciseLogs[exId] || { w: 40, r: 10, setsCount: 0 };
+    STATE.exerciseLogs[exId] = { w, r, setsCount: (prev.setsCount || 0) + 1 };
+    applyMuscleFatigue(ex.muscle, 15);
+    saveState();
+
+    renderProgramsSection();
+    renderDashMuscleGuide();
+
+    if (STATE.autoRestOnLog) {
+      setWorkoutRestPreset(WORKOUT_REST_TARGET || 90);
+      showToast(`✓ تم تسجيل (${w} kg × ${r}) وبدء راحة ${WORKOUT_REST_TARGET} ثانية ⏱️`);
+    } else {
+      showToast(`✓ تم تسجيل (${w} kg × ${r} عدات) وتحديث الاستشفاء العضلي`);
+    }
+  }
+
+  function completeProgramDay() {
+    const prog = TRAINING_PROGRAMS.find(p => p.id === STATE.selectedProgramId) || TRAINING_PROGRAMS[0];
+    const day = prog.days[STATE.selectedProgramDayIdx] || prog.days[0];
+    const allEx = getAllExercises();
+
+    day.exIds.forEach(id => {
+      const ex = allEx.find(e => e.id === id);
+      if (ex) {
+        applyMuscleFatigue(ex.muscle, 26);
+      }
+    });
+    saveState();
+    renderDashMuscleGuide();
+    showToast(`🎉 بطل! تم إتمام "${day.title}" وتحديث الاستشفاء العضلي`);
+  }
+
+  function renderProgramsSection() {
+    const prog = TRAINING_PROGRAMS.find(p => p.id === STATE.selectedProgramId) || TRAINING_PROGRAMS[0];
+    setHTML('active-prog-label', `النظام المختار: ${prog.name} (${prog.badge})`);
+
+    setHTML('programs-selector-grid', TRAINING_PROGRAMS.map(p => `
+      <button type="button" class="prog-card-btn ${p.id === prog.id ? 'active' : ''}" onclick="selectProgram('${p.id}')">
+        <strong style="font-size:13px;font-weight:900;color:#fff;">${p.name}</strong>
+        <span style="font-size:11px;color:${p.id === prog.id ? 'var(--copper-light)' : 'var(--text-muted)'};font-weight:700;">${p.badge}</span>
+      </button>
+    `).join(''));
+
+    const dayIdx = Math.min(prog.days.length - 1, Math.max(0, STATE.selectedProgramDayIdx || 0));
+    setHTML('program-days-strip', prog.days.map((d, i) => `
+      <button type="button" class="muscle-pill ${i === dayIdx ? 'active' : ''}" onclick="selectProgramDay(${i})">
+        ${d.title}
+      </button>
+    `).join(''));
+
+    const day = prog.days[dayIdx];
+    setHTML('prog-day-title', day.title);
+    setHTML('prog-day-desc', `يحتوي على ${day.exIds.length} تمارين أساسية • اكتب الوزن والعدات واضغط تسجيل`);
+
+    const allEx = getAllExercises();
+    setHTML('program-day-exercises', day.exIds.map((id, idx) => {
+      const ex = allEx.find(e => e.id === id);
+      if (!ex) return '';
+      const saved = STATE.exerciseLogs[ex.id] || { w: 50, r: 10, setsCount: 0 };
+      const loggedBadge = saved.setsCount > 0
+        ? `<span class="badge-pill badge-emerald num">✓ ${saved.setsCount} مجموعات</span>`
+        : `<span class="badge-pill badge-sapphire num">${day.setsReps || '3×10-12'}</span>`;
+      return `
+        <div class="lux-card">
+          ${buildExerciseMediaHTML(ex, 'prog_' + dayIdx + '_' + idx + '_' + ex.id, true)}
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px;">
+            <strong style="font-size:15px;font-weight:900;">${idx + 1}. ${ex.name}</strong>
+            ${loggedBadge}
+          </div>
+          <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">
+            <strong style="color:var(--copper-light);">🎯 تستهدف:</strong> ${ex.primary}
+          </div>
+          <div class="prog-log-row">
+            <div class="prog-inp-wrap">
+              <label for="pw-${ex.id}">الوزن (kg)</label>
+              <input type="number" id="pw-${ex.id}" class="lux-input num" inputmode="decimal" value="${saved.w}" min="0" max="400" step="2.5" placeholder="kg" style="text-align:center;padding:6px;" />
+            </div>
+            <div class="prog-inp-wrap">
+              <label for="pr-${ex.id}">العدات</label>
+              <input type="number" id="pr-${ex.id}" class="lux-input num" inputmode="numeric" value="${saved.r}" min="1" max="50" placeholder="عدات" style="text-align:center;padding:6px;" />
+            </div>
+            <button type="button" class="btn-copper" style="padding:8px 14px;white-space:nowrap;" onclick="logProgramExerciseSet('${ex.id}')">✓ تسجيل</button>
+          </div>
+        </div>
+      `;
+    }).join(''));
+
+    updateWorkoutRestDisplay();
+    update1RMCalc();
+  }
+
+  /* ================= 5-STEP CALORIE & MACRO WIZARD (TYPED NUMERIC INPUTS - NO SLIDERS) ================= */
+  const WIZ_STEP_NAMES = ['1 القياسات', '2 النشاط', '3 الهدف', '4 التفاصيل', '5 النتيجة'];
+
+  function calcWizardMacros() {
+    const w = STATE.wizard;
+    const hM = (w.height || 178) / 100;
+    const bmi = +((w.weight || 78) / (hM * hM)).toFixed(1);
+    let bmr = w.gender === 'male'
+      ? (10 * w.weight + 6.25 * w.height - 5 * w.age + 5)
+      : (10 * w.weight + 6.25 * w.height - 5 * w.age - 161);
+
+    const lbm = +(w.weight * (1 - (w.bf || 15) / 100)).toFixed(1);
+    if (w.useBf) {
+      bmr = 370 + 21.6 * lbm;
+    }
+    bmr = Math.max(900, Math.round(bmr));
+
+    const tdee = Math.round(bmr * w.activity);
+    const goalDeltas = {
+      cut_fast: -600,
+      cut: -400,
+      recomp: 0,
+      lean_bulk: 250,
+      bulk: 450
+    };
+    const delta = goalDeltas[w.goal] ?? 250;
+    const targetKcal = Math.max(1200, tdee + delta);
+    const protein = Math.round(w.weight * (w.goal.includes('cut') ? 2.3 : 2.1));
+    const fats = Math.round((targetKcal * 0.26) / 9);
+    const carbs = Math.max(50, Math.round((targetKcal - protein * 4 - fats * 9) / 4));
+
+    return { bmr, bmi, lbm, tdee, targetKcal, protein, carbs, fats };
+  }
+
+  function updateWizardNumeric(field, rawVal, min, max, isFloat = false) {
+    const num = isFloat ? parseFloat(rawVal) : parseInt(rawVal, 10);
+    if (!isNaN(num)) {
+      STATE.wizard[field] = Math.min(max, Math.max(min, isFloat ? +num.toFixed(1) : num));
+      saveState();
+      const res = calcWizardMacros();
+      setHTML('wiz-live-telemetry', `BMR: ${res.bmr} • BMI: ${res.bmi}`);
+      const lbmEl = $id('wiz-lbm-readout');
+      if (lbmEl) lbmEl.textContent = `${res.lbm} kg`;
+    }
+  }
+
+  function stepWizardField(field, delta, min, max, isFloat = false) {
+    const cur = Number(STATE.wizard[field]) || min;
+    const next = isFloat ? +(cur + delta).toFixed(1) : Math.round(cur + delta);
+    STATE.wizard[field] = Math.min(max, Math.max(min, next));
+    saveState();
+    renderCaloriesWizard();
+  }
+
+  function changeWizardStep(dir) {
+    STATE.wizard.step = Math.min(5, Math.max(1, STATE.wizard.step + dir));
+    saveState();
+    renderCaloriesWizard();
+  }
+
+  function setWizardStep(s) {
+    STATE.wizard.step = s;
+    saveState();
+    renderCaloriesWizard();
+  }
+
+  function applyWizardPlanToDashboard() {
+    const res = calcWizardMacros();
+    STATE.caloriesTarget = res.targetKcal;
+    STATE.proteinTarget = res.protein;
+    STATE.carbsTarget = res.carbs;
+    STATE.fatsTarget = res.fats;
+    saveState();
+    renderDashboardKPIs();
+    showToast('🎯 تم اعتماد خطتك وتحديث السعرات والبروتين والكارب في الرئيسية!');
+    switchTab('dashboard');
+  }
+
+  function renderCaloriesWizard() {
+    const w = STATE.wizard;
+    const res = calcWizardMacros();
+    setHTML('wiz-live-telemetry', `BMR: ${res.bmr} • BMI: ${res.bmi}`);
+
+    setHTML('wiz-steps-bar', WIZ_STEP_NAMES.map((label, idx) => {
+      const sNum = idx + 1;
+      const cls = sNum === w.step ? 'active' : sNum < w.step ? 'done' : '';
+      return `<button type="button" class="wiz-step-pill ${cls}" onclick="setWizardStep(${sNum})">${sNum < w.step ? '✓ ' : ''}${label}</button>`;
+    }).join(''));
+
+    const prevBtn = $id('wiz-prev-btn');
+    const nextBtn = $id('wiz-next-btn');
+    if (prevBtn) prevBtn.style.visibility = w.step === 1 ? 'hidden' : 'visible';
+    if (nextBtn) nextBtn.style.display = w.step === 5 ? 'none' : 'inline-flex';
+
+    if (w.step === 1) {
+      setHTML('wiz-step-content', `
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:16px;">
+          <button type="button" class="${w.gender === 'male' ? 'btn-copper' : 'btn-glass'}" onclick="STATE.wizard.gender='male';renderCaloriesWizard();">👨 ذكر (Male)</button>
+          <button type="button" class="${w.gender === 'female' ? 'btn-copper' : 'btn-glass'}" onclick="STATE.wizard.gender='female';renderCaloriesWizard();">👩 أنثى (Female)</button>
+        </div>
+
+        <div class="wiz-grid-3">
+          <div class="lux-sub">
+            <label for="wiz-inp-age" style="display:block;font-size:12.5px;font-weight:800;color:var(--text-muted);margin-bottom:8px;">العمر</label>
+            <div class="num-stepper-box">
+              <button type="button" class="stepper-btn" onclick="stepWizardField('age', -1, 14, 85)" aria-label="تقليل العمر">−</button>
+              <input type="number" id="wiz-inp-age" class="stepper-typed-input num" inputmode="numeric" value="${w.age}" min="14" max="85" oninput="updateWizardNumeric('age', this.value, 14, 85)" />
+              <span class="stepper-unit-badge">سنة</span>
+              <button type="button" class="stepper-btn" onclick="stepWizardField('age', 1, 14, 85)" aria-label="زيادة العمر">+</button>
+            </div>
+          </div>
+
+          <div class="lux-sub">
+            <label for="wiz-inp-height" style="display:block;font-size:12.5px;font-weight:800;color:var(--text-muted);margin-bottom:8px;">الطول</label>
+            <div class="num-stepper-box">
+              <button type="button" class="stepper-btn" onclick="stepWizardField('height', -1, 130, 225)" aria-label="تقليل الطول">−</button>
+              <input type="number" id="wiz-inp-height" class="stepper-typed-input num" inputmode="numeric" value="${w.height}" min="130" max="225" oninput="updateWizardNumeric('height', this.value, 130, 225)" />
+              <span class="stepper-unit-badge en">cm</span>
+              <button type="button" class="stepper-btn" onclick="stepWizardField('height', 1, 130, 225)" aria-label="زيادة الطول">+</button>
+            </div>
+          </div>
+
+          <div class="lux-sub">
+            <label for="wiz-inp-weight" style="display:block;font-size:12.5px;font-weight:800;color:var(--text-muted);margin-bottom:8px;">الوزن</label>
+            <div class="num-stepper-box">
+              <button type="button" class="stepper-btn" onclick="stepWizardField('weight', -0.5, 35, 220, true)" aria-label="تقليل الوزن">−</button>
+              <input type="number" id="wiz-inp-weight" class="stepper-typed-input num" inputmode="decimal" step="0.5" value="${w.weight}" min="35" max="220" oninput="updateWizardNumeric('weight', this.value, 35, 220, true)" />
+              <span class="stepper-unit-badge en">kg</span>
+              <button type="button" class="stepper-btn" onclick="stepWizardField('weight', 0.5, 35, 220, true)" aria-label="زيادة الوزن">+</button>
+            </div>
+          </div>
+        </div>
+      `);
+    } else if (w.step === 2) {
+      const acts = [
+        { v: 1.2, t: 'خامل (عمل مكتبي بدون رياضة)' },
+        { v: 1.375, t: 'نشاط خفيف (1-3 أيام تمرين أسبوعياً)' },
+        { v: 1.55, t: 'نشاط متوسط (3-5 أيام تمرين أسبوعياً)' },
+        { v: 1.725, t: 'نشاط عالٍ (6-7 أيام تمرين مكثف)' },
+        { v: 1.9, t: 'رياضي محترف (تمرين مزدوج يومياً)' }
+      ];
+      setHTML('wiz-step-content', `<div style="display:flex;flex-direction:column;gap:9px;">
+        ${acts.map(a => `
+          <button type="button" class="supp-item ${w.activity === a.v ? 'checked' : ''}" style="width:100%;text-align:right;" onclick="STATE.wizard.activity=${a.v};renderCaloriesWizard();">
+            <strong style="font-size:13.5px;">${a.t}</strong>
+            <span class="badge-pill badge-copper num">×${a.v}</span>
+          </button>
+        `).join('')}
+      </div>`);
+    } else if (w.step === 3) {
+      const goals = [
+        { id: 'cut_fast', name: 'تنشيف سريع وحرق دهون', badge: '-600 kcal' },
+        { id: 'cut', name: 'تنشيف تدريجي مع الحفاظ على العضل', badge: '-400 kcal' },
+        { id: 'recomp', name: 'ثبات الوزن وإعادة تشكيل الجسم', badge: '0 kcal' },
+        { id: 'lean_bulk', name: 'تضخيم عضلي نظيف', badge: '+250 kcal' },
+        { id: 'bulk', name: 'تضخيم سريع وزيادة الكتلة', badge: '+450 kcal' }
+      ];
+      setHTML('wiz-step-content', `<div style="display:flex;flex-direction:column;gap:9px;">
+        ${goals.map(g => `
+          <button type="button" class="supp-item ${w.goal === g.id ? 'checked' : ''}" style="width:100%;text-align:right;" onclick="STATE.wizard.goal='${g.id}';STATE.wizard.goalName='${g.name}';renderCaloriesWizard();">
+            <strong style="font-size:13.5px;">${g.name}</strong>
+            <span class="badge-pill badge-emerald num">${g.badge}</span>
+          </button>
+        `).join('')}
+      </div>`);
+    } else if (w.step === 4) {
+      setHTML('wiz-step-content', `
+        <div class="lux-sub" style="margin-bottom:12px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+            <strong>معادلة الحساب: ${w.useBf ? 'Katch-McArdle (حسب الكتلة العضلية)' : 'Mifflin-St Jeor (القياسية)'}</strong>
+            <button type="button" class="btn-glass" style="min-height:40px;" onclick="STATE.wizard.useBf=!STATE.wizard.useBf;renderCaloriesWizard();">تبديل المعادلة</button>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <label for="wiz-inp-bf" style="font-size:12.5px;font-weight:800;color:var(--text-muted);">نسبة الدهون التقديرية</label>
+            <span style="font-size:12px;color:var(--emerald-light);font-weight:800;">الكتلة الصافية: <strong class="num" id="wiz-lbm-readout">${res.lbm} kg</strong></span>
+          </div>
+          <div class="num-stepper-box">
+            <button type="button" class="stepper-btn" onclick="stepWizardField('bf', -0.5, 4, 55, true)">−</button>
+            <input type="number" id="wiz-inp-bf" class="stepper-typed-input num" inputmode="decimal" step="0.5" value="${w.bf}" min="4" max="55" oninput="updateWizardNumeric('bf', this.value, 4, 55, true)" />
+            <span class="stepper-unit-badge num">%</span>
+            <button type="button" class="stepper-btn" onclick="stepWizardField('bf', 0.5, 4, 55, true)">+</button>
+          </div>
+        </div>
+        <div class="lux-sub">
+          <div style="margin-bottom:8px;font-weight:800;">أيام التمرين الأسبوعية: <span class="num" style="color:var(--copper-light);">${w.trainDays} أيام</span></div>
+          <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;">
+            ${[1,2,3,4,5,6,7].map(d => `
+              <button type="button" class="${w.trainDays === d ? 'btn-copper' : 'btn-glass'} num" style="padding:6px 2px;" onclick="STATE.wizard.trainDays=${d};renderCaloriesWizard();">${d}</button>
+            `).join('')}
+          </div>
+        </div>
+      `);
+    } else {
+      const pCal = res.protein * 4;
+      const cCal = res.carbs * 4;
+      const fCal = res.fats * 9;
+      const tot = Math.max(1, pCal + cCal + fCal);
+      const pPct = Math.round((pCal / tot) * 100);
+      const cPct = Math.round((cCal / tot) * 100);
+      const fPct = Math.max(0, 100 - pPct - cPct);
+      const C = 339.29;
+      const pLen = (pPct / 100) * C;
+      const cLen = (cPct / 100) * C;
+      const fLen = (fPct / 100) * C;
+
+      setHTML('wiz-step-content', `
+        <div class="wiz-results-hero">
+          <div style="position:relative;width:150px;height:150px;display:flex;align-items:center;justify-content:center;">
+            <svg width="150" height="150" viewBox="0 0 130 130">
+              <circle cx="65" cy="65" r="54" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14" />
+              <circle cx="65" cy="65" r="54" fill="none" stroke="#10b981" stroke-width="14" stroke-dasharray="${pLen} ${C}" transform="rotate(-90 65 65)" />
+              <circle cx="65" cy="65" r="54" fill="none" stroke="#3b82f6" stroke-width="14" stroke-dasharray="${cLen} ${C}" stroke-dashoffset="${-pLen}" transform="rotate(-90 65 65)" />
+              <circle cx="65" cy="65" r="54" fill="none" stroke="#f59e0b" stroke-width="14" stroke-dasharray="${fLen} ${C}" stroke-dashoffset="${-(pLen + cLen)}" transform="rotate(-90 65 65)" />
+            </svg>
+            <div style="position:absolute;text-align:center;">
+              <strong class="num" style="font-size:21px;font-weight:900;display:block;">${res.targetKcal}</strong>
+              <span style="font-size:11px;color:var(--text-muted);">kcal / يوم</span>
+            </div>
+          </div>
+
+          <div style="width:100%;min-width:0;">
+            <div style="font-size:13px;color:var(--copper-light);font-weight:800;margin-bottom:6px;">🎯 خطتك المخصصة (${w.goalName})</div>
+            <div class="wiz-grid-3" style="margin-bottom:10px;">
+              <div class="lux-sub" style="text-align:center;padding:8px;">
+                <span style="font-size:11px;color:var(--emerald-light);">بروتين (${pPct}%)</span>
+                <strong class="num" style="display:block;font-size:16px;">${res.protein} g</strong>
+              </div>
+              <div class="lux-sub" style="text-align:center;padding:8px;">
+                <span style="font-size:11px;color:var(--sapphire-light);">كارب (${cPct}%)</span>
+                <strong class="num" style="display:block;font-size:16px;">${res.carbs} g</strong>
+              </div>
+              <div class="lux-sub" style="text-align:center;padding:8px;">
+                <span style="font-size:11px;color:#fcd34d;">دهون (${fPct}%)</span>
+                <strong class="num" style="display:block;font-size:16px;">${res.fats} g</strong>
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:12px;">
+              <span class="badge-pill badge-copper num">🏋️ يوم التمرين: ${res.targetKcal + 150} kcal</span>
+              <span class="badge-pill num">🛋️ يوم الراحة: ${res.targetKcal - 150} kcal</span>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn-copper" style="width:100%;" onclick="applyWizardPlanToDashboard()">✓ اعتماد الخطة وتحديث الرئيسية</button>
+      `);
+    }
+  }
+
+  /* ================= SMART CAMERA & DIGITAL GRAM FOOD SCALE ================= */
+  let LAST_SCANNED_MEAL = SCANNED_MEAL_PRESETS[0];
+
+  function handleMealPhotoUpload(event) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = $id('meal-photo-preview');
+      const ph = $id('meal-photo-placeholder');
+      if (img) { img.src = e.target.result; img.style.display = 'block'; }
+      if (ph) ph.style.display = 'none';
+      const idx = Math.floor(Math.random() * SCANNED_MEAL_PRESETS.length);
+      const sel = $id('meal-preset-scan');
+      if (sel) sel.value = String(idx);
+      analyzeScannedMeal();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function analyzeScannedMeal() {
+    const idx = parseInt($id('meal-preset-scan')?.value, 10) || 0;
+    LAST_SCANNED_MEAL = SCANNED_MEAL_PRESETS[idx] || SCANNED_MEAL_PRESETS[0];
+    setHTML('meal-scan-result', `
+      <div style="font-weight:800;font-size:13.5px;margin-bottom:6px;">✨ نتيجة التحليل الذكي: ${LAST_SCANNED_MEAL.name}</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+        <span class="badge-pill badge-copper num">🔥 ${LAST_SCANNED_MEAL.kcal} kcal</span>
+        <span class="badge-pill badge-emerald num">🥩 ${LAST_SCANNED_MEAL.p}g P</span>
+        <span class="badge-pill badge-sapphire num">🍚 ${LAST_SCANNED_MEAL.c}g C</span>
+        <span class="badge-pill badge-gold num">🥑 ${LAST_SCANNED_MEAL.f}g F</span>
+      </div>
+      <button type="button" class="btn-copper" style="width:100%;" onclick="logScannedMeal()">➕ تسجيل الوجبة في سجل اليوم</button>
+    `);
+  }
+
+  function logScannedMeal() {
+    STATE.caloriesConsumed += LAST_SCANNED_MEAL.kcal;
+    STATE.proteinConsumed += LAST_SCANNED_MEAL.p;
+    STATE.carbsConsumed += LAST_SCANNED_MEAL.c;
+    saveState();
+    renderDashboardKPIs();
+    showToast(`📸 تم تسجيل الوجبة (+${LAST_SCANNED_MEAL.kcal} kcal • +${LAST_SCANNED_MEAL.p}g P • +${LAST_SCANNED_MEAL.c}g C)`);
+  }
+
+  function syncScaleGrams(val) {
+    const num = parseInt(val, 10);
+    const g = isNaN(num) ? 100 : Math.min(1000, Math.max(50, num));
+    const inp = $id('scale-grams-input');
+    if (inp && document.activeElement !== inp) inp.value = g;
+    updateFoodScale(g);
+  }
+
+  function stepScaleGrams(delta) {
+    const inp = $id('scale-grams-input');
+    const cur = parseInt(inp?.value, 10) || 150;
+    const next = Math.min(1000, Math.max(50, cur + delta));
+    if (inp) inp.value = next;
+    updateFoodScale(next);
+  }
+
+  function updateFoodScale(overrideG) {
+    const idx = parseInt($id('scale-food-select')?.value, 10) || 0;
+    const g = overrideG !== undefined ? overrideG : (parseInt($id('scale-grams-input')?.value, 10) || 150);
+    const food = FOOD_DATABASE[idx] || FOOD_DATABASE[0];
+    const ratio = g / 100;
+    const kcal = Math.round(food.kcal * ratio);
+    const p = +(food.p * ratio).toFixed(1);
+    const c = +(food.c * ratio).toFixed(1);
+    const f = +(food.f * ratio).toFixed(1);
+
+    setHTML('scale-macros-box', `
+      <div style="font-weight:800;font-size:13.5px;margin-bottom:8px;">${food.name} (<span class="num">${g}g</span>)</div>
+      <div class="wiz-grid-3" style="grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;">
+        <div class="w-metric-box"><span>سعرات</span><strong class="num" style="color:var(--copper-light);">${kcal}</strong></div>
+        <div class="w-metric-box"><span>بروتين</span><strong class="num" style="color:var(--emerald-light);">${p}g</strong></div>
+        <div class="w-metric-box"><span>كارب</span><strong class="num" style="color:var(--sapphire-light);">${c}g</strong></div>
+        <div class="w-metric-box"><span>دهون</span><strong class="num" style="color:#fcd34d;">${f}g</strong></div>
+      </div>
+    `);
+  }
+
+  function logFoodScaleMeal() {
+    const idx = parseInt($id('scale-food-select')?.value, 10) || 0;
+    const g = parseInt($id('scale-grams-input')?.value, 10) || 150;
+    const food = FOOD_DATABASE[idx] || FOOD_DATABASE[0];
+    const ratio = g / 100;
+    const kcal = Math.round(food.kcal * ratio);
+    const p = Math.round(food.p * ratio);
+    const c = Math.round(food.c * ratio);
+
+    STATE.caloriesConsumed += kcal;
+    STATE.proteinConsumed += p;
+    STATE.carbsConsumed += c;
+    saveState();
+    renderDashboardKPIs();
+    showToast(`⚖️ تمت إضافة ${g}g ${food.name} (+${kcal} kcal • +${p}g P • +${c}g C)`);
+  }
+
+  function renderCameraSection() {
+    const sel = $id('scale-food-select');
+    if (sel && !sel.options.length) {
+      sel.innerHTML = FOOD_DATABASE.map((f, i) => `<option value="${i}">${f.name} (${f.kcal} kcal / 100g)</option>`).join('');
+    }
+    analyzeScannedMeal();
+    updateFoodScale();
+  }
+
+  /* ================= SMART COACH & ATHLETE CHEF STUDIO ================= */
+  const AI_PROMPTS = [
+    { cat: 'workout', q: 'إزاي أكسر ثبات الأوزان في البنش برس؟' },
+    { cat: 'workout', q: 'أفضل تمارين لتكبير الصدر العلوي والكتف الجانبي؟' },
+    { cat: 'recipes', q: 'اقترح لي وجبة فطار عالية البروتين وسريعة التحضير' },
+    { cat: 'recipes', q: 'طريقة تحضير صدور دجاج طرية وصحية للدايت' },
+    { cat: 'supps', q: 'أفضل توقيت وجرعة للكرياتين والواي بروتين؟' },
+    { cat: 'supps', q: 'إزاي أسرّع الاستشفاء العضلي بعد تمرين الأرجل؟' }
+  ];
+
+  function copyCoachMessage(idx) {
+    const msg = STATE.aiMessages[idx];
+    if (!msg) return;
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = msg.text;
+    const plainText = tempDiv.textContent || tempDiv.innerText || '';
+
+    const ta = document.createElement('textarea');
+    ta.value = plainText.trim();
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showToast('📋 تم نسخ الرد إلى الحافظة');
+    } catch (e) {
+      showToast('⚠️ تعذّر النسخ التلقائي');
+    }
+    document.body.removeChild(ta);
+  }
+
+  function generateSmartCoachReply(userText) {
+    const q = userText.toLowerCase();
+    const lastW = STATE.weightLogs[STATE.weightLogs.length - 1]?.w || 78;
+    const proGoal = STATE.proteinTarget;
+    const carbGoal = STATE.carbsTarget;
+    const calGoal = STATE.caloriesTarget;
+
+    if (q.includes('فطار') || q.includes('وجبة') || q.includes('شوفان') || q.includes('بيض')) {
+      return `🍳 <strong>وصفة فطار الأبطال عالية البروتين (بان كيك الشوفان والواي):</strong><br/>
+      • <strong>المقادير:</strong> 70g شوفان مطحون + 3 بياض بيض + بيضة كاملة + سكوب واي بروتين + نصف موزة + رشة قرفة.<br/>
+      • <strong>خطوات التحضير:</strong><br/>
+      1. اخلط جميع المكونات في الخلاط لمدة 30 ثانية حتى تحصل على قوام متجانس.<br/>
+      2. سخّن مقلاة غير لاصقة على نار متوسطة واطهُ الخليط دقيقتين لكل وجه.<br/>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;">
+        <span class="badge-pill badge-copper num">🔥 520 kcal</span>
+        <span class="badge-pill badge-emerald num">🥩 48g بروتين</span>
+        <span class="badge-pill badge-sapphire num">🍚 56g كارب</span>
+        <span class="badge-pill badge-gold num">🥑 11g دهون</span>
+      </div>`;
+    }
+
+    if (q.includes('صدور') || q.includes('دجاج') || q.includes('فراخ') || q.includes('غداء') || q.includes('طريقة')) {
+      return `🍗 <strong>وصفة صدور الدجاج المشوية الطرية (بدون جفاف):</strong><br/>
+      • <strong>المقادير:</strong> 250g صدور دجاج فيليه + ملعقة كبيرة زبادي يوناني + عصير نصف ليمونة + بابريكا مدخنة + ثوم بودر + فلفل أسود + رشة ملح + 180g أرز بسمتي مطبوخ.<br/>
+      • <strong>خطوات التحضير:</strong><br/>
+      1. انقع صدور الدجاج في الزبادي والليمون والتوابل لمدة 30 دقيقة.<br/>
+      2. اشوِ الدجاج على جريل ساخن جداً لمدة 4 دقائق لكل وجه ثم غطِّه 3 دقائق ليحتفظ بالعصارة.<br/>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;">
+        <span class="badge-pill badge-copper num">🔥 635 kcal</span>
+        <span class="badge-pill badge-emerald num">🥩 76g بروتين</span>
+        <span class="badge-pill badge-sapphire num">🍚 52g كارب</span>
+        <span class="badge-pill badge-gold num">🥑 10g دهون</span>
+      </div>`;
+    }
+
+    if (q.includes('ثبات') || q.includes('بنش') || q.includes('أوزان') || q.includes('قوة')) {
+      return `🏋️ <strong>بروتوكول كسر ثبات الأوزان في البنش برس:</strong><br/>
+      1️⃣ <strong>التحميل التدريجي المزدوج (Double Progression):</strong> إذا كنت ترفع 80kg لـ 8 عدات، استهدف الوصول إلى 10 عدات بنفس الوزن قبل زيادة 2.5kg.<br/>
+      2️⃣ <strong>الوقفات السفلية (Paused Bench):</strong> توقف ثانية كاملة بالبار على صدرك في أول مجموعتين لبناء قوة الانطلاق.<br/>
+      3️⃣ <strong>تقوية الترايسبس والكتف الأمامي:</strong> ركّز على البنش بالقبضة الضيقة والضغط العلوي، وتأكد من استيفاء هدفك اليومي (<strong class="num">${proGoal}g بروتين</strong> و<strong class="num">${carbGoal}g كارب</strong>).`;
+    }
+
+    if (q.includes('صدر') || q.includes('علوي') || q.includes('كتف') || q.includes('تمارين')) {
+      return `🎯 <strong>أقوى تركيبة لتضخيم الصدر العلوي والكتف الجانبي:</strong><br/>
+      • <strong>للصدر العلوي:</strong> بنش برس علوي بالدمبل بزاوية 30 درجة (4 مجموعات × 8-10 عدات) + تفتيح كيبل سفلي للأعلى.<br/>
+      • <strong>للكتف الجانبي:</strong> رفرفة جانبي بالكيبل بتوتر مستمر (4 مجموعات × 12-15 عدة) مع التحكم في النزول لمدة ثانيتين.`;
+    }
+
+    if (q.includes('كرياتين') || q.includes('واي') || q.includes('مكمل') || q.includes('استشفاء')) {
+      return `💊 <strong>دليل المكملات والاستشفاء لوزنك الحالي (<span class="num">${lastW} kg</span>):</strong><br/>
+      • <strong>كرياتين مونوهيدرات:</strong> 5 جرام يومياً في أي وقت (يفضل مع وجبة بعد التمرين) مع شرب كمية كافية من الماء.<br/>
+      • <strong>واي بروتين:</strong> سكوب واحد (25-30g بروتين) لسد احتياجك اليومي البالغ <strong class="num">${proGoal}g</strong>.<br/>
+      • <strong>الاستشفاء:</strong> النوم 7.5-8 ساعات ليلاً يزيد إفراز هرمون النمو ويعيد جاهزية العضلات الكبيرة خلال 48 ساعة.`;
+    }
+
+    return `🤖 <strong>أهلاً بك يا بطل!</strong> بناءً على ملفك الحالي (الوزن <strong class="num">${lastW} kg</strong>، الهدف <strong>${STATE.wizard.goalName}</strong>، واحتياجك <strong class="num">${calGoal} kcal</strong> • <strong class="num">${proGoal}g بروتين</strong> • <strong class="num">${carbGoal}g كارب</strong>):<br/>
+    أنصحك بالتركيز على التحميل التدريجي في التمارين المركبة وتقسيم البروتين والكارب حول وقت التمرين. اسألني عن أي تمرين محدد أو اطلب وصفة وجبة صحية بالماكروز!`;
+  }
+
+  function sendAIMessage(presetText) {
+    const inp = $id('ai-chat-input');
+    const text = (presetText || inp?.value || '').trim();
+    if (!text) return;
+    if (inp && !presetText) inp.value = '';
+
+    STATE.aiMessages.push({ role: 'user', text });
+    const reply = generateSmartCoachReply(text);
+    STATE.aiMessages.push({ role: 'ai', text: reply });
+    if (STATE.aiMessages.length > 20) STATE.aiMessages = STATE.aiMessages.slice(-20);
+    saveState();
+    renderAIChatMessages();
+  }
+
+  function resetAIChat() {
+    STATE.aiMessages = [];
+    saveState();
+    renderAIChatMessages();
+    showToast('🔄 تم بدء محادثة جديدة');
+  }
+
+  function renderAIChatMessages() {
+    const box = $id('ai-messages-list');
+    if (!box) return;
+    if (!STATE.aiMessages.length) {
+      const lastW = STATE.weightLogs[STATE.weightLogs.length - 1]?.w || 78;
+      box.innerHTML = `
+        <div class="msg-bubble msg-ai">
+          👋 <strong>أهلاً بك في استوديو المدرب الذكي AI & شيف الرياضيين!</strong><br/>
+          أنا مطّلع على ملفك الحالي: وزنك <strong class="num">${lastW} kg</strong>، هدفك <strong>${STATE.wizard.goalName}</strong>، واحتياجك اليومي <strong class="num">${STATE.caloriesTarget} kcal</strong> (<strong class="num">${STATE.proteinTarget}g</strong> بروتين • <strong class="num">${STATE.carbsTarget}g</strong> كارب).<br/>
+          اختر سؤالاً جاهزاً أو اكتب استفسارك عن التمارين أو وصفات الوجبات الصحية!
+        </div>
+      `;
+      return;
+    }
+    box.innerHTML = STATE.aiMessages.map((m, idx) => `
+      <div class="msg-bubble ${m.role === 'user' ? 'msg-user' : 'msg-ai'}">
+        <div>${m.text}</div>
+        ${m.role === 'ai' ? `
+          <div style="margin-top:8px;padding-top:6px;border-top:1px solid var(--hairline);display:flex;justify-content:flex-end;">
+            <button type="button" class="btn-glass" style="min-height:32px;padding:3px 10px;font-size:11px;" onclick="copyCoachMessage(${idx})">📋 نسخ الرد</button>
+          </div>
+        ` : ''}
+      </div>
+    `).join('');
+    box.scrollTop = box.scrollHeight;
+  }
+
+  function renderAICoachSection() {
+    const lastW = STATE.weightLogs[STATE.weightLogs.length - 1]?.w || 78;
+    const mostRecovered = [...MUSCLE_GROUPS].sort((a, b) => calcMuscleRecovery(b.id).readiness - calcMuscleRecovery(a.id).readiness)[0];
+    const mRec = calcMuscleRecovery(mostRecovered.id);
+
+    setHTML('ai-athlete-grid', `
+      <div class="w-metric-box"><span>الوزن الحالي</span><strong class="num">${lastW.toFixed(1)} kg</strong></div>
+      <div class="w-metric-box"><span>الهدف</span><strong style="font-size:11.5px;color:var(--copper-light);">${STATE.wizard.goalName}</strong></div>
+      <div class="w-metric-box"><span>السعرات / P / C</span><strong class="num" style="font-size:11.5px;">${STATE.caloriesTarget} / ${STATE.proteinTarget}g / ${STATE.carbsTarget}g</strong></div>
+      <div class="w-metric-box"><span>أكثر عضلة جاهزية</span><strong style="font-size:11.5px;color:var(--emerald-light);">${mostRecovered.name} ${mRec.readiness}%</strong></div>
+    `);
+
+    const cats = [
+      { id: 'all', name: 'الكل' },
+      { id: 'workout', name: 'التمارين والأداء' },
+      { id: 'recipes', name: 'وصفات ووجبات صحية' },
+      { id: 'supps', name: 'المكملات والاستشفاء' }
+    ];
+    setHTML('ai-cat-filters', cats.map(c => `
+      <button type="button" class="btn-glass" style="min-height:36px;padding:4px 10px;font-size:11px;${STATE.aiCategory === c.id ? 'border-color:var(--copper);color:#fff;' : ''}"
+        onclick="STATE.aiCategory='${c.id}';renderAICoachSection();">${c.name}</button>
+    `).join(''));
+
+    const filteredPrompts = AI_PROMPTS.filter(p => STATE.aiCategory === 'all' || p.cat === STATE.aiCategory);
+    setHTML('ai-prompts-list', filteredPrompts.map(p => `
+      <button type="button" class="supp-item" style="width:100%;text-align:right;font-size:12px;font-weight:700;min-height:42px;" onclick="sendAIMessage('${p.q}')">
+        <span>✨ ${p.q}</span>
+      </button>
+    `).join(''));
+
+    setHTML('ai-mode-label', 'المدرب الذكي AI نشط ومرتبط بملفك الرياضي');
+    renderAIChatMessages();
+  }
+
+  /* ================= INITIALIZATION ================= */
+  window.addEventListener('DOMContentLoaded', () => {
+    updateWorkoutRestDisplay();
+    switchTab(STATE.activeTab || 'dashboard');
+  });
+</script>
+</body>
+</html>
