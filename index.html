@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" class="dark">
 <head>
-  <link rel="icon" type="image/png" href="icon.png">
-<link rel="apple-touch-icon" href="icon.png">
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#07080b" />
@@ -1255,12 +1255,17 @@
       </nav>
     </div>
 
-    <div class="lux-sub" style="padding:11px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-        <span style="font-size:11px;color:var(--text-muted);font-weight:700;">النظام النشط</span>
-        <span class="badge-pill badge-copper" style="font-size:10px;padding:2px 8px;" id="side-prog-badge">PPL 6D</span>
+    <div class="lux-sub" style="padding:11px;display:flex;flex-direction:column;gap:8px;">
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+          <span style="font-size:11px;color:var(--text-muted);font-weight:700;">النظام النشط</span>
+          <span class="badge-pill badge-copper" style="font-size:10px;padding:2px 8px;" id="side-prog-badge">PPL 6D</span>
+        </div>
+        <div style="font-size:12px;font-weight:800;color:#fff;" id="side-athlete-summary">0.0 kg • لم يتم تحديد الهدف</div>
       </div>
-      <div style="font-size:12px;font-weight:800;color:#fff;" id="side-athlete-summary">78.0 kg • تضخيم عضلي نظيف</div>
+      <button type="button" class="btn-glass" style="width:100%;min-height:36px;padding:5px 10px;font-size:11.5px;color:#fda4af;border-color:rgba(244,63,94,0.28);" onclick="resetAllSiteData()">
+        🔄 تصفير بياناتي
+      </button>
     </div>
   </aside>
 
@@ -1284,12 +1289,12 @@
             <div class="kpi-header">
               <div class="kpi-info">
                 <div style="font-size:12.5px;font-weight:800;color:var(--text-muted);">🔥 السعرات اليومية</div>
-                <div class="num" style="font-size:20px;font-weight:900;color:#fff;margin:2px 0;" id="kpi-cal-val">1650 / 2450 kcal</div>
-                <div style="font-size:11.5px;color:var(--text-muted);" id="kpi-cal-rem">متبقي 800 kcal للهدف</div>
+                <div class="num" style="font-size:20px;font-weight:900;color:#fff;margin:2px 0;" id="kpi-cal-val">0 / 0 kcal</div>
+                <div style="font-size:11.5px;color:var(--text-muted);" id="kpi-cal-rem">احسب سعراتك من حاسبة السعرات للبدء 🔥</div>
                 <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;">
-                  <span class="badge-pill badge-emerald num" style="font-size:10.5px;padding:2px 7px;" id="kpi-macro-p">P: 180g</span>
-                  <span class="badge-pill badge-sapphire num" style="font-size:10.5px;padding:2px 7px;" id="kpi-macro-c">C: 265g</span>
-                  <span class="badge-pill badge-gold num" style="font-size:10.5px;padding:2px 7px;" id="kpi-macro-f">F: 72g</span>
+                  <span class="badge-pill badge-emerald num" style="font-size:10.5px;padding:2px 7px;" id="kpi-macro-p">P: 0g</span>
+                  <span class="badge-pill badge-sapphire num" style="font-size:10.5px;padding:2px 7px;" id="kpi-macro-c">C: 0g</span>
+                  <span class="badge-pill badge-gold num" style="font-size:10.5px;padding:2px 7px;" id="kpi-macro-f">F: 0g</span>
                 </div>
               </div>
               <div class="kpi-ring-box">
@@ -1302,9 +1307,9 @@
                   </defs>
                   <circle cx="39" cy="39" r="32" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="7" />
                   <circle id="ring-cal" cx="39" cy="39" r="32" fill="none" stroke="url(#gradCal)" stroke-width="7" stroke-linecap="round"
-                    stroke-dasharray="201.06" stroke-dashoffset="65" transform="rotate(-90 39 39)" style="transition:stroke-dashoffset 0.45s ease;" />
+                    stroke-dasharray="201.06" stroke-dashoffset="201.06" transform="rotate(-90 39 39)" style="transition:stroke-dashoffset 0.45s ease;" />
                 </svg>
-                <div class="kpi-ring-center num" id="ring-cal-pct">67%</div>
+                <div class="kpi-ring-center num" id="ring-cal-pct">0%</div>
               </div>
             </div>
             <div class="kpi-actions-grid-2">
@@ -1318,8 +1323,8 @@
             <div class="kpi-header">
               <div class="kpi-info">
                 <div style="font-size:12.5px;font-weight:800;color:var(--text-muted);">🥩 البروتين اليومي</div>
-                <div class="num" style="font-size:20px;font-weight:900;color:var(--emerald-light);margin:2px 0;" id="kpi-pro-val">112 / 180 g</div>
-                <div style="font-size:11.5px;color:var(--text-muted);" id="kpi-pro-rem">متبقي 68g لتحقيق الهدف</div>
+                <div class="num" style="font-size:20px;font-weight:900;color:var(--emerald-light);margin:2px 0;" id="kpi-pro-val">0 / 0 g</div>
+                <div style="font-size:11.5px;color:var(--text-muted);" id="kpi-pro-rem">احسب احتياجك من البروتين للبدء 🥩</div>
                 <div style="margin-top:6px;">
                   <span class="badge-pill badge-emerald" style="font-size:10.5px;padding:2px 8px;">بناء واستشفاء عضلي</span>
                 </div>
@@ -1334,9 +1339,9 @@
                   </defs>
                   <circle cx="39" cy="39" r="32" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="7" />
                   <circle id="ring-pro" cx="39" cy="39" r="32" fill="none" stroke="url(#gradPro)" stroke-width="7" stroke-linecap="round"
-                    stroke-dasharray="201.06" stroke-dashoffset="76" transform="rotate(-90 39 39)" style="transition:stroke-dashoffset 0.45s ease;" />
+                    stroke-dasharray="201.06" stroke-dashoffset="201.06" transform="rotate(-90 39 39)" style="transition:stroke-dashoffset 0.45s ease;" />
                 </svg>
-                <div class="kpi-ring-center num" id="ring-pro-pct">62%</div>
+                <div class="kpi-ring-center num" id="ring-pro-pct">0%</div>
               </div>
             </div>
             <div class="kpi-actions-grid-3">
@@ -1351,8 +1356,8 @@
             <div class="kpi-header">
               <div class="kpi-info">
                 <div style="font-size:12.5px;font-weight:800;color:var(--text-muted);">🍚 الكارب اليومي</div>
-                <div class="num" style="font-size:20px;font-weight:900;color:var(--sapphire-light);margin:2px 0;" id="kpi-carb-val">165 / 265 g</div>
-                <div style="font-size:11.5px;color:var(--text-muted);" id="kpi-carb-rem">متبقي 100g لتحقيق الهدف</div>
+                <div class="num" style="font-size:20px;font-weight:900;color:var(--sapphire-light);margin:2px 0;" id="kpi-carb-val">0 / 0 g</div>
+                <div style="font-size:11.5px;color:var(--text-muted);" id="kpi-carb-rem">احسب احتياجك من الكارب للبدء 🍚</div>
                 <div style="margin-top:6px;">
                   <span class="badge-pill badge-sapphire" style="font-size:10.5px;padding:2px 8px;">طاقة وجليكوجين التمرين</span>
                 </div>
@@ -1367,9 +1372,9 @@
                   </defs>
                   <circle cx="39" cy="39" r="32" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="7" />
                   <circle id="ring-carb" cx="39" cy="39" r="32" fill="none" stroke="url(#gradCarb)" stroke-width="7" stroke-linecap="round"
-                    stroke-dasharray="201.06" stroke-dashoffset="76" transform="rotate(-90 39 39)" style="transition:stroke-dashoffset 0.45s ease;" />
+                    stroke-dasharray="201.06" stroke-dashoffset="201.06" transform="rotate(-90 39 39)" style="transition:stroke-dashoffset 0.45s ease;" />
                 </svg>
-                <div class="kpi-ring-center num" id="ring-carb-pct">62%</div>
+                <div class="kpi-ring-center num" id="ring-carb-pct">0%</div>
               </div>
             </div>
             <div class="kpi-actions-grid-3">
@@ -1423,7 +1428,7 @@
                   <strong style="font-size:15px;font-weight:900;">📈 مخطط متابعة الوزن وتطور الجسم</strong>
                   <div style="font-size:11.5px;color:var(--text-muted);">انقر على أي نقطة لعرض قراءة الوزن والتاريخ</div>
                 </div>
-                <span id="weight-selected-tooltip" class="badge-pill badge-copper num">آخر قياس: 78.0 kg</span>
+                <span id="weight-selected-tooltip" class="badge-pill badge-copper num">لا توجد قياسات بعد</span>
               </div>
 
               <div class="weight-kpi-grid" id="weight-stats-strip"></div>
@@ -1432,7 +1437,7 @@
 
               <div class="weight-entry-dock">
                 <button type="button" class="w-nudge-btn num" onclick="nudgeWeightInput(-0.1)">-0.1</button>
-                <input type="number" id="weight-entry-input" step="0.1" min="30" max="250" inputmode="decimal" value="78.0" class="lux-input num" style="text-align:center;font-weight:900;font-size:14px;padding:6px 4px;" aria-label="الوزن بالكيلوجرام" />
+                <input type="number" id="weight-entry-input" step="0.1" min="30" max="250" inputmode="decimal" value="" placeholder="0.0" class="lux-input num" style="text-align:center;font-weight:900;font-size:14px;padding:6px 4px;" aria-label="الوزن بالكيلوجرام" />
                 <button type="button" class="w-nudge-btn num" onclick="nudgeWeightInput(0.1)">+0.1</button>
                 <button type="button" class="btn-copper" style="padding:8px 14px;white-space:nowrap;" onclick="logTodayWeight()">تسجيل ✓</button>
               </div>
@@ -1549,7 +1554,7 @@
         <div class="lux-card">
           <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
             <h2 style="margin:0;font-size:clamp(16px,4.2vw,20px);font-weight:900;">🔥 حاسبة السعرات والماكروز الذكية</h2>
-            <span class="badge-pill badge-copper num" id="wiz-live-telemetry">BMR: 1785 • BMI: 24.6</span>
+            <span class="badge-pill badge-copper num" id="wiz-live-telemetry">BMR: 1750 • BMI: 24.5</span>
           </div>
 
           <div class="wiz-steps-bar" id="wiz-steps-bar"></div>
@@ -1959,26 +1964,20 @@
     { name: 'علبة تونة مصفاة + مكرونة (200g) + ملعقة زيت زيتون', kcal: 530, p: 49, c: 53, f: 13 }
   ];
 
-  /* ================= APPLICATION STATE ================= */
+  /* ================= APPLICATION STATE (ZEROED BY DEFAULT FOR NEW VISITORS) ================= */
   const DEFAULT_STATE = {
     activeTab: 'dashboard',
-    caloriesConsumed: 1650,
-    caloriesTarget: 2450,
-    proteinConsumed: 112,
-    proteinTarget: 180,
-    carbsConsumed: 165,
-    carbsTarget: 265,
-    fatsTarget: 72,
+    caloriesConsumed: 0,
+    caloriesTarget: 0,
+    proteinConsumed: 0,
+    proteinTarget: 0,
+    carbsConsumed: 0,
+    carbsTarget: 0,
+    fatsTarget: 0,
     selectedDashMuscle: 'chest',
     muscleFatigue: {},
-    weightLogs: [
-      { date: '11/01', w: 76.4 },
-      { date: '11/06', w: 76.9 },
-      { date: '11/11', w: 77.3 },
-      { date: '11/16', w: 77.7 },
-      { date: '11/20', w: 78.0 }
-    ],
-    selectedWeightIdx: 4,
+    weightLogs: [],
+    selectedWeightIdx: -1,
     supplements: [
       { id: 's1', name: 'كرياتين مونوهيدرات 5g', done: false },
       { id: 's2', name: 'واي بروتين سكوب 30g', done: false },
@@ -1995,9 +1994,9 @@
     wizard: {
       step: 1,
       gender: 'male',
-      age: 26,
-      height: 178,
-      weight: 78,
+      age: 25,
+      height: 175,
+      weight: 75,
       activity: 1.55,
       goal: 'lean_bulk',
       goalName: 'تضخيم عضلي نظيف',
@@ -2010,13 +2009,23 @@
   };
 
   let STATE = Object.assign({}, DEFAULT_STATE, safeStorage.get('gym_pro_state_v3', {}));
-  if (!Array.isArray(STATE.weightLogs) || !STATE.weightLogs.length) STATE.weightLogs = DEFAULT_STATE.weightLogs;
+  if (!Array.isArray(STATE.weightLogs)) STATE.weightLogs = [];
   if (!Array.isArray(STATE.supplements)) STATE.supplements = DEFAULT_STATE.supplements;
   if (!STATE.wizard) STATE.wizard = DEFAULT_STATE.wizard;
   if (typeof STATE.autoRestOnLog !== 'boolean') STATE.autoRestOnLog = true;
 
   function saveState() {
     safeStorage.set('gym_pro_state_v3', STATE);
+  }
+
+  function resetAllSiteData() {
+    if (!confirm('هل تريد تصفير جميع السعرات والوزن والتمارين المحفوظة على هذا الجهاز؟')) return;
+    try { window.localStorage.removeItem('gym_pro_state_v3'); } catch (e) {}
+    STATE = JSON.parse(JSON.stringify(DEFAULT_STATE));
+    saveState();
+    toggleSidebar(false);
+    switchTab('dashboard');
+    showToast('🔄 تم تصفير جميع البيانات بنجاح');
   }
 
   function getAllExercises() {
@@ -2252,10 +2261,13 @@
     const CIRC = 201.06;
 
     // 1. Daily Calories
-    const calPct = Math.min(100, Math.round((STATE.caloriesConsumed / Math.max(1, STATE.caloriesTarget)) * 100));
+    const hasCalTarget = STATE.caloriesTarget > 0;
+    const calPct = hasCalTarget ? Math.min(100, Math.round((STATE.caloriesConsumed / STATE.caloriesTarget) * 100)) : 0;
     const calRem = Math.max(0, STATE.caloriesTarget - STATE.caloriesConsumed);
     setHTML('kpi-cal-val', `${STATE.caloriesConsumed} / ${STATE.caloriesTarget} kcal`);
-    setHTML('kpi-cal-rem', calRem > 0 ? `متبقي ${calRem} kcal للهدف` : '🎉 حققت هدف السعرات اليومي!');
+    setHTML('kpi-cal-rem', !hasCalTarget
+      ? 'احسب سعراتك من حاسبة السعرات للبدء 🔥'
+      : (calRem > 0 ? `متبقي ${calRem} kcal للهدف` : '🎉 حققت هدف السعرات اليومي!'));
     setHTML('kpi-macro-p', `P: ${STATE.proteinTarget}g`);
     setHTML('kpi-macro-c', `C: ${STATE.carbsTarget}g`);
     setHTML('kpi-macro-f', `F: ${STATE.fatsTarget}g`);
@@ -2264,28 +2276,36 @@
     if (ringCal) ringCal.style.strokeDashoffset = (CIRC * (1 - calPct / 100)).toFixed(2);
 
     // 2. Daily Protein
-    const proPct = Math.min(100, Math.round((STATE.proteinConsumed / Math.max(1, STATE.proteinTarget)) * 100));
+    const hasProTarget = STATE.proteinTarget > 0;
+    const proPct = hasProTarget ? Math.min(100, Math.round((STATE.proteinConsumed / STATE.proteinTarget) * 100)) : 0;
     const proRem = Math.max(0, STATE.proteinTarget - STATE.proteinConsumed);
     setHTML('kpi-pro-val', `${STATE.proteinConsumed} / ${STATE.proteinTarget} g`);
-    setHTML('kpi-pro-rem', proRem > 0 ? `متبقي ${proRem}g لتحقيق الهدف` : '💪 وصلت لهدف البروتين اليومي!');
+    setHTML('kpi-pro-rem', !hasProTarget
+      ? 'احسب احتياجك من البروتين للبدء 🥩'
+      : (proRem > 0 ? `متبقي ${proRem}g لتحقيق الهدف` : '💪 وصلت لهدف البروتين اليومي!'));
     setHTML('ring-pro-pct', `${proPct}%`);
     const ringPro = $id('ring-pro');
     if (ringPro) ringPro.style.strokeDashoffset = (CIRC * (1 - proPct / 100)).toFixed(2);
 
     // 3. Daily Carbs
-    const carbPct = Math.min(100, Math.round((STATE.carbsConsumed / Math.max(1, STATE.carbsTarget)) * 100));
+    const hasCarbTarget = STATE.carbsTarget > 0;
+    const carbPct = hasCarbTarget ? Math.min(100, Math.round((STATE.carbsConsumed / STATE.carbsTarget) * 100)) : 0;
     const carbRem = Math.max(0, STATE.carbsTarget - STATE.carbsConsumed);
     setHTML('kpi-carb-val', `${STATE.carbsConsumed} / ${STATE.carbsTarget} g`);
-    setHTML('kpi-carb-rem', carbRem > 0 ? `متبقي ${carbRem}g لتحقيق الهدف` : '⚡ وصلت لهدف الكارب اليومي!');
+    setHTML('kpi-carb-rem', !hasCarbTarget
+      ? 'احسب احتياجك من الكارب للبدء 🍚'
+      : (carbRem > 0 ? `متبقي ${carbRem}g لتحقيق الهدف` : '⚡ وصلت لهدف الكارب اليومي!'));
     setHTML('ring-carb-pct', `${carbPct}%`);
     const ringCarb = $id('ring-carb');
     if (ringCarb) ringCarb.style.strokeDashoffset = (CIRC * (1 - carbPct / 100)).toFixed(2);
 
     // Sidebar Summary
     const prog = TRAINING_PROGRAMS.find(p => p.id === STATE.selectedProgramId) || TRAINING_PROGRAMS[0];
-    const lastW = STATE.weightLogs[STATE.weightLogs.length - 1]?.w || 78.0;
+    const hasW = STATE.weightLogs.length > 0;
+    const lastW = hasW ? STATE.weightLogs[STATE.weightLogs.length - 1].w.toFixed(1) : '0.0';
+    const goalTxt = hasCalTarget ? STATE.wizard.goalName : 'لم يتم تحديد الهدف';
     setHTML('side-prog-badge', prog.name);
-    setHTML('side-athlete-summary', `${lastW.toFixed(1)} kg • ${STATE.wizard.goalName}`);
+    setHTML('side-athlete-summary', `${lastW} kg • ${goalTxt}`);
   }
 
   function scrollMuscleStrip(dir) {
@@ -2365,7 +2385,8 @@
   function nudgeWeightInput(delta) {
     const inp = $id('weight-entry-input');
     if (!inp) return;
-    const cur = parseFloat(inp.value) || 78.0;
+    const parsed = parseFloat(inp.value);
+    const cur = isNaN(parsed) ? 70.0 : parsed;
     inp.value = Math.min(250, Math.max(30, +(cur + delta).toFixed(1)));
   }
 
@@ -2395,10 +2416,36 @@
 
   function renderWeightChart() {
     const logs = STATE.weightLogs;
+    if (!logs.length) {
+      setHTML('weight-selected-tooltip', 'لا توجد قياسات بعد');
+      const wInput = $id('weight-entry-input');
+      if (wInput && document.activeElement !== wInput) wInput.value = '';
+      setHTML('weight-stats-strip', `
+        <div class="w-metric-box">
+          <span>الوزن الحالي</span>
+          <strong class="num" style="color:#ffffff;">0.0 kg</strong>
+        </div>
+        <div class="w-metric-box">
+          <span>مقدار التغير</span>
+          <strong class="num" style="color:var(--text-muted);">0.0 kg</strong>
+        </div>
+        <div class="w-metric-box">
+          <span>مؤشر BMI</span>
+          <strong class="num" style="color:var(--copper-light);">--</strong>
+        </div>
+      `);
+      setHTML('weight-chart-container', `
+        <div style="padding:36px 14px;text-align:center;color:var(--text-muted);font-size:12.5px;">
+          📊 لم يتم تسجيل أي وزن بعد — أدخل وزنك بالأسفل واضغط <strong>تسجيل</strong> للبدء
+        </div>
+      `);
+      return;
+    }
+
     const first = logs[0].w;
     const last = logs[logs.length - 1].w;
     const diff = +(last - first).toFixed(1);
-    const hM = (STATE.wizard.height || 178) / 100;
+    const hM = (STATE.wizard.height || 175) / 100;
     const bmi = (last / (hM * hM)).toFixed(1);
     const selIdx = Math.min(logs.length - 1, Math.max(0, STATE.selectedWeightIdx ?? logs.length - 1));
     const selItem = logs[selIdx];
@@ -2531,7 +2578,7 @@
   function handleExImgError(img) {
     if (img.dataset.mirror !== '1') {
       img.dataset.mirror = '1';
-      img.src = `https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db/main/exercises/${img.dataset.exSlug}/0.jpg`;
+      img.src = `https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/${img.dataset.exSlug}/0.jpg`;
       return;
     }
     img.dataset.fallback = '1';
@@ -2749,10 +2796,10 @@
     if (!ex) return;
     const wEl = $id(`pw-${exId}`);
     const rEl = $id(`pr-${exId}`);
-    const w = parseFloat(wEl?.value) || 40;
+    const w = parseFloat(wEl?.value) || 0;
     const r = parseInt(rEl?.value, 10) || 10;
 
-    const prev = STATE.exerciseLogs[exId] || { w: 40, r: 10, setsCount: 0 };
+    const prev = STATE.exerciseLogs[exId] || { w: 0, r: 10, setsCount: 0 };
     STATE.exerciseLogs[exId] = { w, r, setsCount: (prev.setsCount || 0) + 1 };
     applyMuscleFatigue(ex.muscle, 15);
     saveState();
@@ -2810,8 +2857,10 @@
     setHTML('program-day-exercises', day.exIds.map((id, idx) => {
       const ex = allEx.find(e => e.id === id);
       if (!ex) return '';
-      const saved = STATE.exerciseLogs[ex.id] || { w: 50, r: 10, setsCount: 0 };
-      const loggedBadge = saved.setsCount > 0
+      const saved = STATE.exerciseLogs[ex.id];
+      const wVal = saved ? saved.w : '';
+      const rVal = saved ? saved.r : '';
+      const loggedBadge = saved && saved.setsCount > 0
         ? `<span class="badge-pill badge-emerald num">✓ ${saved.setsCount} مجموعات</span>`
         : `<span class="badge-pill badge-sapphire num">${day.setsReps || '3×10-12'}</span>`;
       return `
@@ -2827,11 +2876,11 @@
           <div class="prog-log-row">
             <div class="prog-inp-wrap">
               <label for="pw-${ex.id}">الوزن (kg)</label>
-              <input type="number" id="pw-${ex.id}" class="lux-input num" inputmode="decimal" value="${saved.w}" min="0" max="400" step="2.5" placeholder="kg" style="text-align:center;padding:6px;" />
+              <input type="number" id="pw-${ex.id}" class="lux-input num" inputmode="decimal" value="${wVal}" min="0" max="400" step="2.5" placeholder="0" style="text-align:center;padding:6px;" />
             </div>
             <div class="prog-inp-wrap">
               <label for="pr-${ex.id}">العدات</label>
-              <input type="number" id="pr-${ex.id}" class="lux-input num" inputmode="numeric" value="${saved.r}" min="1" max="50" placeholder="عدات" style="text-align:center;padding:6px;" />
+              <input type="number" id="pr-${ex.id}" class="lux-input num" inputmode="numeric" value="${rVal}" min="1" max="50" placeholder="0" style="text-align:center;padding:6px;" />
             </div>
             <button type="button" class="btn-copper" style="padding:8px 14px;white-space:nowrap;" onclick="logProgramExerciseSet('${ex.id}')">✓ تسجيل</button>
           </div>
@@ -2848,8 +2897,8 @@
 
   function calcWizardMacros() {
     const w = STATE.wizard;
-    const hM = (w.height || 178) / 100;
-    const bmi = +((w.weight || 78) / (hM * hM)).toFixed(1);
+    const hM = (w.height || 175) / 100;
+    const bmi = +((w.weight || 75) / (hM * hM)).toFixed(1);
     let bmr = w.gender === 'male'
       ? (10 * w.weight + 6.25 * w.height - 5 * w.age + 5)
       : (10 * w.weight + 6.25 * w.height - 5 * w.age - 161);
@@ -3231,7 +3280,8 @@
 
   function generateSmartCoachReply(userText) {
     const q = userText.toLowerCase();
-    const lastW = STATE.weightLogs[STATE.weightLogs.length - 1]?.w || 78;
+    const hasW = STATE.weightLogs.length > 0;
+    const lastW = hasW ? `${STATE.weightLogs[STATE.weightLogs.length - 1].w} kg` : 'غير مسجل بعد';
     const proGoal = STATE.proteinTarget;
     const carbGoal = STATE.carbsTarget;
     const calGoal = STATE.caloriesTarget;
@@ -3278,13 +3328,13 @@
     }
 
     if (q.includes('كرياتين') || q.includes('واي') || q.includes('مكمل') || q.includes('استشفاء')) {
-      return `💊 <strong>دليل المكملات والاستشفاء لوزنك الحالي (<span class="num">${lastW} kg</span>):</strong><br/>
+      return `💊 <strong>دليل المكملات والاستشفاء (الوزن الحالي: <span class="num">${lastW}</span>):</strong><br/>
       • <strong>كرياتين مونوهيدرات:</strong> 5 جرام يومياً في أي وقت (يفضل مع وجبة بعد التمرين) مع شرب كمية كافية من الماء.<br/>
       • <strong>واي بروتين:</strong> سكوب واحد (25-30g بروتين) لسد احتياجك اليومي البالغ <strong class="num">${proGoal}g</strong>.<br/>
       • <strong>الاستشفاء:</strong> النوم 7.5-8 ساعات ليلاً يزيد إفراز هرمون النمو ويعيد جاهزية العضلات الكبيرة خلال 48 ساعة.`;
     }
 
-    return `🤖 <strong>أهلاً بك يا بطل!</strong> بناءً على ملفك الحالي (الوزن <strong class="num">${lastW} kg</strong>، الهدف <strong>${STATE.wizard.goalName}</strong>، واحتياجك <strong class="num">${calGoal} kcal</strong> • <strong class="num">${proGoal}g بروتين</strong> • <strong class="num">${carbGoal}g كارب</strong>):<br/>
+    return `🤖 <strong>أهلاً بك يا بطل!</strong> بناءً على ملفك الحالي (الوزن: <strong class="num">${lastW}</strong>، الهدف: <strong>${STATE.wizard.goalName}</strong>، واحتياجك: <strong class="num">${calGoal} kcal</strong> • <strong class="num">${proGoal}g بروتين</strong> • <strong class="num">${carbGoal}g كارب</strong>):<br/>
     أنصحك بالتركيز على التحميل التدريجي في التمارين المركبة وتقسيم البروتين والكارب حول وقت التمرين. اسألني عن أي تمرين محدد أو اطلب وصفة وجبة صحية بالماكروز!`;
   }
 
@@ -3313,11 +3363,12 @@
     const box = $id('ai-messages-list');
     if (!box) return;
     if (!STATE.aiMessages.length) {
-      const lastW = STATE.weightLogs[STATE.weightLogs.length - 1]?.w || 78;
+      const hasW = STATE.weightLogs.length > 0;
+      const lastW = hasW ? `${STATE.weightLogs[STATE.weightLogs.length - 1].w} kg` : '0.0 kg';
       box.innerHTML = `
         <div class="msg-bubble msg-ai">
           👋 <strong>أهلاً بك في استوديو المدرب الذكي AI & شيف الرياضيين!</strong><br/>
-          أنا مطّلع على ملفك الحالي: وزنك <strong class="num">${lastW} kg</strong>، هدفك <strong>${STATE.wizard.goalName}</strong>، واحتياجك اليومي <strong class="num">${STATE.caloriesTarget} kcal</strong> (<strong class="num">${STATE.proteinTarget}g</strong> بروتين • <strong class="num">${STATE.carbsTarget}g</strong> كارب).<br/>
+          أنا مطّلع على ملفك الحالي: وزنك <strong class="num">${lastW}</strong>، هدفك <strong>${STATE.wizard.goalName}</strong>، واحتياجك اليومي <strong class="num">${STATE.caloriesTarget} kcal</strong> (<strong class="num">${STATE.proteinTarget}g</strong> بروتين • <strong class="num">${STATE.carbsTarget}g</strong> كارب).<br/>
           اختر سؤالاً جاهزاً أو اكتب استفسارك عن التمارين أو وصفات الوجبات الصحية!
         </div>
       `;
@@ -3337,12 +3388,13 @@
   }
 
   function renderAICoachSection() {
-    const lastW = STATE.weightLogs[STATE.weightLogs.length - 1]?.w || 78;
+    const hasW = STATE.weightLogs.length > 0;
+    const lastW = hasW ? `${STATE.weightLogs[STATE.weightLogs.length - 1].w.toFixed(1)} kg` : '0.0 kg';
     const mostRecovered = [...MUSCLE_GROUPS].sort((a, b) => calcMuscleRecovery(b.id).readiness - calcMuscleRecovery(a.id).readiness)[0];
     const mRec = calcMuscleRecovery(mostRecovered.id);
 
     setHTML('ai-athlete-grid', `
-      <div class="w-metric-box"><span>الوزن الحالي</span><strong class="num">${lastW.toFixed(1)} kg</strong></div>
+      <div class="w-metric-box"><span>الوزن الحالي</span><strong class="num">${lastW}</strong></div>
       <div class="w-metric-box"><span>الهدف</span><strong style="font-size:11.5px;color:var(--copper-light);">${STATE.wizard.goalName}</strong></div>
       <div class="w-metric-box"><span>السعرات / P / C</span><strong class="num" style="font-size:11.5px;">${STATE.caloriesTarget} / ${STATE.proteinTarget}g / ${STATE.carbsTarget}g</strong></div>
       <div class="w-metric-box"><span>أكثر عضلة جاهزية</span><strong style="font-size:11.5px;color:var(--emerald-light);">${mostRecovered.name} ${mRec.readiness}%</strong></div>
